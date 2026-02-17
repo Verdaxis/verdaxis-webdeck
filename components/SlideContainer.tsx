@@ -186,7 +186,7 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
       <Suspense
         fallback={
           <div className="w-full h-full flex items-center justify-center">
-            <div className="h-7 w-7 rounded-full border-2 border-white/25 border-t-seafoam animate-spin" />
+            <div className="h-7 w-7 rounded-full border-2 border-white/25 border-t-verdaxis-blue animate-spin" />
           </div>
         }
       >
@@ -214,19 +214,19 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
         >
           <path
             d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,75 1440,60 L1440,120 L0,120 Z"
-            fill="rgba(9,219,169,0.06)"
+            fill="rgba(93,173,226,0.06)"
           />
           <path
             d="M0,80 C320,30 640,110 960,60 C1200,20 1360,90 1440,70 L1440,120 L0,120 Z"
-            fill="rgba(9,219,169,0.04)"
+            fill="rgba(93,173,226,0.04)"
           />
         </svg>
 
         {/* Content */}
         <div className="mobile-gate-content">
           <Image
-            src="/images/logos/logo_white.png"
-            alt="MarinaChain"
+            src="/images/logos/verdaxis-icon.png"
+            alt="Verdaxis"
             width={140}
             height={35}
             priority
@@ -246,22 +246,22 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
           >
             <rect
               x="4" y="6" width="40" height="28" rx="3"
-              stroke="rgba(9,219,169,0.5)" strokeWidth="1.5" fill="none"
+              stroke="rgba(93,173,226,0.5)" strokeWidth="1.5" fill="none"
             />
             <line
               x1="24" y1="34" x2="24" y2="40"
-              stroke="rgba(9,219,169,0.3)" strokeWidth="1.5"
+              stroke="rgba(93,173,226,0.3)" strokeWidth="1.5"
             />
             <line
               x1="16" y1="40" x2="32" y2="40"
-              stroke="rgba(9,219,169,0.3)" strokeWidth="1.5" strokeLinecap="round"
+              stroke="rgba(93,173,226,0.3)" strokeWidth="1.5" strokeLinecap="round"
             />
             {/* Screen content lines */}
-            <rect x="10" y="12" width="18" height="1.5" rx="0.75" fill="rgba(9,219,169,0.2)" />
-            <rect x="10" y="16" width="12" height="1.5" rx="0.75" fill="rgba(9,219,169,0.15)" />
-            <rect x="10" y="20" width="22" height="1.5" rx="0.75" fill="rgba(9,219,169,0.12)" />
+            <rect x="10" y="12" width="18" height="1.5" rx="0.75" fill="rgba(93,173,226,0.2)" />
+            <rect x="10" y="16" width="12" height="1.5" rx="0.75" fill="rgba(93,173,226,0.15)" />
+            <rect x="10" y="20" width="22" height="1.5" rx="0.75" fill="rgba(93,173,226,0.12)" />
             {/* Play button on screen */}
-            <polygon points="34,17 34,25 40,21" fill="rgba(9,219,169,0.25)" />
+            <polygon points="34,17 34,25 40,21" fill="rgba(93,173,226,0.25)" />
           </svg>
 
           <h1 className="mobile-gate-heading">
@@ -286,7 +286,7 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
   /* ══════════ DESKTOP: Slide-by-slide with transitions ══════════ */
   return (
     <div
-      className="relative w-screen h-screen overflow-hidden bg-gradient-to-br from-navy via-[#073a6e] to-[#052d5a]"
+      className="relative w-screen h-screen overflow-hidden bg-gradient-to-br from-deep-dark via-[#0D1B2A] to-[#0F1D2F]"
       style={{ height: "100dvh" }}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
@@ -296,14 +296,14 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
         <div
           className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full opacity-[0.07]"
           style={{
-            background: "radial-gradient(circle, #09DBA9 0%, transparent 70%)",
+            background: "radial-gradient(circle, #5DADE2 0%, transparent 70%)",
             animation: "spin 50s linear infinite",
           }}
         />
         <div
           className="absolute bottom-[-20%] left-[-10%] w-[700px] h-[700px] rounded-full opacity-[0.05]"
           style={{
-            background: "radial-gradient(circle, #00CCFF 0%, transparent 60%)",
+            background: "radial-gradient(circle, #D4A853 0%, transparent 60%)",
             animation: "spin 70s linear infinite reverse",
           }}
         />
@@ -316,8 +316,8 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
         transition={{ duration: 0.3 }}
       >
         <Image
-          src="/images/logos/logo_white.png"
-          alt="MarinaChain"
+          src="/images/logos/verdaxis-icon.png"
+          alt="Verdaxis"
           width={120}
           height={30}
           priority

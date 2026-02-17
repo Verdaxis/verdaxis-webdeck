@@ -8,16 +8,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: "#06448E",
-        "sky-blue": "#00CCFF",
-        seafoam: "#09DBA9",
-        "spring-green": "#6BFCA6",
-        "pale-mint": "#CFFFA6",
-        "soft-cream": "#FDFFE1",
-        "amber-warning": "#F59E0B",
+        "deep-dark": "#0B1120",
+        "dark-card": "#111827",
+        "verdaxis-blue": "#5DADE2",
+        "verdaxis-dark-blue": "#3B82B6",
+        "gold-accent": "#D4A853",
+        "gold-light": "#E8C87A",
+        emerald: "#10B981",
+        "slate-border": "rgba(93,173,226,0.15)",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        heading: ["Montserrat", "system-ui", "sans-serif"],
+        body: ["Lato", "system-ui", "sans-serif"],
       },
     },
   },

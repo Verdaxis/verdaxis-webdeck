@@ -6,7 +6,7 @@ type Props = { params: Promise<{ deck: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { deck: slug } = await params;
   const config = decks[slug];
-  if (!config) return { title: "MarinaChain Deck" };
+  if (!config) return { title: "Verdaxis Deck" };
   return {
     title: config.title,
     description: config.description,

@@ -3,8 +3,9 @@ import "./globals.css";
 import { I18nProvider } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "MarinaChain Decks",
-  description: "MarinaChain presentation decks",
+  title: "Verdaxis Decks",
+  description: "Interactive presentations for Verdaxis — the trusted exchange for low-carbon fuels.",
+  icons: { icon: "/images/logos/verdaxis-icon.png" },
 };
 
 export default function RootLayout({
@@ -14,7 +15,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="font-body antialiased">
         <I18nProvider>{children}</I18nProvider>
       </body>
     </html>

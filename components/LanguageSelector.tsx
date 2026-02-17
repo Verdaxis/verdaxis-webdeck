@@ -38,7 +38,7 @@ export default function LanguageSelector() {
       </button>
 
       {open && (
-        <div className="absolute bottom-full mb-2 right-0 bg-navy/95 backdrop-blur-md border border-white/15 rounded-lg overflow-hidden shadow-xl shadow-black/30 min-w-[120px]">
+        <div className="absolute bottom-full mb-2 right-0 bg-deep-dark/95 backdrop-blur-md border border-white/15 rounded-lg overflow-hidden shadow-xl shadow-black/30 min-w-[120px]">
           {LOCALES.map((l) => (
             <button
               key={l.code}
@@ -48,7 +48,7 @@ export default function LanguageSelector() {
               }}
               className={`w-full flex items-center gap-2.5 px-3 py-2 text-left text-sm transition-colors ${
                 l.code === locale
-                  ? "bg-seafoam/15 text-seafoam"
+                  ? "bg-verdaxis-blue/15 text-verdaxis-blue"
                   : "text-white/70 hover:bg-white/5 hover:text-white"
               }`}
             >

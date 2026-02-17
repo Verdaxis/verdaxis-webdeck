@@ -37,11 +37,11 @@ export default function SlideNavigation({
     totalSlides > 1 ? (currentSlide / (totalSlides - 1)) * 100 : 0;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 hidden md:flex items-center gap-3 px-4 md:px-6 py-3 bg-navy/80 backdrop-blur-md border-t border-white/10">
+    <div className="fixed bottom-0 left-0 right-0 z-50 hidden md:flex items-center gap-3 px-4 md:px-6 py-3 bg-deep-dark/80 backdrop-blur-md border-t border-white/10">
       {/* Home button (left) */}
       <button
         onClick={() => onGoTo(0)}
-        className="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-lg border border-white/20 text-white/60 hover:text-white hover:border-seafoam/50 hover:bg-seafoam/10 transition-all"
+        className="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-lg border border-white/20 text-white/60 hover:text-white hover:border-verdaxis-blue/50 hover:bg-verdaxis-blue/10 transition-all"
         aria-label={t.nav.goToFirst}
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -65,11 +65,11 @@ export default function SlideNavigation({
           className="absolute top-0 left-0 h-full rounded-full transition-all duration-300 ease-out"
           style={{
             width: `${progress}%`,
-            background: "linear-gradient(90deg, #09DBA9, #00CCFF)",
+            background: "linear-gradient(90deg, #5DADE2, #D4A853)",
           }}
         />
         <div
-          className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-seafoam rounded-full shadow-lg shadow-seafoam/30 transition-all duration-300 ease-out group-hover:scale-125"
+          className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-verdaxis-blue rounded-full shadow-lg shadow-verdaxis-blue/30 transition-all duration-300 ease-out group-hover:scale-125"
           style={{ left: `calc(${progress}% - 6px)` }}
         />
       </div>

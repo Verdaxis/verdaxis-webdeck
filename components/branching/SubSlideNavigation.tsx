@@ -36,7 +36,7 @@ export default function SubSlideNavigation({
         </span>
         <div className="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-seafoam rounded-full"
+            className="h-full bg-verdaxis-blue rounded-full"
             animate={{ width: `${((current + 1) / total) * 100}%` }}
             transition={{ duration: 0.3 }}
           />

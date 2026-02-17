@@ -99,12 +99,12 @@ export default function SubSlideContainer({
           exit="exit"
         >
           <motion.div
-            className="absolute inset-0 bg-navy/90 backdrop-blur-md"
+            className="absolute inset-0 bg-deep-dark/90 backdrop-blur-md"
             onClick={onClose}
           />
 
           <motion.div
-            className="relative z-10 w-full h-full md:h-auto md:max-h-[90vh] md:max-w-5xl md:mx-4 md:rounded-2xl bg-gradient-to-br from-[#0a2a4a] to-[#061e3a] border border-white/10 flex flex-col overflow-hidden"
+            className="relative z-10 w-full h-full md:h-auto md:max-h-[90vh] md:max-w-5xl md:mx-4 md:rounded-2xl bg-gradient-to-br from-[#0D1B2A] to-[#0B1120] border border-white/10 flex flex-col overflow-hidden"
             variants={modalContent}
             initial="hidden"
             animate="visible"
@@ -141,7 +141,7 @@ export default function SubSlideContainer({
                   <Suspense
                     fallback={
                       <div className="flex items-center justify-center py-20">
-                        <div className="w-6 h-6 border-2 border-seafoam/30 border-t-seafoam rounded-full animate-spin" />
+                        <div className="w-6 h-6 border-2 border-verdaxis-blue/30 border-t-verdaxis-blue rounded-full animate-spin" />
                       </div>
                     }
                   >

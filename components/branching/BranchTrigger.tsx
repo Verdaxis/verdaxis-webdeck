@@ -21,13 +21,13 @@ export default function BranchTrigger({
     return (
       <motion.button
         onClick={onClick}
-        className={`group relative flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white/70 hover:text-white hover:border-seafoam/30 hover:bg-seafoam/5 transition-colors ${className}`}
+        className={`group relative flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white/70 hover:text-white hover:border-verdaxis-blue/30 hover:bg-verdaxis-blue/5 transition-colors ${className}`}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
         {icon}
         <span>{label}</span>
-        <svg className="w-3.5 h-3.5 text-white/30 group-hover:text-seafoam transition-colors ml-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <svg className="w-3.5 h-3.5 text-white/30 group-hover:text-verdaxis-blue transition-colors ml-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
         </svg>
       </motion.button>
@@ -37,7 +37,7 @@ export default function BranchTrigger({
   return (
     <motion.button
       onClick={onClick}
-      className={`group relative inline-flex items-center gap-1.5 rounded-full border border-seafoam/20 bg-seafoam/5 px-3 py-1.5 text-xs font-medium text-seafoam/80 hover:text-seafoam hover:border-seafoam/40 hover:bg-seafoam/10 transition-colors ${className}`}
+      className={`group relative inline-flex items-center gap-1.5 rounded-full border border-verdaxis-blue/20 bg-verdaxis-blue/5 px-3 py-1.5 text-xs font-medium text-verdaxis-blue/80 hover:text-verdaxis-blue hover:border-verdaxis-blue/40 hover:bg-verdaxis-blue/10 transition-colors ${className}`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.97 }}
     >
@@ -48,7 +48,7 @@ export default function BranchTrigger({
       </svg>
       {/* Subtle pulse */}
       <motion.span
-        className="absolute inset-0 rounded-full border border-seafoam/20"
+        className="absolute inset-0 rounded-full border border-verdaxis-blue/20"
         animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0, 0.5] }}
         transition={{ duration: 2.5, repeat: Infinity }}
       />
