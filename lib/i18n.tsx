@@ -35,7 +35,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
       loadContent(lang).then(setContent);
     } else if (!lang) {
       const browserLang = navigator.language.split("-")[0];
-      const supported = ["ko", "zh", "nl", "fr", "ja"];
+      const supported = ["zh", "de", "nl", "fr", "pt"];
       if (supported.includes(browserLang)) {
         setLocaleState(browserLang);
         loadContent(browserLang).then(setContent);

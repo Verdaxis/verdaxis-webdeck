@@ -5,11 +5,11 @@ import { useI18n } from "@/lib/i18n";
 
 const LOCALES = [
   { code: "en", flag: "🇬🇧", label: "EN" },
-  { code: "ko", flag: "🇰🇷", label: "KO" },
   { code: "zh", flag: "🇨🇳", label: "ZH" },
+  { code: "de", flag: "🇩🇪", label: "DE" },
   { code: "nl", flag: "🇳🇱", label: "NL" },
   { code: "fr", flag: "🇫🇷", label: "FR" },
-  { code: "ja", flag: "🇯🇵", label: "JA" },
+  { code: "pt", flag: "🇧🇷", label: "PT" },
 ] as const;
 
 export default function LanguageSelector() {
