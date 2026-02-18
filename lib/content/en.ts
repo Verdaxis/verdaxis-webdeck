@@ -463,6 +463,13 @@ export const en: DeckContent = {
       complianceLabel: "Compliance",
       verified: "Verified",
       revenue: "Revenue",
+      marketplace: "Marketplace",
+      commandCenter: "Command Center",
+      buyNow: "Buy Now",
+      decline: "Decline",
+      newListing: "NEW",
+      allFuels: "All Fuels",
+      allPorts: "All Ports",
     },
   },
 
