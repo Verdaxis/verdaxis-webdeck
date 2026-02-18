@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import type { DeckContent } from "@/lib/content/types";
 
 const PHASE_MS = 3500;
-const NUM_PHASES = 4;
+const NUM_PHASES = 5;
 
 /* ─── animation variants ──────────────────────────────── */
 
@@ -212,10 +212,142 @@ function ActionBtn({
 }
 
 /* ═══════════════════════════════════════════════════════════
-   SELLER PHASES
+   PHASE 0 — MARKET TERMINAL (DASHBOARD)
    ═══════════════════════════════════════════════════════════ */
 
-function SellerPhase0({ t }: { t: DeckContent }) {
+function KpiCard({ icon, label, value, accent }: { icon: string; label: string; value: string; accent: string }) {
+  return (
+    <div className="flex-1 p-1.5 bg-white rounded-lg border border-slate-200 text-center">
+      <div className="text-[9px]">{icon}</div>
+      <div className={`text-[12px] font-heading font-bold ${accent}`}>{value}</div>
+      <div className="text-[6px] text-slate-400 font-heading uppercase tracking-wider leading-tight">{label}</div>
+    </div>
+  );
+}
+
+function SellerTerminal({ t }: { t: DeckContent }) {
+  const orders = [
+    { fuel: "Bio-LNG", qty: "500 MT", status: "confirmed", price: "$1,240" },
+    { fuel: "HVO", qty: "300 MT", status: "delivered", price: "$1,150" },
+    { fuel: "FAME", qty: "200 MT", status: "pending", price: "$980" },
+  ];
+  const statusColor: Record<string, string> = {
+    confirmed: "bg-green-100 text-green-700",
+    delivered: "bg-sky-100 text-sky-700",
+    pending: "bg-amber-100 text-amber-700",
+  };
+
+  return (
+    <motion.div variants={fade} initial="hidden" animate="show" exit="exit" className="h-full flex flex-col gap-2">
+      <PageTitle>{u(t, "commandCenter", "Command Center")}</PageTitle>
+
+      {/* KPI row */}
+      <motion.div variants={stagger} initial="hidden" animate="show" className="flex gap-1.5">
+        <motion.div variants={staggerChild} className="flex-1">
+          <KpiCard icon="⚡" label={u(t, "pendingActions", "Pending")} value="2" accent="text-red-500" />
+        </motion.div>
+        <motion.div variants={staggerChild} className="flex-1">
+          <KpiCard icon="📦" label={u(t, "volumeSold", "Vol. Sold")} value="1.2k MT" accent="text-emerald-600" />
+        </motion.div>
+        <motion.div variants={staggerChild} className="flex-1">
+          <KpiCard icon="💰" label={u(t, "activeOrders", "Active")} value="$1.8M" accent="text-sky-600" />
+        </motion.div>
+      </motion.div>
+
+      {/* Recent orders mini-table */}
+      <div className="flex-1 space-y-1">
+        <span className="text-[7px] font-heading font-bold text-slate-400 uppercase tracking-wider">
+          {u(t, "recentOrders", "Recent Orders")}
+        </span>
+        {orders.map((o, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: -8 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 + i * 0.12 }}
+            className="flex items-center justify-between py-1 px-1.5 bg-white rounded border border-slate-100"
+          >
+            <div className="flex items-center gap-1.5">
+              <span className="text-[8px] font-heading font-semibold text-slate-700">{o.fuel}</span>
+              <span className="text-[7px] text-slate-400">{o.qty}</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[8px] font-heading font-bold text-slate-600">{o.price}</span>
+              <span className={`text-[6px] px-1 py-0.5 rounded font-heading font-bold uppercase ${statusColor[o.status]}`}>
+                {u(t, o.status, o.status)}
+              </span>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="flex items-center gap-1.5">
+        <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+        <span className="text-[7px] text-slate-400 font-heading">3 {u(t, "activeOrders", "active orders")} · Rotterdam Hub</span>
+      </div>
+    </motion.div>
+  );
+}
+
+function BuyerTerminal({ t }: { t: DeckContent }) {
+  const prices = [
+    { fuel: "Bio-LNG", price: "$1,240", change: "+2.3%", up: true },
+    { fuel: "HVO", price: "$1,150", change: "-1.1%", up: false },
+    { fuel: "FAME", price: "$980", change: "+0.5%", up: true },
+    { fuel: "E-Methanol", price: "$1,680", change: "+1.8%", up: true },
+  ];
+
+  return (
+    <motion.div variants={fade} initial="hidden" animate="show" exit="exit" className="h-full flex flex-col gap-2">
+      <PageTitle>{u(t, "procurementDashboard", "Procurement Dashboard")}</PageTitle>
+
+      {/* KPI row */}
+      <motion.div variants={stagger} initial="hidden" animate="show" className="flex gap-1.5">
+        <motion.div variants={staggerChild} className="flex-1">
+          <KpiCard icon="📋" label={u(t, "openOrders", "Open")} value="5" accent="text-sky-600" />
+        </motion.div>
+        <motion.div variants={staggerChild} className="flex-1">
+          <KpiCard icon="💵" label={u(t, "spendYtd", "YTD Spend")} value="$4.2M" accent="text-slate-700" />
+        </motion.div>
+        <motion.div variants={staggerChild} className="flex-1">
+          <KpiCard icon="🛡" label={u(t, "complianceRate", "Compliance")} value="98%" accent="text-emerald-600" />
+        </motion.div>
+      </motion.div>
+
+      {/* Market watch */}
+      <div className="flex-1 space-y-1">
+        <span className="text-[7px] font-heading font-bold text-slate-400 uppercase tracking-wider">
+          {u(t, "fuelPrices", "Market Watch")}
+        </span>
+        {prices.map((p, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: 8 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 + i * 0.1 }}
+            className="flex items-center justify-between py-1 px-1.5 bg-white rounded border border-slate-100"
+          >
+            <span className="text-[8px] font-heading font-semibold text-slate-700">{p.fuel}</span>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[8px] font-heading font-bold text-slate-600">{p.price}/MT</span>
+              <span className={`text-[7px] font-heading font-bold ${p.up ? "text-emerald-500" : "text-red-400"}`}>
+                {p.up ? "↑" : "↓"} {p.change}
+              </span>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      <ActionBtn color="blue">{u(t, "browseMarketplace", "Browse Marketplace")} →</ActionBtn>
+    </motion.div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SELLER PHASES (1-4)
+   ═══════════════════════════════════════════════════════════ */
+
+function SellerPhase1({ t }: { t: DeckContent }) {
   return (
     <motion.div variants={fade} initial="hidden" animate="show" exit="exit" className="h-full flex flex-col">
       <PageTitle>{u(t, "createListing", "Create New Listing")}</PageTitle>
@@ -241,7 +373,7 @@ function SellerPhase0({ t }: { t: DeckContent }) {
   );
 }
 
-function SellerPhase1({ t }: { t: DeckContent }) {
+function SellerPhase2({ t }: { t: DeckContent }) {
   return (
     <motion.div variants={fade} initial="hidden" animate="show" exit="exit" className="h-full flex flex-col gap-2">
       <motion.div variants={popIn} initial="hidden" animate="show" className="flex items-center gap-1.5 text-emerald-600">
@@ -290,7 +422,7 @@ function SellerPhase1({ t }: { t: DeckContent }) {
   );
 }
 
-function SellerPhase2({ t }: { t: DeckContent }) {
+function SellerPhase3({ t }: { t: DeckContent }) {
   return (
     <motion.div variants={fade} initial="hidden" animate="show" exit="exit" className="h-full flex flex-col gap-2">
       <motion.div variants={popIn} initial="hidden" animate="show" className="flex items-center gap-1.5 text-amber-600">
@@ -340,7 +472,7 @@ function SellerPhase2({ t }: { t: DeckContent }) {
   );
 }
 
-function SellerPhase3({ t }: { t: DeckContent }) {
+function SellerPhase4({ t }: { t: DeckContent }) {
   return (
     <motion.div variants={fade} initial="hidden" animate="show" exit="exit" className="h-full flex flex-col gap-2">
       <motion.div variants={popIn} initial="hidden" animate="show" className="flex items-center gap-1.5 text-emerald-600">
@@ -381,10 +513,10 @@ function SellerPhase3({ t }: { t: DeckContent }) {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   BUYER PHASES
+   BUYER PHASES (1-4)
    ═══════════════════════════════════════════════════════════ */
 
-function BuyerPhase0({ t }: { t: DeckContent }) {
+function BuyerPhase1({ t }: { t: DeckContent }) {
   const listings = [
     { company: "EcoMarine GmbH", fuel: "FAME", port: "Hamburg", qty: "200 MT", price: "$980/MT" },
     { company: "Nordic Bio AS", fuel: "HVO", port: "Antwerp", qty: "300 MT", price: "$1,150/MT" },
@@ -418,7 +550,7 @@ function BuyerPhase0({ t }: { t: DeckContent }) {
   );
 }
 
-function BuyerPhase1({ t }: { t: DeckContent }) {
+function BuyerPhase2({ t }: { t: DeckContent }) {
   return (
     <motion.div variants={fade} initial="hidden" animate="show" exit="exit" className="h-full flex flex-col gap-2">
       <PageTitle>{u(t, "marketplace", "Marketplace")}</PageTitle>
@@ -463,7 +595,7 @@ function BuyerPhase1({ t }: { t: DeckContent }) {
   );
 }
 
-function BuyerPhase2({ t }: { t: DeckContent }) {
+function BuyerPhase3({ t }: { t: DeckContent }) {
   return (
     <motion.div variants={fade} initial="hidden" animate="show" exit="exit" className="h-full flex flex-col gap-2">
       <div className="flex justify-between items-center">
@@ -503,7 +635,7 @@ function BuyerPhase2({ t }: { t: DeckContent }) {
   );
 }
 
-function BuyerPhase3({ t }: { t: DeckContent }) {
+function BuyerPhase4({ t }: { t: DeckContent }) {
   return (
     <motion.div variants={fade} initial="hidden" animate="show" exit="exit" className="h-full flex flex-col gap-2">
       <motion.div variants={popIn} initial="hidden" animate="show" className="flex items-center gap-1.5 text-emerald-600">
@@ -557,9 +689,9 @@ export default function SlideDemo() {
     return () => clearInterval(id);
   }, [prefersReduced, paused]);
 
-  const sellerNav = [3, 3, 1, 1]; // inventory → inventory → orders → orders
-  const buyerNav = [1, 1, 1, 1]; // marketplace throughout
-  const sellerBadge = phase >= 2 ? 1 : 0;
+  const sellerNav = [0, 3, 3, 1, 1]; // dashboard → create → inventory → orders → orders
+  const buyerNav = [0, 1, 1, 1, 1]; // dashboard → marketplace throughout
+  const sellerBadge = phase >= 3 ? 1 : 0;
 
   return (
     <SlideWrapper>
@@ -593,10 +725,11 @@ export default function SlideDemo() {
         >
           <AppShell mode="seller" active={sellerNav[phase]} badge={sellerBadge}>
             <AnimatePresence mode="wait">
-              {phase === 0 && <SellerPhase0 key="s0" t={t} />}
+              {phase === 0 && <SellerTerminal key="s0" t={t} />}
               {phase === 1 && <SellerPhase1 key="s1" t={t} />}
               {phase === 2 && <SellerPhase2 key="s2" t={t} />}
               {phase === 3 && <SellerPhase3 key="s3" t={t} />}
+              {phase === 4 && <SellerPhase4 key="s4" t={t} />}
             </AnimatePresence>
           </AppShell>
         </BrowserWindow>
@@ -609,10 +742,11 @@ export default function SlideDemo() {
         >
           <AppShell mode="buyer" active={buyerNav[phase]}>
             <AnimatePresence mode="wait">
-              {phase === 0 && <BuyerPhase0 key="b0" t={t} />}
+              {phase === 0 && <BuyerTerminal key="b0" t={t} />}
               {phase === 1 && <BuyerPhase1 key="b1" t={t} />}
               {phase === 2 && <BuyerPhase2 key="b2" t={t} />}
               {phase === 3 && <BuyerPhase3 key="b3" t={t} />}
+              {phase === 4 && <BuyerPhase4 key="b4" t={t} />}
             </AnimatePresence>
           </AppShell>
         </BrowserWindow>
