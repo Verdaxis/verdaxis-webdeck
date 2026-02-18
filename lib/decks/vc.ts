@@ -12,6 +12,7 @@ const vc: DeckConfig = {
     { id: "solution" },
     { id: "market", branches: ["market-sizing"] },
     { id: "product", branches: ["compliance-engine", "ai-copilot", "producer-map"] },
+    { id: "demo" },
     { id: "traction" },
     { id: "competitive" },
     { id: "flywheel" },

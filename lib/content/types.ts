@@ -118,6 +118,22 @@ export interface DeckContent {
     visionStatement: string;
   };
 
+  demo: {
+    heading: string;
+    subtitle: string;
+    buyer: {
+      label: string;
+      sublabel: string;
+      steps: string[];
+    };
+    seller: {
+      label: string;
+      sublabel: string;
+      steps: string[];
+    };
+    ui: Record<string, string>;
+  };
+
   nav: {
     goToFirst: string;
     previousSlide: string;
