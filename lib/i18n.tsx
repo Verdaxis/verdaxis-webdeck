@@ -22,26 +22,30 @@ const I18nContext = createContext<I18nContextValue>({
   t: en,
 });
 
+const SUPPORTED_LOCALES = ["zh", "de", "nl", "fr", "pt"];
+
+function detectInitialLocale(): string {
+  if (typeof window === "undefined") return "en";
+  const params = new URLSearchParams(window.location.search);
+  const lang = params.get("lang");
+  if (lang && lang !== "en") return lang;
+  if (!lang) {
+    const browserLang = navigator.language.split("-")[0];
+    if (SUPPORTED_LOCALES.includes(browserLang)) return browserLang;
+  }
+  return "en";
+}
+
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState("en");
+  const [locale, setLocaleState] = useState(detectInitialLocale);
   const [content, setContent] = useState<DeckContent>(en);
 
-  // Read ?lang= param on mount, or auto-detect from browser language
+  // Load non-English content on mount when detected locale differs
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const lang = params.get("lang");
-    if (lang && lang !== "en") {
-      setLocaleState(lang);
-      loadContent(lang).then(setContent);
-    } else if (!lang) {
-      const browserLang = navigator.language.split("-")[0];
-      const supported = ["zh", "de", "nl", "fr", "pt"];
-      if (supported.includes(browserLang)) {
-        setLocaleState(browserLang);
-        loadContent(browserLang).then(setContent);
-      }
+    if (locale !== "en") {
+      loadContent(locale).then(setContent);
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const setLocale = (newLocale: string) => {
     setLocaleState(newLocale);

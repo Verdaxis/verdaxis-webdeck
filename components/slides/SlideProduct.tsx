@@ -127,6 +127,7 @@ function FeatureIcon({ iconKey }: { iconKey: string }) {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function SlideProduct({ branches }: SlideProductProps) {
   const t = useContent();
   const { heading, subtitle, features, branchLabels } = t.product;

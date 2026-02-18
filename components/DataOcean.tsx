@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef } from "react";
 
 /* ────────────────────────────────────────────
    Interactive shipping-route canvas animation
@@ -68,9 +68,6 @@ const CONTINENTS: [number, number][][] = [
   // Japan
   [[0.87,0.28],[0.88,0.30],[0.89,0.33],[0.90,0.36],[0.89,0.35],[0.88,0.32],[0.87,0.30]],
 ];
-
-const ANGLE_STEP = (2 * Math.PI) / 5;
-const START_ANGLE = -Math.PI / 2;
 
 function getProjection(w: number, h: number) {
   const marginX = w * 0.04;

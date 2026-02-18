@@ -11,10 +11,11 @@ import { preloadSlideById, slideRegistry } from "@/lib/slideRegistry";
 import type { DeckConfig } from "@/lib/decks/types";
 
 function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches
+  );
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 767px)");
-    setIsMobile(mq.matches);
     const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
@@ -35,7 +36,15 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
     [deck.slides, t, slideMetadata]
   );
   const totalSlides = deck.slides.length;
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(() => {
+    if (typeof window === "undefined") return 0;
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      const idx = deck.slides.findIndex((s) => s.id === hash);
+      if (idx >= 0) return idx;
+    }
+    return 0;
+  });
   const [direction, setDirection] = useState(0);
   const touchStartX = useRef(0);
   const isAnimating = useRef(false);
@@ -119,15 +128,6 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [nextSlide, prevSlide, goToSlide, isMobile]);
-
-  useEffect(() => {
-    if (typeof window === "undefined" || isMobile) return;
-    const hash = window.location.hash.replace("#", "");
-    if (hash) {
-      const idx = slides.findIndex((s) => s.id === hash);
-      if (idx >= 0) setCurrentSlide(idx);
-    }
-  }, [slides, isMobile]);
 
   useEffect(() => {
     if (isMobile) return;

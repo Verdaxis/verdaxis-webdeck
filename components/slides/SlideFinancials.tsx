@@ -82,7 +82,7 @@ export default function SlideFinancials() {
           className="grid grid-cols-1 md:grid-cols-2 gap-5"
           variants={staggerContainer}
         >
-          {tranches.map((tranche, i) => (
+          {tranches.map((tranche) => (
             <motion.div
               key={tranche.name}
               variants={fadeInUp}

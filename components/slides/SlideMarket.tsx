@@ -29,6 +29,7 @@ function parseValue(val: string) {
   };
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function SlideMarket({ branches }: SlideMarketProps) {
   const t = useContent();
   const { heading, subtitle, tam, sam, som, branchLabel } = t.market;

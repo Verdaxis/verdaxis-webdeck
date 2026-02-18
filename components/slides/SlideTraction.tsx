@@ -10,7 +10,7 @@ import { fadeInUp, scaleIn, staggerContainer } from "@/lib/animations";
    Stat card — large value + label
    ──────────────────────────────────────────── */
 
-function StatCard({ value, label, index }: { value: string; label: string; index: number }) {
+function StatCard({ value, label }: { value: string; label: string }) {
   const isText = value === "Live" || value === "Active";
   const valueColor = isText ? "text-emerald" : "text-brand-green";
 
@@ -135,8 +135,8 @@ export default function SlideTraction() {
           className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4"
           variants={staggerContainer}
         >
-          {stats.map((stat, i) => (
-            <StatCard key={stat.label} value={stat.value} label={stat.label} index={i} />
+          {stats.map((stat) => (
+            <StatCard key={stat.label} value={stat.value} label={stat.label} />
           ))}
         </motion.div>
 

@@ -267,7 +267,7 @@ function MiniChart() {
   );
 }
 
-function MarketTerminal({ t, highlight }: { t: DeckContent; highlight: "bid" | "ask" }) {
+function MarketTerminal({ highlight }: { highlight: "bid" | "ask" }) {
   return (
     <motion.div variants={fade} initial="hidden" animate="show" exit="exit" className="h-full flex flex-col">
       {/* Header: fuel selector + best price */}
@@ -355,12 +355,12 @@ function MarketTerminal({ t, highlight }: { t: DeckContent; highlight: "bid" | "
   );
 }
 
-function SellerTerminal({ t }: { t: DeckContent }) {
-  return <MarketTerminal t={t} highlight="ask" />;
+function SellerTerminal() {
+  return <MarketTerminal highlight="ask" />;
 }
 
-function BuyerTerminal({ t }: { t: DeckContent }) {
-  return <MarketTerminal t={t} highlight="bid" />;
+function BuyerTerminal() {
+  return <MarketTerminal highlight="bid" />;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -745,7 +745,7 @@ export default function SlideDemo() {
         >
           <AppShell mode="seller" active={sellerNav[phase]} badge={sellerBadge}>
             <AnimatePresence mode="wait">
-              {phase === 0 && <SellerTerminal key="s0" t={t} />}
+              {phase === 0 && <SellerTerminal key="s0" />}
               {phase === 1 && <SellerPhase1 key="s1" t={t} />}
               {phase === 2 && <SellerPhase2 key="s2" t={t} />}
               {phase === 3 && <SellerPhase3 key="s3" t={t} />}
@@ -762,7 +762,7 @@ export default function SlideDemo() {
         >
           <AppShell mode="buyer" active={buyerNav[phase]}>
             <AnimatePresence mode="wait">
-              {phase === 0 && <BuyerTerminal key="b0" t={t} />}
+              {phase === 0 && <BuyerTerminal key="b0" />}
               {phase === 1 && <BuyerPhase1 key="b1" t={t} />}
               {phase === 2 && <BuyerPhase2 key="b2" t={t} />}
               {phase === 3 && <BuyerPhase3 key="b3" t={t} />}
