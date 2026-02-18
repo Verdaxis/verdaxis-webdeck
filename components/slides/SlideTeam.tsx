@@ -39,11 +39,11 @@ function Avatar({
     role.includes("CEO") ||
     role.includes("COO") ||
     role.includes("Co-Founder");
-  const bgColor = isBlue ? "bg-verdaxis-blue/15" : "bg-gold-accent/15";
+  const bgColor = isBlue ? "bg-verdaxis-blue/15" : "bg-brand-green/10";
   const fallbackBorder = isBlue
     ? "border-verdaxis-blue/30"
-    : "border-gold-accent/30";
-  const textColor = isBlue ? "text-verdaxis-blue" : "text-gold-accent";
+    : "border-brand-green/20";
+  const textColor = isBlue ? "text-verdaxis-blue" : "text-brand-green";
 
   const initials = name
     .split(" ")
@@ -87,12 +87,12 @@ export default function SlideTeam() {
             variants={fadeInUp}
           >
             <div className="w-[4px] h-8 bg-verdaxis-blue rounded-full" />
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-white">
+            <h2 className="text-3xl md:text-4xl font-display font-normal text-slate-900">
               {heading}
             </h2>
           </motion.div>
           <motion.p
-            className="text-white/50 text-base md:text-lg ml-[16px] max-w-2xl"
+            className="text-slate-500 text-base md:text-lg ml-[16px] max-w-2xl"
             variants={fadeInUp}
           >
             {subtitle}
@@ -108,36 +108,24 @@ export default function SlideTeam() {
             const isMC = member.company === "marinachain";
             const gradientBorder = isMC
               ? "from-[#0066CC] via-[#0066CC]/60 to-verdaxis-blue"
-              : "from-emerald via-emerald/60 to-gold-accent";
+              : "from-emerald via-emerald/60 to-brand-green";
             const hoverShadow = isMC
               ? "hover:shadow-[0_0_30px_rgba(0,102,204,0.08)]"
               : "hover:shadow-[0_0_30px_rgba(16,185,129,0.08)]";
-            const glowColor = isMC
-              ? "rgba(0,102,204,0.06)"
-              : "rgba(16,185,129,0.06)";
 
             return (
               <motion.div
                 key={member.name}
                 variants={fadeInUp}
                 className={`group relative flex flex-col items-center text-center
-                  rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md
+                  rounded-2xl border border-slate-200 bg-white shadow-card
                   px-5 py-7
                   transition-all duration-300
-                  hover:border-white/20 hover:bg-white/[0.06]
+                  hover:border-slate-300 hover:shadow-card-hover
                   hover:-translate-y-1 ${hoverShadow}`}
               >
                 {/* Gradient top border */}
                 <div className={`absolute top-0 left-4 right-4 h-[2px] rounded-full bg-gradient-to-r ${gradientBorder}`} />
-
-                {/* Hover glow */}
-                <div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{
-                    background: `radial-gradient(ellipse at 50% 20%, ${glowColor} 0%, transparent 70%)`,
-                  }}
-                  aria-hidden
-                />
 
                 {/* Avatar */}
                 <div className="relative mb-4">
@@ -150,7 +138,7 @@ export default function SlideTeam() {
                 </div>
 
                 {/* Name */}
-                <h3 className="font-heading text-base font-bold text-white mb-1">
+                <h3 className="font-heading text-base font-bold text-slate-900 mb-1">
                   {member.name}
                 </h3>
 
@@ -163,10 +151,10 @@ export default function SlideTeam() {
                 {member.company && (
                   <div className="flex items-center gap-1.5 mt-1 mb-3">
                     {member.company === "marinachain" && (
-                      <img
+                    <img
                         src="/images/logos/partners/marinachain-white.png"
                         alt="MarinaChain"
-                        className="h-4 opacity-50"
+                        className="h-4 opacity-50 invert"
                       />
                     )}
                     {member.company === "greenm" && (
@@ -180,7 +168,7 @@ export default function SlideTeam() {
                 )}
 
                 {/* Bio */}
-                <p className="text-xs text-white/50 leading-relaxed">
+                <p className="text-xs text-slate-500 leading-relaxed">
                   {member.bio}
                 </p>
               </motion.div>

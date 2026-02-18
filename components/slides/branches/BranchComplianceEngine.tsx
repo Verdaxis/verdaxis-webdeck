@@ -35,20 +35,20 @@ export default function BranchComplianceEngine() {
     >
       {frameworks.map((fw) => {
         const isActive = fw.status === "Active";
-        const borderColor = isActive ? "border-l-verdaxis-blue" : "border-l-gold-accent";
+        const borderColor = isActive ? "border-l-verdaxis-blue" : "border-l-brand-green";
         const badgeBg = isActive
-          ? "bg-emerald/15 text-emerald"
-          : "bg-gold-accent/15 text-gold-accent";
+          ? "bg-brand-green/10 text-brand-green"
+          : "bg-verdaxis-blue/10 text-verdaxis-blue";
 
         return (
           <motion.div
             key={fw.name}
             variants={cardVariants}
-            className={`rounded-xl border border-white/10 bg-white/[0.04] p-4 border-l-[3px] ${borderColor}`}
+            className={`rounded-xl border border-slate-200 bg-slate-50 p-4 border-l-[3px] ${borderColor} hover:bg-white hover:shadow-card transition-all duration-200`}
           >
             {/* Header: name + status badge */}
             <div className="flex items-center justify-between mb-2">
-              <h4 className="text-sm font-heading font-bold text-white">
+              <h4 className="text-sm font-heading font-bold text-slate-900">
                 {fw.name}
               </h4>
               <span
@@ -59,7 +59,7 @@ export default function BranchComplianceEngine() {
             </div>
 
             {/* Description */}
-            <p className="text-xs text-white/45 leading-relaxed">
+            <p className="text-xs text-slate-500 leading-relaxed">
               {fw.description}
             </p>
           </motion.div>

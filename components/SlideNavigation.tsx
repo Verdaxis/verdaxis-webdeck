@@ -37,11 +37,11 @@ export default function SlideNavigation({
     totalSlides > 1 ? (currentSlide / (totalSlides - 1)) * 100 : 0;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 hidden md:flex items-center gap-3 px-4 md:px-6 py-3 bg-deep-dark/80 backdrop-blur-md border-t border-white/10">
+    <div className="fixed bottom-0 left-0 right-0 z-50 hidden md:flex items-center gap-3 px-4 md:px-6 py-3 bg-white/80 backdrop-blur-md border-t border-slate-200">
       {/* Home button (left) */}
       <button
         onClick={() => onGoTo(0)}
-        className="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-lg border border-white/20 text-white/60 hover:text-white hover:border-verdaxis-blue/50 hover:bg-verdaxis-blue/10 transition-all"
+        className="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-400 hover:text-verdaxis-blue hover:border-verdaxis-blue/40 hover:bg-verdaxis-blue/5 transition-all"
         aria-label={t.nav.goToFirst}
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -59,23 +59,23 @@ export default function SlideNavigation({
       <div
         ref={trackRef}
         onClick={handleTrackClick}
-        className="flex-1 h-1.5 bg-white/10 rounded-full cursor-pointer relative group"
+        className="flex-1 h-1.5 bg-slate-200 rounded-full cursor-pointer relative group"
       >
         <div
           className="absolute top-0 left-0 h-full rounded-full transition-all duration-300 ease-out"
           style={{
             width: `${progress}%`,
-            background: "linear-gradient(90deg, #5DADE2, #D4A853)",
+            background: "linear-gradient(90deg, #5DADE2, #4CAF50)",
           }}
         />
         <div
-          className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-verdaxis-blue rounded-full shadow-lg shadow-verdaxis-blue/30 transition-all duration-300 ease-out group-hover:scale-125"
+          className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-verdaxis-blue rounded-full shadow-lg shadow-verdaxis-blue/20 transition-all duration-300 ease-out group-hover:scale-125"
           style={{ left: `calc(${progress}% - 6px)` }}
         />
       </div>
 
       {/* Slide counter */}
-      <span className="flex-shrink-0 text-white/40 font-mono text-xs tabular-nums min-w-[3.5rem] text-center">
+      <span className="flex-shrink-0 text-slate-400 font-mono text-xs tabular-nums min-w-[3.5rem] text-center">
         {currentSlide + 1} / {totalSlides}
       </span>
 
@@ -85,7 +85,7 @@ export default function SlideNavigation({
         <button
           onClick={onPrev}
           disabled={currentSlide === 0}
-          className="w-9 h-9 flex items-center justify-center rounded-lg border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+          className="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-400 hover:text-slate-700 hover:border-slate-300 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
           aria-label={t.nav.previousSlide}
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -101,7 +101,7 @@ export default function SlideNavigation({
         <button
           onClick={onNext}
           disabled={currentSlide === totalSlides - 1}
-          className="w-9 h-9 flex items-center justify-center rounded-lg border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+          className="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-400 hover:text-slate-700 hover:border-slate-300 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
           aria-label={t.nav.nextSlide}
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

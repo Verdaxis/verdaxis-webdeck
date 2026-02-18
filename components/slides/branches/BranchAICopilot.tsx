@@ -54,16 +54,16 @@ export default function BranchAICopilot() {
           {/* Question bubble */}
           <div className="flex items-start gap-2">
             <SparkleIcon />
-            <div className="rounded-xl rounded-tl-sm border border-verdaxis-blue/20 bg-verdaxis-blue/[0.06] px-4 py-2.5 max-w-[90%]">
-              <span className="text-sm font-heading font-semibold text-white/90">
+            <div className="rounded-xl rounded-tl-sm border border-verdaxis-blue/20 bg-verdaxis-blue/8 px-4 py-2.5 max-w-[90%]">
+              <span className="text-sm font-heading font-semibold text-slate-700">
                 {cap.name}
               </span>
             </div>
           </div>
 
           {/* Answer */}
-          <div className="ml-6 pl-4 border-l-2 border-white/[0.06]">
-            <p className="text-xs text-white/50 leading-relaxed">
+          <div className="ml-6 pl-4 border-l-2 border-slate-200">
+            <p className="text-xs text-slate-500 leading-relaxed">
               {cap.description}
             </p>
           </div>

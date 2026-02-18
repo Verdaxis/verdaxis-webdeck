@@ -19,7 +19,7 @@ function PriceTicker({
   const doubled = useMemo(() => [...items, ...items, ...items], [items]);
 
   return (
-    <div className="relative w-full overflow-hidden border-b border-white/10 bg-white/[0.02]">
+    <div className="relative w-full overflow-hidden border-b border-slate-200 bg-slate-900">
       <div className="ticker-track flex whitespace-nowrap py-2.5">
         {doubled.map((item, i) => {
           const isPositive = item.change.startsWith("+");
@@ -32,7 +32,7 @@ function PriceTicker({
                 {item.fuel}
               </span>
               <span className="text-white/40">{item.region}</span>
-              <span className="font-mono font-semibold text-gold-accent">
+              <span className="font-mono font-semibold text-brand-green">
                 {item.price}
               </span>
               <span
@@ -190,7 +190,7 @@ export default function SlideVision() {
   const pills = useMemo(() => tagline.split(" | "), [tagline]);
 
   return (
-    <SlideWrapper className="relative overflow-hidden bg-deep-dark p-0">
+    <SlideWrapper className="relative overflow-hidden bg-white p-0">
       {/* ── Background atmosphere ── */}
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         {/* Large blue radial orb */}
@@ -203,14 +203,14 @@ export default function SlideVision() {
               "radial-gradient(circle, rgba(93,173,226,0.08) 0%, transparent 70%)",
           }}
         />
-        {/* Gold accent orb */}
+        {/* Green accent orb */}
         <div
           className="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 animate-breathing"
           style={{
             width: 500,
             height: 500,
             background:
-              "radial-gradient(circle, rgba(212,168,83,0.05) 0%, transparent 65%)",
+              "radial-gradient(circle, rgba(34,197,94,0.05) 0%, transparent 65%)",
             animationDirection: "reverse",
             animationDuration: "12s",
           }}
@@ -253,7 +253,7 @@ export default function SlideVision() {
         {/* Company name */}
         <motion.span
           variants={fadeInUp}
-          className="font-heading text-xl font-semibold uppercase tracking-[0.2em] text-white md:text-2xl"
+          className="font-heading text-xl font-semibold uppercase tracking-[0.2em] text-slate-900 md:text-2xl"
         >
           Verdaxis
         </motion.span>
@@ -261,7 +261,7 @@ export default function SlideVision() {
         {/* Headline */}
         <motion.h1
           variants={fadeInUp}
-          className="font-heading text-3xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl"
+          className="font-display text-3xl font-normal leading-tight tracking-tight text-slate-900 md:text-5xl lg:text-6xl"
           style={{ maxWidth: "56rem" }}
         >
           {headline}
@@ -284,7 +284,7 @@ export default function SlideVision() {
             <motion.span
               key={pill}
               variants={fadeInUp}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs font-medium tracking-wide text-white/70 backdrop-blur-md md:text-sm"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-medium tracking-wide text-slate-600 backdrop-blur-md md:text-sm"
             >
               {/* Glowing dot */}
               <span className="animate-pulse-dot inline-block h-1.5 w-1.5 rounded-full bg-verdaxis-blue" />
@@ -296,7 +296,7 @@ export default function SlideVision() {
         {/* Year badge */}
         <motion.span
           variants={fadeInUp}
-          className="mt-6 text-xs tracking-[0.2em] text-white/30"
+          className="mt-6 inline-flex items-center rounded-full border border-brand-green/20 bg-brand-green/10 px-4 py-1 text-xs tracking-[0.2em] text-brand-green"
         >
           2026
         </motion.span>

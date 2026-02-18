@@ -99,12 +99,12 @@ export default function SubSlideContainer({
           exit="exit"
         >
           <motion.div
-            className="absolute inset-0 bg-deep-dark/90 backdrop-blur-md"
+            className="absolute inset-0 bg-slate-900/30 backdrop-blur-md"
             onClick={onClose}
           />
 
           <motion.div
-            className="relative z-10 w-full h-full md:h-auto md:max-h-[90vh] md:max-w-5xl md:mx-4 md:rounded-2xl bg-gradient-to-br from-[#0D1B2A] to-[#0B1120] border border-white/10 flex flex-col overflow-hidden"
+            className="relative z-10 w-full h-full md:h-auto md:max-h-[90vh] md:max-w-5xl md:mx-4 md:rounded-2xl bg-white border border-slate-200 shadow-card-lg flex flex-col overflow-hidden"
             variants={modalContent}
             initial="hidden"
             animate="visible"
@@ -113,14 +113,14 @@ export default function SubSlideContainer({
             onTouchEnd={handleTouchEnd}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-white/5">
-              {title && <h3 className="text-lg font-bold text-white">{title}</h3>}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-white/90 backdrop-blur-sm">
+              {title && <h3 className="text-lg font-bold text-slate-900">{title}</h3>}
               <button
                 onClick={onClose}
-                className="ml-auto p-2 rounded-lg hover:bg-white/10 transition-colors"
+                className="ml-auto p-2 rounded-lg hover:bg-slate-100 transition-colors"
                 aria-label="Close"
               >
-                <svg className="w-5 h-5 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-5 h-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>

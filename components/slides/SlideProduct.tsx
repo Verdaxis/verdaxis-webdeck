@@ -104,7 +104,7 @@ function FeatureIcon({ iconKey }: { iconKey: string }) {
           <path d="M6 8.5h16M6 19.5h16" stroke="currentColor" strokeWidth="0.8" opacity="0.2" />
           <circle cx="20" cy="9" r="3" fill="currentColor" opacity="0.3" />
           <path d="M20 6c1.66 0 3 1.34 3 3 0 2.5-3 5-3 5s-3-2.5-3-5c0-1.66 1.34-3 3-3z" fill="currentColor" opacity="0.6" />
-          <circle cx="20" cy="9" r="1" fill="#0B1120" />
+          <circle cx="20" cy="9" r="1" fill="white" />
         </svg>
       );
     case "calculator":
@@ -152,12 +152,12 @@ export default function SlideProduct({ branches }: SlideProductProps) {
           transition={{ duration: 0.6 }}
         >
           <div className="w-[4px] h-8 bg-verdaxis-blue rounded-full" />
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white">
+          <h2 className="text-3xl md:text-4xl font-display font-normal text-slate-900">
             {heading}
           </h2>
         </motion.div>
         <motion.p
-          className="text-white/50 text-base md:text-lg mb-10 ml-[16px] max-w-2xl"
+          className="text-slate-500 text-base md:text-lg mb-10 ml-[16px] max-w-2xl"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -178,12 +178,12 @@ export default function SlideProduct({ branches }: SlideProductProps) {
             <motion.div
               key={feature.iconKey}
               variants={scaleIn}
-              className="group relative rounded-xl border border-white/10 bg-white/[0.04] backdrop-blur-md p-5 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] flex flex-col h-full"
+              className="group relative rounded-xl border border-slate-200 bg-white shadow-card p-5 transition-all duration-300 hover:border-slate-300 hover:shadow-card-hover hover:-translate-y-1 flex flex-col h-full"
             >
               {/* Highlight badge */}
               {feature.highlight && (
                 <div className="absolute top-3 right-3">
-                  <span className="inline-block px-2 py-0.5 rounded-full bg-gold-accent/15 border border-gold-accent/25 text-[10px] font-heading font-semibold text-gold-accent uppercase tracking-wider">
+                  <span className="inline-block px-2 py-0.5 rounded-full bg-verdaxis-blue/8 border border-verdaxis-blue/15 text-[10px] font-heading font-semibold text-verdaxis-blue uppercase tracking-wider">
                     {feature.highlight}
                   </span>
                 </div>
@@ -195,12 +195,12 @@ export default function SlideProduct({ branches }: SlideProductProps) {
               </div>
 
               {/* Name */}
-              <h3 className="text-base font-heading font-semibold text-white mb-2 pr-16">
+              <h3 className="text-base font-heading font-semibold text-slate-900 mb-2 pr-16">
                 {feature.name}
               </h3>
 
               {/* Description */}
-              <p className="text-xs text-white/45 leading-relaxed">
+              <p className="text-xs text-slate-500 leading-relaxed">
                 {feature.description}
               </p>
 
@@ -212,7 +212,7 @@ export default function SlideProduct({ branches }: SlideProductProps) {
                     <img
                       src="/images/logos/partners/marinachain-white.png"
                       alt="MarinaChain"
-                      className="h-[14px] w-auto opacity-70"
+                      className="h-[14px] w-auto opacity-70 invert"
                     />
                   </div>
                 </div>

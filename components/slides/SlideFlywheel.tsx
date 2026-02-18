@@ -115,7 +115,7 @@ function FlywheelDiagram({
             cx={cx}
             cy={cy}
             r={radius}
-            stroke="rgba(93,173,226,0.08)"
+            className="stroke-slate-300"
             strokeWidth={1}
             strokeDasharray="6 6"
           />
@@ -140,7 +140,7 @@ function FlywheelDiagram({
             refY="3"
             orient="auto"
           >
-            <polygon points="0 0, 8 3, 0 6" fill="rgba(212,168,83,0.6)" />
+            <polygon points="0 0, 8 3, 0 6" className="fill-slate-400" />
           </marker>
         </defs>
 
@@ -152,7 +152,7 @@ function FlywheelDiagram({
             <motion.path
               key={`arrow-${i}`}
               d={d}
-              stroke="rgba(212,168,83,0.35)"
+              className="stroke-slate-200"
               strokeWidth={2}
               fill="none"
               markerEnd="url(#arrowhead)"
@@ -163,7 +163,7 @@ function FlywheelDiagram({
         })}
       </motion.svg>
 
-      {/* Center label with radial glow */}
+      {/* Center label */}
       <motion.div
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
           flex flex-col items-center justify-center text-center z-10"
@@ -171,15 +171,7 @@ function FlywheelDiagram({
         initial="hidden"
         animate="visible"
       >
-        {/* Radial glow */}
-        <div
-          className="absolute inset-0 -m-10 rounded-full"
-          style={{
-            background: "radial-gradient(circle, rgba(93,173,226,0.15) 0%, transparent 70%)",
-          }}
-          aria-hidden
-        />
-        <span className="relative font-heading font-bold text-sm sm:text-base text-verdaxis-blue tracking-wide">
+        <span className="relative font-heading font-bold text-sm sm:text-base text-brand-green tracking-wide">
           {centerLabel}
         </span>
       </motion.div>
@@ -187,17 +179,15 @@ function FlywheelDiagram({
       {/* Node cards — positioned absolutely over SVG */}
       {nodes.map((node, i) => {
         const pos = positions[i];
-        const isFirst = i === 0; // MarinaChain — gold accent
+        const isFirst = i === 0; // MarinaChain — accent
 
         return (
           <motion.div
             key={node.label}
             className={`absolute z-20 flex flex-col items-center text-center
-              rounded-xl backdrop-blur-md px-3 py-2.5 sm:px-4 sm:py-3
-              ${isFirst
-                ? "bg-gold-accent/[0.08] border border-gold-accent/30"
-                : "bg-white/[0.04] border border-white/10"
-              }`}
+              rounded-xl px-3 py-2.5 sm:px-4 sm:py-3
+              bg-white shadow-card border border-slate-200
+              hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300`}
             style={{
               width: nodeCardW,
               left: `calc(${(pos.x / size) * 100}% - ${nodeCardW / 2}px)`,
@@ -208,21 +198,23 @@ function FlywheelDiagram({
             initial="hidden"
             animate="visible"
           >
+            {/* Gradient top accent */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-xl bg-gradient-to-r from-verdaxis-blue to-brand-green" />
             <span
               className={`font-heading font-semibold text-[11px] sm:text-xs leading-tight ${
-                isFirst ? "text-gold-accent" : "text-white/90"
+                isFirst ? "text-brand-green" : "text-slate-900"
               }`}
             >
               {node.label}
             </span>
-            <span className="text-white/40 text-[9px] sm:text-[10px] leading-tight mt-1">
+            <span className="text-slate-500 text-[9px] sm:text-[10px] leading-tight mt-1">
               {node.description}
             </span>
             {isFirst && (
               <img
                 src="/images/logos/partners/marinachain-white.png"
                 alt="MarinaChain"
-                className="h-3.5 opacity-60 mt-1"
+                className="h-3.5 opacity-60 mt-1 invert"
               />
             )}
           </motion.div>
@@ -257,7 +249,7 @@ export default function SlideFlywheel() {
   const { heading, subtitle, nodes, centerLabel } = t.flywheel;
 
   return (
-    <SlideWrapper className="bg-deep-dark">
+    <SlideWrapper>
       <motion.div
         className="w-full max-w-5xl mx-auto flex flex-col items-center gap-6"
         variants={staggerContainer}
@@ -267,13 +259,13 @@ export default function SlideFlywheel() {
         {/* ── Heading ── */}
         <motion.div className="flex items-center gap-4 self-start" variants={fadeInUp}>
           <div className="w-[4px] h-8 bg-verdaxis-blue rounded-full" />
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-normal text-slate-900 tracking-tight">
             {heading}
           </h2>
         </motion.div>
 
         <motion.p
-          className="text-white/50 text-sm md:text-base self-start ml-6 -mt-2"
+          className="text-slate-500 text-sm md:text-base self-start ml-6 -mt-2"
           variants={fadeInUp}
         >
           {subtitle}

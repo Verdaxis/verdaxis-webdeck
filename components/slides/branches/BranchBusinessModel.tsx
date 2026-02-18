@@ -22,10 +22,10 @@ const cardVariants = {
   },
 };
 
-// Left border color progression: gold (primary) -> blended -> verdaxis-blue (growth)
+// Left border color progression: brand-green (primary) -> blended -> verdaxis-blue (growth)
 const borderColors = [
-  "border-l-gold-accent",
-  "border-l-gold-light",
+  "border-l-brand-green",
+  "border-l-brand-green",
   "border-l-verdaxis-blue",
   "border-l-verdaxis-dark-blue",
 ];
@@ -45,20 +45,20 @@ export default function BranchBusinessModel() {
         <motion.div
           key={stream.name}
           variants={cardVariants}
-          className={`rounded-xl border border-white/10 bg-white/[0.04] p-4 border-l-[3px] ${borderColors[index] || borderColors[borderColors.length - 1]}`}
+          className={`rounded-xl border border-slate-200 bg-slate-50 p-4 border-l-[3px] ${borderColors[index] || borderColors[borderColors.length - 1]} hover:bg-white hover:shadow-card transition-all duration-200`}
         >
           {/* Header: name + pricing badge */}
           <div className="flex items-center justify-between gap-3 mb-2">
-            <h4 className="text-sm font-heading font-bold text-white">
+            <h4 className="text-sm font-heading font-bold text-slate-900">
               {stream.name}
             </h4>
-            <span className="flex-shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-gold-accent/15 text-gold-accent border border-gold-accent/20">
+            <span className="flex-shrink-0 text-[11px] font-medium px-2.5 py-1 rounded-full bg-brand-green/10 text-brand-green border border-brand-green/20">
               {stream.pricing}
             </span>
           </div>
 
           {/* Description */}
-          <p className="text-xs text-white/45 leading-relaxed">
+          <p className="text-xs text-slate-500 leading-relaxed">
             {stream.description}
           </p>
         </motion.div>

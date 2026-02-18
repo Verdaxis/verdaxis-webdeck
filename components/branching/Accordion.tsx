@@ -21,7 +21,7 @@ export default function Accordion({ trigger, children, defaultOpen = false }: Ac
       >
         {trigger}
         <motion.svg
-          className="w-4 h-4 text-white/40 shrink-0 ml-2"
+          className="w-4 h-4 text-slate-400 shrink-0 ml-2"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"

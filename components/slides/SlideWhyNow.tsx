@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 function DriverIcon({ iconKey }: { iconKey: string }) {
-  const cls = "w-8 h-8 text-gold-accent";
+  const cls = "w-8 h-8 text-brand-green";
 
   switch (iconKey) {
     case "regulation":
@@ -66,13 +66,13 @@ export default function SlideWhyNow() {
         {/* Heading */}
         <motion.div className="flex items-center gap-4 mb-2" variants={fadeInUp}>
           <div className="w-[4px] h-8 bg-verdaxis-blue rounded-full" />
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-normal text-slate-900 tracking-tight">
             {t.whyNow.heading}
           </h2>
         </motion.div>
 
         <motion.p
-          className="text-white/50 text-sm md:text-base mb-8 ml-6"
+          className="text-slate-500 text-sm md:text-base mb-8 ml-6"
           variants={fadeInUp}
         >
           {t.whyNow.subtitle}
@@ -84,26 +84,26 @@ export default function SlideWhyNow() {
             <motion.div
               key={i}
               variants={fadeInUp}
-              className="relative p-5 rounded-xl bg-white/[0.04] border border-white/10 backdrop-blur-md
-                hover:bg-white/[0.07] hover:border-white/20 transition-all duration-300 group"
+              className="relative p-5 rounded-xl bg-white border border-slate-200 shadow-card backdrop-blur-md
+                hover:bg-slate-50 hover:border-slate-300 hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group"
             >
               {/* Subtle glow on hover */}
               <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
-                  background: "radial-gradient(ellipse at 30% 20%, rgba(212,168,83,0.06) 0%, transparent 70%)",
+                  background: "radial-gradient(ellipse at 30% 20%, rgba(34,197,94,0.06) 0%, transparent 70%)",
                 }}
               />
 
               <div className="relative flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gold-accent/10 border border-gold-accent/20 flex items-center justify-center">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-brand-green/10 border border-brand-green/20 flex items-center justify-center">
                   <DriverIcon iconKey={driver.iconKey} />
                 </div>
 
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-heading text-base md:text-lg font-semibold text-gold-accent mb-1.5">
+                  <h3 className="font-heading text-base md:text-lg font-semibold text-brand-green mb-1.5">
                     {driver.title}
                   </h3>
-                  <p className="text-white/55 text-xs md:text-sm leading-relaxed">
+                  <p className="text-slate-500 text-xs md:text-sm leading-relaxed">
                     {driver.description}
                   </p>
                 </div>
@@ -119,12 +119,12 @@ export default function SlideWhyNow() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="text-center p-4 rounded-xl bg-white/[0.03] border border-white/[0.07]"
+                className="text-center p-4 rounded-xl bg-white border border-slate-100 shadow-card"
               >
                 <div className="font-heading text-2xl md:text-3xl font-bold text-verdaxis-blue mb-1">
                   {stat.value}
                 </div>
-                <div className="text-white/40 text-xs md:text-sm leading-snug">
+                <div className="text-slate-400 text-xs md:text-sm leading-snug">
                   {stat.label}
                 </div>
               </motion.div>

@@ -19,11 +19,11 @@ const BranchBusinessModel = lazy(
 function tagColors(tag: string) {
   switch (tag) {
     case "Primary":
-      return "bg-gold-accent/15 text-gold-accent border-gold-accent/30";
+      return "bg-brand-green/10 text-brand-green border-brand-green/20";
     case "Recurring":
       return "bg-verdaxis-blue/15 text-verdaxis-blue border-verdaxis-blue/30";
     default:
-      return "bg-white/10 text-white/60 border-white/20";
+      return "bg-slate-100 text-slate-500 border-slate-200";
   }
 }
 
@@ -56,12 +56,12 @@ export default function SlideRevenue({ branches }: SlideRevenueProps) {
             variants={fadeInUp}
           >
             <div className="w-[4px] h-8 bg-verdaxis-blue rounded-full" />
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-white">
+            <h2 className="text-3xl md:text-4xl font-display font-normal text-slate-900">
               {heading}
             </h2>
           </motion.div>
           <motion.p
-            className="text-white/50 text-base md:text-lg ml-[16px] max-w-2xl"
+            className="text-slate-500 text-base md:text-lg ml-[16px] max-w-2xl"
             variants={fadeInUp}
           >
             {subtitle}
@@ -77,12 +77,12 @@ export default function SlideRevenue({ branches }: SlideRevenueProps) {
             <motion.div
               key={stream.title}
               variants={fadeInUp}
-              className="relative flex flex-col rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md
+              className="relative flex flex-col rounded-2xl border border-slate-200 bg-white shadow-card
                 px-6 py-6 transition-all duration-300
-                hover:border-white/20 hover:bg-white/[0.06]"
+                hover:border-slate-300 hover:shadow-card-hover hover:-translate-y-1"
             >
               {/* Gradient top border */}
-              <div className="absolute top-0 left-4 right-4 h-[2px] rounded-full bg-gradient-to-r from-verdaxis-blue via-verdaxis-blue/60 to-gold-accent" />
+              <div className="absolute top-0 left-4 right-4 h-[2px] rounded-full bg-gradient-to-r from-verdaxis-blue to-brand-green" />
 
               {/* Tag pill */}
               {stream.tag && (
@@ -94,18 +94,18 @@ export default function SlideRevenue({ branches }: SlideRevenueProps) {
               )}
 
               {/* Title */}
-              <h3 className="text-lg font-heading font-semibold text-white mb-2">
+              <h3 className="text-lg font-heading font-semibold text-slate-900 mb-2">
                 {stream.title}
               </h3>
 
               {/* Description */}
-              <p className="text-sm text-white/50 leading-relaxed mb-4 flex-1">
+              <p className="text-sm text-slate-500 leading-relaxed mb-4 flex-1">
                 {stream.description}
               </p>
 
               {/* Pricing */}
-              <div className="mt-auto pt-3 border-t border-white/[0.06]">
-                <span className="text-sm font-heading font-bold text-gold-accent">
+              <div className="mt-auto pt-3 border-t border-slate-100">
+                <span className="text-sm font-heading font-bold text-brand-green">
                   {stream.pricing}
                 </span>
               </div>
@@ -116,22 +116,22 @@ export default function SlideRevenue({ branches }: SlideRevenueProps) {
         {/* ── Growth projection section ── */}
         <motion.div
           variants={fadeInUp}
-          className="relative rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md px-6 py-6 flex items-center gap-5 overflow-hidden"
+          className="relative rounded-2xl border border-slate-200 bg-white shadow-card px-6 py-6 flex items-center gap-5 overflow-hidden"
         >
           {/* Subtle upward glow */}
           <div
             className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-64 h-32 pointer-events-none"
             style={{
               background:
-                "radial-gradient(ellipse at center, rgba(16,185,129,0.08) 0%, transparent 70%)",
+                "radial-gradient(ellipse at center, rgba(76,175,80,0.08) 0%, transparent 70%)",
             }}
             aria-hidden
           />
 
           {/* Upward arrow/chart icon */}
-          <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-emerald/10 border border-emerald/20 flex items-center justify-center">
+          <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-green/10 border border-brand-green/20 flex items-center justify-center">
             <svg
-              className="w-7 h-7 text-emerald"
+              className="w-7 h-7 text-brand-green"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -151,10 +151,10 @@ export default function SlideRevenue({ branches }: SlideRevenueProps) {
           </div>
 
           <div className="relative flex-1">
-            <span className="block text-xs font-heading font-semibold uppercase tracking-wider text-emerald/60 mb-1">
+            <span className="block text-xs font-heading font-semibold uppercase tracking-wider text-brand-green/60 mb-1">
               {projectedLabel}
             </span>
-            <span className="text-lg md:text-xl font-heading font-bold text-white">
+            <span className="text-lg md:text-xl font-heading font-bold text-slate-900">
               {growthStatement}
             </span>
           </div>

@@ -6,20 +6,19 @@ import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 /* ────────────────────────────────────────────
-   Phase opacity based on timeline position
+   Phase styles based on timeline position
    ──────────────────────────────────────────── */
 
 function phaseStyles(index: number) {
-  // 2026 = bright gold glow, 2027 = slightly dimmer, 2028+ = most dim
   switch (index) {
     case 0:
       return {
-        yearColor: "text-gold-accent",
-        dotBorder: "border-gold-accent",
-        dotFill: "bg-gold-accent",
-        glow: "shadow-[0_0_20px_rgba(212,168,83,0.3)]",
-        cardBorder: "border-gold-accent/20",
-        cardBg: "bg-gold-accent/[0.04]",
+        yearColor: "text-brand-green",
+        dotBorder: "border-brand-green",
+        dotFill: "bg-brand-green",
+        glow: "",
+        cardBorder: "border-slate-200",
+        cardBg: "bg-white shadow-card",
         opacity: "opacity-100",
       };
     case 1:
@@ -28,19 +27,19 @@ function phaseStyles(index: number) {
         dotBorder: "border-verdaxis-blue",
         dotFill: "bg-verdaxis-blue",
         glow: "",
-        cardBorder: "border-verdaxis-blue/15",
-        cardBg: "bg-verdaxis-blue/[0.03]",
-        opacity: "opacity-80",
+        cardBorder: "border-slate-200",
+        cardBg: "bg-white shadow-card",
+        opacity: "opacity-100",
       };
     default:
       return {
-        yearColor: "text-white/50",
-        dotBorder: "border-white/30",
-        dotFill: "bg-white/30",
+        yearColor: "text-slate-500",
+        dotBorder: "border-slate-300",
+        dotFill: "bg-slate-300",
         glow: "",
-        cardBorder: "border-white/10",
-        cardBg: "bg-white/[0.03]",
-        opacity: "opacity-60",
+        cardBorder: "border-slate-200",
+        cardBg: "bg-white shadow-card",
+        opacity: "opacity-80",
       };
   }
 }
@@ -68,12 +67,12 @@ export default function SlideRoadmap() {
             variants={fadeInUp}
           >
             <div className="w-[4px] h-8 bg-verdaxis-blue rounded-full" />
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-white">
+            <h2 className="text-3xl md:text-4xl font-display font-normal text-slate-900">
               {heading}
             </h2>
           </motion.div>
           <motion.p
-            className="text-white/50 text-base md:text-lg ml-[16px] max-w-2xl"
+            className="text-slate-500 text-base md:text-lg ml-[16px] max-w-2xl"
             variants={fadeInUp}
           >
             {subtitle}
@@ -92,7 +91,7 @@ export default function SlideRoadmap() {
               {/* Horizontal line behind nodes */}
               <div className="absolute top-[18px] left-0 right-0 h-[2px] overflow-hidden">
                 <motion.div
-                  className="h-full bg-gradient-to-r from-gold-accent/60 via-verdaxis-blue/40 to-white/20"
+                  className="h-full bg-slate-200"
                   initial={{ width: 0 }}
                   animate={{ width: "100%" }}
                   transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
@@ -117,7 +116,7 @@ export default function SlideRoadmap() {
                     >
                       {/* Node dot */}
                       <div
-                        className={`relative z-10 h-9 w-9 rounded-full border-2 ${style.dotBorder} bg-deep-dark flex items-center justify-center ${style.glow}`}
+                        className={`relative z-10 h-9 w-9 rounded-full border-2 ${style.dotBorder} bg-white flex items-center justify-center ${style.glow}`}
                       >
                         <div
                           className={`h-3.5 w-3.5 rounded-full ${style.dotFill}`}
@@ -126,7 +125,7 @@ export default function SlideRoadmap() {
 
                       {/* Card content */}
                       <div
-                        className={`mt-5 w-full rounded-2xl border ${style.cardBorder} ${style.cardBg} backdrop-blur-md px-5 py-5`}
+                        className={`mt-5 w-full rounded-2xl border ${style.cardBorder} ${style.cardBg} px-5 py-5`}
                       >
                         {/* Year */}
                         <span
@@ -136,7 +135,7 @@ export default function SlideRoadmap() {
                         </span>
 
                         {/* Title */}
-                        <span className="block text-sm font-heading font-semibold text-white/80 mb-3">
+                        <span className="block text-sm font-heading font-semibold text-slate-700 mb-3">
                           {phase.title}
                         </span>
 
@@ -145,10 +144,10 @@ export default function SlideRoadmap() {
                           {phase.items.map((item) => (
                             <li
                               key={item}
-                              className="flex items-start gap-2 text-xs text-white/50 leading-relaxed"
+                              className="flex items-start gap-2 text-xs text-slate-600 leading-relaxed"
                             >
                               <svg
-                                className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${i === 0 ? "text-gold-accent/60" : i === 1 ? "text-verdaxis-blue/50" : "text-white/30"}`}
+                                className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${i === 0 ? "text-brand-green/60" : i === 1 ? "text-verdaxis-blue/50" : "text-slate-400"}`}
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
@@ -178,7 +177,7 @@ export default function SlideRoadmap() {
               {/* Vertical line */}
               <div className="absolute left-[14px] top-0 bottom-0 w-[2px] overflow-hidden">
                 <motion.div
-                  className="w-full bg-gradient-to-b from-gold-accent/60 via-verdaxis-blue/40 to-white/20"
+                  className="w-full bg-slate-200"
                   initial={{ height: 0 }}
                   animate={{ height: "100%" }}
                   transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
@@ -202,7 +201,7 @@ export default function SlideRoadmap() {
                     >
                       {/* Node dot */}
                       <div
-                        className={`absolute -left-8 top-0 z-10 h-7 w-7 rounded-full border-2 ${style.dotBorder} bg-deep-dark flex items-center justify-center ${style.glow}`}
+                        className={`absolute -left-8 top-0 z-10 h-7 w-7 rounded-full border-2 ${style.dotBorder} bg-white flex items-center justify-center ${style.glow}`}
                       >
                         <div
                           className={`h-2.5 w-2.5 rounded-full ${style.dotFill}`}
@@ -211,24 +210,24 @@ export default function SlideRoadmap() {
 
                       {/* Card */}
                       <div
-                        className={`rounded-2xl border ${style.cardBorder} ${style.cardBg} backdrop-blur-md px-5 py-5`}
+                        className={`rounded-2xl border ${style.cardBorder} ${style.cardBg} px-5 py-5`}
                       >
                         <span
                           className={`block font-heading text-xl font-bold ${style.yearColor} mb-1`}
                         >
                           {phase.year}
                         </span>
-                        <span className="block text-sm font-heading font-semibold text-white/80 mb-3">
+                        <span className="block text-sm font-heading font-semibold text-slate-700 mb-3">
                           {phase.title}
                         </span>
                         <ul className="flex flex-col gap-1.5">
                           {phase.items.map((item) => (
                             <li
                               key={item}
-                              className="flex items-start gap-2 text-xs text-white/50 leading-relaxed"
+                              className="flex items-start gap-2 text-xs text-slate-600 leading-relaxed"
                             >
                               <svg
-                                className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${i === 0 ? "text-gold-accent/60" : i === 1 ? "text-verdaxis-blue/50" : "text-white/30"}`}
+                                className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${i === 0 ? "text-brand-green/60" : i === 1 ? "text-verdaxis-blue/50" : "text-slate-400"}`}
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
@@ -258,16 +257,7 @@ export default function SlideRoadmap() {
           variants={fadeInUp}
           className="relative text-center pt-4 pb-2"
         >
-          {/* Verdaxis-blue glow behind text */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(ellipse at center, rgba(93,173,226,0.07) 0%, transparent 60%)",
-            }}
-            aria-hidden
-          />
-          <p className="relative font-heading text-lg md:text-xl lg:text-2xl font-semibold text-white/90 italic leading-relaxed max-w-3xl mx-auto">
+          <p className="relative font-heading text-lg md:text-xl lg:text-2xl font-semibold text-slate-600 italic leading-relaxed max-w-3xl mx-auto">
             {visionStatement}
           </p>
         </motion.div>

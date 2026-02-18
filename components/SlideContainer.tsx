@@ -186,7 +186,7 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
       <Suspense
         fallback={
           <div className="w-full h-full flex items-center justify-center">
-            <div className="h-7 w-7 rounded-full border-2 border-white/25 border-t-verdaxis-blue animate-spin" />
+            <div className="h-7 w-7 rounded-full border-2 border-slate-200 border-t-verdaxis-blue animate-spin" />
           </div>
         }
       >
@@ -246,22 +246,20 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
           >
             <rect
               x="4" y="6" width="40" height="28" rx="3"
-              stroke="rgba(93,173,226,0.5)" strokeWidth="1.5" fill="none"
+              stroke="rgba(93,173,226,0.4)" strokeWidth="1.5" fill="none"
             />
             <line
               x1="24" y1="34" x2="24" y2="40"
-              stroke="rgba(93,173,226,0.3)" strokeWidth="1.5"
+              stroke="rgba(93,173,226,0.25)" strokeWidth="1.5"
             />
             <line
               x1="16" y1="40" x2="32" y2="40"
-              stroke="rgba(93,173,226,0.3)" strokeWidth="1.5" strokeLinecap="round"
+              stroke="rgba(93,173,226,0.25)" strokeWidth="1.5" strokeLinecap="round"
             />
-            {/* Screen content lines */}
-            <rect x="10" y="12" width="18" height="1.5" rx="0.75" fill="rgba(93,173,226,0.2)" />
-            <rect x="10" y="16" width="12" height="1.5" rx="0.75" fill="rgba(93,173,226,0.15)" />
-            <rect x="10" y="20" width="22" height="1.5" rx="0.75" fill="rgba(93,173,226,0.12)" />
-            {/* Play button on screen */}
-            <polygon points="34,17 34,25 40,21" fill="rgba(93,173,226,0.25)" />
+            <rect x="10" y="12" width="18" height="1.5" rx="0.75" fill="rgba(93,173,226,0.15)" />
+            <rect x="10" y="16" width="12" height="1.5" rx="0.75" fill="rgba(93,173,226,0.12)" />
+            <rect x="10" y="20" width="22" height="1.5" rx="0.75" fill="rgba(93,173,226,0.10)" />
+            <polygon points="34,17 34,25 40,21" fill="rgba(93,173,226,0.2)" />
           </svg>
 
           <h1 className="mobile-gate-heading">
@@ -286,30 +284,23 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
   /* ══════════ DESKTOP: Slide-by-slide with transitions ══════════ */
   return (
     <div
-      className="relative w-screen h-screen overflow-hidden bg-gradient-to-br from-[#0B1120] via-[#0E1726] to-[#0B1120]"
+      className="relative w-screen h-screen overflow-hidden bg-[#F8FAFC]"
       style={{ height: "100dvh" }}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
+      {/* Subtle ambient orbs — matching landing page */}
       <div className="absolute inset-0 pointer-events-none">
         <div
-          className="absolute top-[-10%] right-[10%] w-[400px] h-[400px] rounded-full opacity-[0.04]"
+          className="absolute top-[-15%] right-[-5%] w-[500px] h-[500px] rounded-full opacity-[0.04]"
           style={{
             background: "radial-gradient(circle, #5DADE2 0%, transparent 70%)",
           }}
         />
         <div
-          className="absolute bottom-[-8%] left-[5%] w-[350px] h-[350px] rounded-full opacity-[0.03]"
+          className="absolute bottom-[-10%] left-[-3%] w-[450px] h-[450px] rounded-full opacity-[0.03]"
           style={{
-            background: "radial-gradient(circle, #10B981 0%, transparent 65%)",
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")",
-            backgroundRepeat: "repeat",
-            backgroundSize: "150px 150px",
+            background: "radial-gradient(circle, #4CAF50 0%, transparent 65%)",
           }}
         />
       </div>

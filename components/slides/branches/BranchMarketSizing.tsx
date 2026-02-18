@@ -29,11 +29,11 @@ export default function BranchMarketSizing() {
   const cards = [
     {
       data: tam,
-      borderClass: "border-white/15",
-      valueColor: "text-gold-accent",
-      labelColor: "text-gold-accent/80",
-      dotClass: "bg-gold-accent/60 border-gold-accent/30",
-      bgClass: "bg-white/[0.04]",
+      borderClass: "border-slate-200",
+      valueColor: "text-brand-green",
+      labelColor: "text-brand-green",
+      dotClass: "bg-brand-green/60 border-brand-green/20",
+      bgClass: "bg-slate-50",
     },
     {
       data: sam,
@@ -41,15 +41,15 @@ export default function BranchMarketSizing() {
       valueColor: "text-verdaxis-blue",
       labelColor: "text-verdaxis-blue/80",
       dotClass: "bg-verdaxis-blue/60 border-verdaxis-blue/30",
-      bgClass: "bg-verdaxis-blue/[0.03]",
+      bgClass: "bg-slate-50",
     },
     {
       data: som,
-      borderClass: "border-emerald/25",
-      valueColor: "text-emerald",
-      labelColor: "text-emerald/80",
-      dotClass: "bg-emerald/60 border-emerald/30 shadow-[0_0_8px_rgba(16,185,129,0.3)]",
-      bgClass: "bg-emerald/[0.03]",
+      borderClass: "border-brand-green/25",
+      valueColor: "text-brand-green",
+      labelColor: "text-brand-green",
+      dotClass: "bg-brand-green/60 border-brand-green/30 shadow-[0_0_8px_rgba(16,185,129,0.3)]",
+      bgClass: "bg-slate-50",
       glow: true,
     },
   ];
@@ -65,11 +65,11 @@ export default function BranchMarketSizing() {
         <motion.div
           key={data.label}
           variants={cardVariants}
-          className={`relative rounded-xl border ${borderClass} ${bgClass} backdrop-blur-sm p-5 overflow-hidden`}
+          className={`relative rounded-xl border ${borderClass} ${bgClass} p-5 overflow-hidden hover:bg-white hover:shadow-card transition-all duration-200`}
         >
           {/* Subtle glow for SOM card */}
           {glow && (
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-emerald/10 blur-2xl rounded-full pointer-events-none" />
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-brand-green/8 blur-2xl rounded-full pointer-events-none" />
           )}
 
           <div className="relative">
@@ -85,12 +85,12 @@ export default function BranchMarketSizing() {
             </div>
 
             {/* Description */}
-            <p className="text-sm text-white/50 leading-relaxed pl-6 mb-2">
+            <p className="text-sm text-slate-500 leading-relaxed pl-6 mb-2">
               {data.description}
             </p>
 
             {/* Source citation */}
-            <p className="text-xs italic text-white/30 pl-6">
+            <p className="text-xs italic text-slate-400 pl-6">
               {data.source}
             </p>
           </div>

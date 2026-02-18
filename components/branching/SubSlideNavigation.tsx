@@ -18,10 +18,10 @@ export default function SubSlideNavigation({
   onBack,
 }: SubSlideNavigationProps) {
   return (
-    <div className="flex items-center justify-between px-4 py-3 border-t border-white/5">
+    <div className="flex items-center justify-between px-4 py-3 border-t border-slate-100 bg-white/90 backdrop-blur-sm">
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
+        className="flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 transition-colors"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -31,10 +31,10 @@ export default function SubSlideNavigation({
 
       {/* Progress bar */}
       <div className="flex items-center gap-3">
-        <span className="text-xs text-white/40">
+        <span className="text-xs text-slate-400">
           {current + 1} / {total}
         </span>
-        <div className="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
+        <div className="w-24 h-1 bg-slate-200 rounded-full overflow-hidden">
           <motion.div
             className="h-full bg-verdaxis-blue rounded-full"
             animate={{ width: `${((current + 1) / total) * 100}%` }}
@@ -47,18 +47,18 @@ export default function SubSlideNavigation({
         <button
           onClick={onPrev}
           disabled={current === 0}
-          className="p-2 rounded-lg hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          className="p-2 rounded-lg hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
         >
-          <svg className="w-4 h-4 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         <button
           onClick={onNext}
           disabled={current === total - 1}
-          className="p-2 rounded-lg hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          className="p-2 rounded-lg hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
         >
-          <svg className="w-4 h-4 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </button>

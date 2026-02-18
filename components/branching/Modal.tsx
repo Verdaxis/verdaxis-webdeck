@@ -53,29 +53,29 @@ export default function Modal({ isOpen, onClose, children, title }: ModalProps) 
         >
           {/* Backdrop */}
           <motion.div
-            className="absolute inset-0 bg-deep-dark/90 backdrop-blur-md"
+            className="absolute inset-0 bg-slate-900/30 backdrop-blur-md"
             onClick={onClose}
           />
 
           {/* Content */}
           <motion.div
-            className="relative z-10 w-full h-full md:h-auto md:max-h-[90vh] md:max-w-4xl md:mx-4 md:rounded-2xl bg-gradient-to-br from-[#0D1B2A] to-[#0B1120] border border-white/10 overflow-y-auto"
+            className="relative z-10 w-full h-full md:h-auto md:max-h-[90vh] md:max-w-4xl md:mx-4 md:rounded-2xl bg-white border border-slate-200 shadow-card-lg overflow-y-auto"
             variants={modalContent}
             initial="hidden"
             animate="visible"
             exit="exit"
           >
             {/* Header */}
-            <div className="sticky top-0 z-10 flex items-center justify-between px-6 py-4 bg-[#0D1B2A]/90 backdrop-blur-sm border-b border-white/5">
+            <div className="sticky top-0 z-10 flex items-center justify-between px-6 py-4 bg-white/90 backdrop-blur-sm border-b border-slate-100">
               {title && (
-                <h3 className="text-lg font-bold text-white">{title}</h3>
+                <h3 className="text-lg font-bold text-slate-900">{title}</h3>
               )}
               <button
                 onClick={onClose}
-                className="ml-auto p-2 rounded-lg hover:bg-white/10 transition-colors"
+                className="ml-auto p-2 rounded-lg hover:bg-slate-100 transition-colors"
                 aria-label="Close"
               >
-                <svg className="w-5 h-5 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-5 h-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>

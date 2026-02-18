@@ -11,9 +11,9 @@ import { fadeInUp, scaleIn, staggerContainer } from "@/lib/animations";
 
 const allocationColors = [
   { bg: "bg-verdaxis-blue", label: "text-verdaxis-blue" },     // Engineering & Product
-  { bg: "bg-gold-accent", label: "text-gold-accent" },         // Sales & Marketing
+  { bg: "bg-brand-green", label: "text-brand-green" },         // Sales & Marketing
   { bg: "bg-emerald", label: "text-emerald" },                 // Compliance & Legal
-  { bg: "bg-white/40", label: "text-white/60" },               // Operations
+  { bg: "bg-slate-300", label: "text-slate-500" },             // Operations
 ];
 
 /* ────────────────────────────────────────────
@@ -47,12 +47,12 @@ export default function SlideFinancials() {
             variants={fadeInUp}
           >
             <div className="w-[4px] h-8 bg-verdaxis-blue rounded-full" />
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-white">
+            <h2 className="text-3xl md:text-4xl font-display font-normal text-slate-900">
               {heading}
             </h2>
           </motion.div>
           <motion.p
-            className="text-white/50 text-base md:text-lg ml-[16px] max-w-2xl"
+            className="text-slate-500 text-base md:text-lg ml-[16px] max-w-2xl"
             variants={fadeInUp}
           >
             {subtitle}
@@ -64,23 +64,13 @@ export default function SlideFinancials() {
           variants={scaleIn}
           className="relative flex flex-col items-center text-center py-6"
         >
-          {/* Subtle gold glow */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(ellipse at center, rgba(212,168,83,0.06) 0%, transparent 60%)",
-            }}
-            aria-hidden
-          />
-
           {/* Round badge */}
-          <span className="mb-3 inline-flex items-center rounded-full border border-gold-accent/30 bg-gold-accent/10 px-4 py-1 text-xs font-heading font-semibold uppercase tracking-wider text-gold-accent">
+          <span className="mb-3 inline-flex items-center rounded-full border border-brand-green/20 bg-brand-green/10 px-4 py-1 text-xs font-heading font-semibold uppercase tracking-wider text-brand-green">
             {roundType}
           </span>
 
           {/* Amount */}
-          <span className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-gold-accent">
+          <span className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-brand-green">
             {totalRaise}
           </span>
         </motion.div>
@@ -94,20 +84,20 @@ export default function SlideFinancials() {
             <motion.div
               key={tranche.name}
               variants={fadeInUp}
-              className="relative flex flex-col rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md
+              className="relative flex flex-col rounded-2xl border border-slate-200 bg-white shadow-card
                 px-6 py-6 transition-all duration-300
-                hover:border-white/20 hover:bg-white/[0.06]"
+                hover:border-slate-300 hover:shadow-card-hover hover:-translate-y-1"
             >
               {/* Gradient top border */}
-              <div className="absolute top-0 left-4 right-4 h-[2px] rounded-full bg-gradient-to-r from-verdaxis-blue via-verdaxis-blue/60 to-gold-accent" />
+              <div className="absolute top-0 left-4 right-4 h-[2px] rounded-full bg-gradient-to-r from-verdaxis-blue to-brand-green" />
 
               {/* Tranche label */}
-              <span className="text-xs font-heading font-semibold uppercase tracking-wider text-white/40 mb-2">
+              <span className="text-xs font-heading font-semibold uppercase tracking-wider text-slate-400 mb-2">
                 {tranche.name}
               </span>
 
               {/* Amount */}
-              <span className="font-heading text-3xl md:text-4xl font-bold text-gold-accent mb-3">
+              <span className="font-heading text-3xl md:text-4xl font-bold text-brand-green mb-3">
                 {tranche.amount}
               </span>
 
@@ -131,7 +121,7 @@ export default function SlideFinancials() {
               </span>
 
               {/* Description */}
-              <p className="text-sm text-white/50 leading-relaxed">
+              <p className="text-sm text-slate-500 leading-relaxed">
                 {tranche.description}
               </p>
             </motion.div>
@@ -141,7 +131,7 @@ export default function SlideFinancials() {
         {/* ── Use of funds allocation bar ── */}
         <motion.div variants={fadeInUp} className="flex flex-col gap-4">
           {/* Horizontal bar */}
-          <div className="w-full h-4 rounded-full overflow-hidden flex bg-white/[0.06]">
+          <div className="w-full h-4 rounded-full overflow-hidden flex bg-slate-50">
             {allocations.map((alloc, i) => {
               const pct = parseInt(alloc.percentage, 10);
               const colors = allocationColors[i] ?? allocationColors[3];
@@ -176,7 +166,7 @@ export default function SlideFinancials() {
                     >
                       {alloc.percentage}
                     </span>
-                    <span className="text-xs text-white/40 leading-tight truncate">
+                    <span className="text-xs text-slate-400 leading-tight truncate">
                       {alloc.label}
                     </span>
                   </div>
@@ -191,16 +181,7 @@ export default function SlideFinancials() {
           variants={fadeInUp}
           className="relative text-center pt-4 pb-2"
         >
-          {/* Subtle glow behind text */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(ellipse at center, rgba(93,173,226,0.06) 0%, transparent 60%)",
-            }}
-            aria-hidden
-          />
-          <p className="relative font-heading text-xl md:text-2xl font-semibold text-white/90 italic">
+          <p className="relative font-heading text-xl md:text-2xl font-semibold text-slate-600 italic">
             {ctaText}
           </p>
         </motion.div>

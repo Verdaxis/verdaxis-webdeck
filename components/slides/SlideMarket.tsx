@@ -49,12 +49,12 @@ export default function SlideMarket({ branches }: SlideMarketProps) {
           transition={{ duration: 0.6 }}
         >
           <div className="w-[4px] h-8 bg-verdaxis-blue rounded-full" />
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white">
+          <h2 className="text-3xl md:text-4xl font-display font-normal text-slate-900">
             {heading}
           </h2>
         </motion.div>
         <motion.p
-          className="text-white/50 text-base md:text-lg mb-10 ml-[16px] max-w-2xl"
+          className="text-slate-500 text-base md:text-lg mb-10 ml-[16px] max-w-2xl"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -77,7 +77,7 @@ export default function SlideMarket({ branches }: SlideMarketProps) {
             className="relative flex-shrink-0 w-[320px] h-[320px] sm:w-[380px] sm:h-[380px]"
           >
             {/* TAM - Outer circle */}
-            <div className="absolute inset-0 rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center">
+            <div className="absolute inset-0 rounded-full border border-slate-200 bg-white flex items-center justify-center">
               <motion.div
                 className="absolute top-4 left-1/2 -translate-x-1/2 text-center"
                 initial={{ opacity: 0 }}
@@ -85,7 +85,7 @@ export default function SlideMarket({ branches }: SlideMarketProps) {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
               >
-                <span className="text-[10px] uppercase tracking-widest text-white/30 block mb-0.5">
+                <span className="text-[10px] uppercase tracking-widest text-slate-400 block mb-0.5">
                   {tam.label}
                 </span>
               </motion.div>
@@ -149,12 +149,12 @@ export default function SlideMarket({ branches }: SlideMarketProps) {
                 target={tamParsed.numeric}
                 prefix={tamParsed.prefix}
                 suffix={tamParsed.suffix}
-                className="text-2xl sm:text-3xl font-heading font-bold text-gold-accent"
+                className="text-2xl sm:text-3xl font-heading font-bold text-brand-green"
               />
             </motion.div>
 
             {/* Subtle radial glow behind circles */}
-            <div className="absolute inset-0 rounded-full bg-verdaxis-blue/[0.03] blur-2xl pointer-events-none" />
+            <div className="absolute inset-0 rounded-full bg-verdaxis-blue/[0.05] blur-2xl pointer-events-none" />
           </motion.div>
 
           {/* Descriptions sidebar */}
@@ -168,18 +168,18 @@ export default function SlideMarket({ branches }: SlideMarketProps) {
             {/* TAM */}
             <motion.div
               variants={fadeInUp}
-              className="rounded-xl border border-white/10 bg-white/[0.04] backdrop-blur-md p-5"
+              className="rounded-xl border border-slate-200 bg-white shadow-card p-5 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1"
             >
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-3 h-3 rounded-full bg-gold-accent/60 border border-gold-accent/30" />
-                <span className="text-sm font-heading font-semibold text-gold-accent">
+                <div className="w-3 h-3 rounded-full bg-brand-green/60 border border-brand-green/30" />
+                <span className="text-sm font-heading font-semibold text-brand-green">
                   {tam.label}
                 </span>
-                <span className="ml-auto text-lg font-heading font-bold text-gold-accent">
+                <span className="ml-auto text-lg font-heading font-bold text-brand-green">
                   {tam.value}
                 </span>
               </div>
-              <p className="text-sm text-white/45 leading-relaxed pl-6">
+              <p className="text-sm text-slate-500 leading-relaxed pl-6">
                 {tam.description}
               </p>
             </motion.div>
@@ -187,7 +187,7 @@ export default function SlideMarket({ branches }: SlideMarketProps) {
             {/* SAM */}
             <motion.div
               variants={fadeInUp}
-              className="rounded-xl border border-verdaxis-blue/15 bg-verdaxis-blue/[0.04] backdrop-blur-md p-5"
+              className="rounded-xl border border-verdaxis-blue/15 bg-verdaxis-blue/[0.04] p-5 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1"
             >
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-3 h-3 rounded-full bg-verdaxis-blue/60 border border-verdaxis-blue/30" />
@@ -198,7 +198,7 @@ export default function SlideMarket({ branches }: SlideMarketProps) {
                   {sam.value}
                 </span>
               </div>
-              <p className="text-sm text-white/45 leading-relaxed pl-6">
+              <p className="text-sm text-slate-500 leading-relaxed pl-6">
                 {sam.description}
               </p>
             </motion.div>
@@ -206,7 +206,7 @@ export default function SlideMarket({ branches }: SlideMarketProps) {
             {/* SOM */}
             <motion.div
               variants={fadeInUp}
-              className="rounded-xl border border-emerald/15 bg-emerald/[0.04] backdrop-blur-md p-5"
+              className="rounded-xl border border-emerald/15 bg-emerald/[0.04] p-5 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1"
             >
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-3 h-3 rounded-full bg-emerald/60 border border-emerald/30 shadow-[0_0_8px_rgba(16,185,129,0.3)]" />
@@ -217,7 +217,7 @@ export default function SlideMarket({ branches }: SlideMarketProps) {
                   {som.value}
                 </span>
               </div>
-              <p className="text-sm text-white/45 leading-relaxed pl-6">
+              <p className="text-sm text-slate-500 leading-relaxed pl-6">
                 {som.description}
               </p>
             </motion.div>

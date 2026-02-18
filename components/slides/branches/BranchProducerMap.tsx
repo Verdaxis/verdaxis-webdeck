@@ -67,7 +67,7 @@ function WorldMapSVG() {
         fill="none"
         stroke="currentColor"
         strokeWidth="1"
-        className="text-white/20"
+        className="text-slate-300"
       />
       {/* South America */}
       <path
@@ -75,7 +75,7 @@ function WorldMapSVG() {
         fill="none"
         stroke="currentColor"
         strokeWidth="1"
-        className="text-white/20"
+        className="text-slate-300"
       />
       {/* Europe */}
       <path
@@ -83,7 +83,7 @@ function WorldMapSVG() {
         fill="none"
         stroke="currentColor"
         strokeWidth="1"
-        className="text-white/20"
+        className="text-slate-300"
       />
       {/* Africa */}
       <path
@@ -91,7 +91,7 @@ function WorldMapSVG() {
         fill="none"
         stroke="currentColor"
         strokeWidth="1"
-        className="text-white/20"
+        className="text-slate-300"
       />
       {/* Middle East */}
       <path
@@ -99,7 +99,7 @@ function WorldMapSVG() {
         fill="none"
         stroke="currentColor"
         strokeWidth="1"
-        className="text-white/20"
+        className="text-slate-300"
       />
       {/* Asia */}
       <path
@@ -107,7 +107,7 @@ function WorldMapSVG() {
         fill="none"
         stroke="currentColor"
         strokeWidth="1"
-        className="text-white/20"
+        className="text-slate-300"
       />
       {/* Southeast Asia */}
       <path
@@ -115,7 +115,7 @@ function WorldMapSVG() {
         fill="none"
         stroke="currentColor"
         strokeWidth="1"
-        className="text-white/20"
+        className="text-slate-300"
       />
 
       {/* Region marker dots */}
@@ -128,22 +128,22 @@ function WorldMapSVG() {
       <motion.circle variants={dotVariants} cx="410" cy="100" r="10" className="fill-verdaxis-blue/20" />
 
       {/* Southeast Asia */}
-      <motion.circle variants={dotVariants} cx="630" cy="195" r="5" className="fill-emerald" />
-      <motion.circle variants={dotVariants} cx="630" cy="195" r="10" className="fill-emerald/20" />
+      <motion.circle variants={dotVariants} cx="630" cy="195" r="5" className="fill-brand-green" />
+      <motion.circle variants={dotVariants} cx="630" cy="195" r="10" className="fill-brand-green/20" />
 
       {/* East Asia */}
       <motion.circle variants={dotVariants} cx="660" cy="100" r="5" className="fill-verdaxis-blue" />
       <motion.circle variants={dotVariants} cx="660" cy="100" r="10" className="fill-verdaxis-blue/20" />
 
       {/* Middle East */}
-      <motion.circle variants={dotVariants} cx="490" cy="130" r="5" className="fill-gold-accent" />
-      <motion.circle variants={dotVariants} cx="490" cy="130" r="10" className="fill-gold-accent/20" />
+      <motion.circle variants={dotVariants} cx="490" cy="130" r="5" className="fill-brand-green" />
+      <motion.circle variants={dotVariants} cx="490" cy="130" r="10" className="fill-brand-green/20" />
 
       {/* Americas (US Gulf, Brazil, Chile) */}
-      <motion.circle variants={dotVariants} cx="165" cy="150" r="5" className="fill-gold-accent" />
-      <motion.circle variants={dotVariants} cx="165" cy="150" r="10" className="fill-gold-accent/20" />
-      <motion.circle variants={dotVariants} cx="210" cy="290" r="4" className="fill-emerald" />
-      <motion.circle variants={dotVariants} cx="210" cy="290" r="9" className="fill-emerald/20" />
+      <motion.circle variants={dotVariants} cx="165" cy="150" r="5" className="fill-brand-green" />
+      <motion.circle variants={dotVariants} cx="165" cy="150" r="10" className="fill-brand-green/20" />
+      <motion.circle variants={dotVariants} cx="210" cy="290" r="4" className="fill-brand-green" />
+      <motion.circle variants={dotVariants} cx="210" cy="290" r="9" className="fill-brand-green/20" />
     </motion.svg>
   );
 }
@@ -164,12 +164,12 @@ export default function BranchProducerMap() {
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="rounded-xl border border-white/10 bg-white/[0.04] p-3 text-center"
+            className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-center hover:bg-white hover:shadow-card transition-all duration-200"
           >
-            <div className="text-xl font-heading font-bold text-gold-accent">
+            <div className="text-xl font-heading font-bold text-brand-green">
               {stat.value}
             </div>
-            <div className="text-[10px] text-white/40 uppercase tracking-wider mt-0.5">
+            <div className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">
               {stat.label}
             </div>
           </div>
@@ -179,7 +179,7 @@ export default function BranchProducerMap() {
       {/* World map */}
       <motion.div
         variants={itemVariants}
-        className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 overflow-hidden"
+        className="rounded-xl border border-slate-100 bg-slate-50 p-4 overflow-hidden"
       >
         <WorldMapSVG />
       </motion.div>
@@ -195,10 +195,10 @@ export default function BranchProducerMap() {
           <motion.div
             key={region}
             variants={itemVariants}
-            className="flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2.5"
+            className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 hover:bg-white hover:shadow-card transition-all duration-200"
           >
             <LocationPin />
-            <span className="text-xs text-white/60 leading-snug">{region}</span>
+            <span className="text-xs text-slate-500 leading-snug">{region}</span>
           </motion.div>
         ))}
       </motion.div>

@@ -78,12 +78,12 @@ export default function SlideSolution() {
           transition={{ duration: 0.6 }}
         >
           <div className="w-[4px] h-8 bg-verdaxis-blue rounded-full" />
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white">
+          <h2 className="text-3xl md:text-4xl font-display font-normal text-slate-900">
             {heading}
           </h2>
         </motion.div>
         <motion.p
-          className="text-white/50 text-base md:text-lg mb-10 ml-[16px] max-w-2xl"
+          className="text-slate-500 text-base md:text-lg mb-10 ml-[16px] max-w-2xl"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -115,15 +115,15 @@ export default function SlideSolution() {
                 variants={scaleIn}
                 className={`
                   relative z-10 flex flex-col items-center text-center
-                  rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md
+                  rounded-2xl border border-slate-200 bg-white shadow-card
                   px-6 py-8 md:py-10
                   transition-all duration-300
-                  hover:border-white/20 hover:bg-white/[0.06]
+                  hover:border-slate-300 hover:shadow-card-hover hover:-translate-y-1
                   ${isCenter ? "md:-translate-y-3 md:shadow-[0_0_40px_rgba(93,173,226,0.08)]" : ""}
                 `}
               >
                 {/* Gradient top border */}
-                <div className="absolute top-0 left-4 right-4 h-[2px] rounded-full bg-gradient-to-r from-verdaxis-blue via-verdaxis-blue/60 to-gold-accent" />
+                <div className="absolute top-0 left-4 right-4 h-[2px] rounded-full bg-gradient-to-r from-verdaxis-blue to-brand-green" />
 
                 {/* Glow spot for center pillar */}
                 {isCenter && (
@@ -136,18 +136,18 @@ export default function SlideSolution() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-heading font-semibold text-white mb-3">
+                <h3 className="text-xl font-heading font-semibold text-slate-900 mb-3">
                   {pillar.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm text-white/55 leading-relaxed">
+                <p className="text-sm text-slate-500 leading-relaxed">
                   {pillar.description}
                 </p>
 
                 {/* Pillar number indicator */}
                 <div className="mt-auto pt-6">
-                  <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border border-white/10 text-xs text-white/30 font-heading">
+                  <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border border-slate-200 text-xs text-slate-400 font-heading">
                     {index + 1}
                   </span>
                 </div>

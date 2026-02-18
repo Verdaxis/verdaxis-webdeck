@@ -73,13 +73,13 @@ export default function SlideProblem() {
         {/* Heading */}
         <motion.div className="flex items-center gap-4 mb-2" variants={fadeInUp}>
           <div className="w-[4px] h-8 bg-verdaxis-blue rounded-full" />
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-normal text-slate-900 tracking-tight">
             {t.problem.heading}
           </h2>
         </motion.div>
 
         <motion.p
-          className="text-white/50 text-sm md:text-base mb-10 ml-6"
+          className="text-slate-500 text-sm md:text-base mb-10 ml-6"
           variants={fadeInUp}
         >
           {t.problem.subtitle}
@@ -132,8 +132,8 @@ export default function SlideProblem() {
                 <motion.div
                   key={i}
                   variants={cardVariants}
-                  className={`relative p-6 rounded-xl bg-white/[0.04] border border-white/10 border-t-2 ${accent.border} backdrop-blur-md
-                    hover:bg-white/[0.07] hover:border-white/20 transition-all duration-300 group overflow-hidden`}
+                  className={`relative p-6 rounded-xl bg-white border border-slate-200 border-t-2 ${accent.border} shadow-card backdrop-blur-md
+                    hover:bg-slate-50 hover:border-slate-300 hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 group overflow-hidden`}
                 >
                   {/* Animated pulsing dot */}
                   <div className="absolute top-4 right-4">
@@ -157,17 +157,17 @@ export default function SlideProblem() {
 
                   <div className="relative">
                     {/* Icon */}
-                    <div className="w-12 h-12 rounded-lg bg-white/[0.06] border border-white/10 flex items-center justify-center mb-4 text-white/70">
+                    <div className="w-12 h-12 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center mb-4 text-slate-600">
                       <ProblemIcon iconKey={card.iconKey} />
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-heading text-lg md:text-xl font-semibold text-white mb-3">
+                    <h3 className="font-heading text-lg md:text-xl font-semibold text-slate-900 mb-3">
                       {card.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-white/50 text-sm leading-relaxed">
+                    <p className="text-slate-500 text-sm leading-relaxed">
                       {card.description}
                     </p>
                   </div>
