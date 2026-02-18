@@ -152,16 +152,16 @@ export default function SlideTeam() {
                   <div className="flex items-center gap-1.5 mt-1 mb-3">
                     {member.company === "marinachain" && (
                     <img
-                        src="/images/logos/partners/marinachain-white.png"
+                        src="/images/logos/partners/marinachain-color.png"
                         alt="MarinaChain"
-                        className="h-4 opacity-50 invert"
+                        className="h-4 opacity-80"
                       />
                     )}
                     {member.company === "greenm" && (
                       <img
-                        src="/images/logos/partners/greenm-square.png"
+                        src="/images/logos/partners/greenmarine-full.png"
                         alt="Green Marine"
-                        className="h-4 opacity-50 rounded-sm"
+                        className="h-4 opacity-70"
                       />
                     )}
                   </div>

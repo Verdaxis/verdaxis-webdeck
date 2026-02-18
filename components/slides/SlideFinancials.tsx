@@ -1,6 +1,7 @@
 "use client";
 
 import SlideWrapper from "@/components/SlideWrapper";
+import SlideBackground from "@/components/SlideBackground";
 import { useContent } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn, staggerContainer } from "@/lib/animations";
@@ -34,6 +35,7 @@ export default function SlideFinancials() {
 
   return (
     <SlideWrapper>
+      <SlideBackground variant="mesh" tint="mixed" />
       <motion.div
         className="w-full max-w-5xl mx-auto flex flex-col gap-8"
         variants={staggerContainer}

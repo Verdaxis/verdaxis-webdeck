@@ -1,6 +1,7 @@
 "use client";
 
 import SlideWrapper from "@/components/SlideWrapper";
+import SlideBackground from "@/components/SlideBackground";
 import { useContent } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
@@ -54,6 +55,7 @@ export default function SlideRoadmap() {
 
   return (
     <SlideWrapper>
+      <SlideBackground variant="waves" tint="green" />
       <motion.div
         className="w-full max-w-6xl mx-auto flex flex-col gap-8"
         variants={staggerContainer}

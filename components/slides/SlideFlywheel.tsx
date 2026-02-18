@@ -212,9 +212,9 @@ function FlywheelDiagram({
             </span>
             {isFirst && (
               <img
-                src="/images/logos/partners/marinachain-white.png"
+                src="/images/logos/partners/marinachain-color.png"
                 alt="MarinaChain"
-                className="h-3.5 opacity-60 mt-1 invert"
+                className="h-3.5 opacity-80 mt-1"
               />
             )}
           </motion.div>

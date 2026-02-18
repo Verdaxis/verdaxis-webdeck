@@ -1,6 +1,7 @@
 "use client";
 
 import SlideWrapper from "@/components/SlideWrapper";
+import SlideBackground from "@/components/SlideBackground";
 import { useContent } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn, staggerContainer } from "@/lib/animations";
@@ -142,6 +143,7 @@ export default function SlideProduct({ branches }: SlideProductProps) {
 
   return (
     <SlideWrapper>
+      <SlideBackground variant="grid" />
       <div className="w-full max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -210,9 +212,9 @@ export default function SlideProduct({ branches }: SlideProductProps) {
                   <div className="inline-flex items-center gap-1.5 bg-[#0066CC]/10 border border-[#0066CC]/20 rounded-full px-2 py-0.5">
                     <span className="text-[9px] text-[#0066CC]/60">Powered by</span>
                     <img
-                      src="/images/logos/partners/marinachain-white.png"
+                      src="/images/logos/partners/marinachain-color.png"
                       alt="MarinaChain"
-                      className="h-[14px] w-auto opacity-70 invert"
+                      className="h-[14px] w-auto opacity-80"
                     />
                   </div>
                 </div>

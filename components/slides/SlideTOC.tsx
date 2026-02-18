@@ -1,6 +1,7 @@
 "use client";
 
 import SlideWrapper from "@/components/SlideWrapper";
+import SlideBackground from "@/components/SlideBackground";
 import { useContent } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
@@ -40,6 +41,7 @@ export default function SlideTOC({ onGoTo, deck }: SlideTOCProps) {
 
   return (
     <SlideWrapper>
+      <SlideBackground variant="grid" />
       <motion.div
         className="w-full max-w-5xl mx-auto"
         variants={staggerContainer}

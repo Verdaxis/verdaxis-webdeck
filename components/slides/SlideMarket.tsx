@@ -1,6 +1,7 @@
 "use client";
 
 import SlideWrapper from "@/components/SlideWrapper";
+import SlideBackground from "@/components/SlideBackground";
 import { useContent } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn, staggerContainer } from "@/lib/animations";
@@ -39,6 +40,7 @@ export default function SlideMarket({ branches }: SlideMarketProps) {
 
   return (
     <SlideWrapper>
+      <SlideBackground variant="mesh" tint="blue" />
       <div className="w-full max-w-6xl mx-auto">
         {/* Header */}
         <motion.div

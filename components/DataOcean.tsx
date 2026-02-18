@@ -1,0 +1,359 @@
+"use client";
+
+import { useEffect, useRef, useCallback } from "react";
+
+/* ────────────────────────────────────────────
+   Interactive shipping-route canvas animation
+   Adapted from the Verdaxis landing page hero
+   ──────────────────────────────────────────── */
+
+interface Dot {
+  baseX: number;
+  baseY: number;
+  x: number;
+  y: number;
+  isPort: boolean;
+  isAccent: boolean;
+  pulseOffset: number;
+}
+
+const BLUE = [93, 173, 226] as const;
+const GREEN = [76, 175, 80] as const;
+const DOT_RADIUS = 1.5;
+const PORT_RADIUS = 2.8;
+const LINE_DISTANCE = 80;
+const MOUSE_RADIUS = 180;
+const MOUSE_STRENGTH = 24;
+const WAVE_AMPLITUDE = 5;
+const WAVE_SPEED = 0.0005;
+const WAVE_FREQ_X = 0.014;
+const WAVE_FREQ_Y = 0.018;
+
+/* Major ports as normalised (0-1) coordinates */
+const PORTS: [number, number][] = [
+  [0.51, 0.20], [0.51, 0.21], [0.49, 0.31], [0.59, 0.36],
+  [0.61, 0.42], [0.66, 0.39], [0.70, 0.44], [0.72, 0.52],
+  [0.79, 0.56], [0.82, 0.41], [0.84, 0.35], [0.86, 0.32],
+  [0.89, 0.32], [0.92, 0.81], [0.51, 0.53], [0.55, 0.81],
+  [0.59, 0.79], [0.24, 0.36], [0.28, 0.51], [0.17, 0.33],
+  [0.37, 0.74],
+];
+
+/* Shipping routes (pairs of port indices) */
+const ROUTES: [number, number][] = [
+  [0, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8],
+  [8, 9], [9, 10], [10, 11], [11, 12], [2, 14], [14, 15],
+  [15, 16], [16, 7], [0, 17], [17, 18], [18, 19], [17, 20],
+  [18, 20], [8, 13], [3, 5], [0, 1], [20, 15],
+];
+
+/* Simplified continent coastlines (normalised 0-1) */
+const CONTINENTS: [number, number][][] = [
+  // North America
+  [[0.03,0.11],[0.06,0.07],[0.11,0.09],[0.14,0.07],[0.19,0.09],[0.22,0.07],[0.27,0.10],[0.31,0.13],[0.33,0.18],[0.31,0.22],[0.29,0.26],[0.28,0.30],[0.28,0.37],[0.27,0.41],[0.25,0.44],[0.22,0.46],[0.21,0.43],[0.19,0.39],[0.17,0.35],[0.16,0.30],[0.15,0.26],[0.14,0.22],[0.12,0.19],[0.09,0.16],[0.05,0.14]],
+  // South America
+  [[0.28,0.49],[0.30,0.50],[0.33,0.51],[0.36,0.53],[0.39,0.56],[0.40,0.60],[0.40,0.65],[0.39,0.70],[0.37,0.74],[0.35,0.78],[0.33,0.82],[0.31,0.86],[0.30,0.90],[0.29,0.86],[0.28,0.80],[0.27,0.74],[0.27,0.68],[0.26,0.62],[0.26,0.57],[0.27,0.52]],
+  // Europe
+  [[0.47,0.31],[0.48,0.28],[0.47,0.24],[0.48,0.20],[0.49,0.16],[0.50,0.13],[0.51,0.10],[0.52,0.13],[0.53,0.16],[0.54,0.14],[0.55,0.17],[0.54,0.21],[0.53,0.24],[0.52,0.27],[0.54,0.28],[0.56,0.29],[0.55,0.31],[0.53,0.32],[0.51,0.30],[0.49,0.32]],
+  // Africa
+  [[0.47,0.33],[0.49,0.34],[0.51,0.33],[0.53,0.34],[0.56,0.35],[0.58,0.36],[0.59,0.39],[0.60,0.43],[0.61,0.47],[0.62,0.51],[0.62,0.55],[0.61,0.60],[0.60,0.65],[0.59,0.70],[0.58,0.75],[0.56,0.79],[0.54,0.82],[0.52,0.82],[0.51,0.78],[0.50,0.73],[0.49,0.68],[0.49,0.62],[0.48,0.57],[0.48,0.52],[0.47,0.47],[0.46,0.42],[0.45,0.38],[0.46,0.35]],
+  // Asia
+  [[0.57,0.29],[0.59,0.27],[0.61,0.25],[0.64,0.22],[0.67,0.19],[0.70,0.16],[0.74,0.13],[0.78,0.11],[0.82,0.12],[0.85,0.14],[0.88,0.17],[0.89,0.21],[0.88,0.25],[0.87,0.29],[0.85,0.32],[0.83,0.35],[0.81,0.38],[0.80,0.42],[0.79,0.46],[0.77,0.49],[0.75,0.47],[0.73,0.44],[0.71,0.46],[0.70,0.50],[0.69,0.47],[0.67,0.44],[0.65,0.41],[0.63,0.38],[0.61,0.36],[0.59,0.34],[0.58,0.31]],
+  // India
+  [[0.67,0.41],[0.69,0.42],[0.71,0.44],[0.72,0.47],[0.72,0.50],[0.71,0.53],[0.70,0.50],[0.69,0.47],[0.68,0.44]],
+  // SE Asia
+  [[0.78,0.50],[0.80,0.52],[0.82,0.54],[0.84,0.56],[0.86,0.58],[0.85,0.60],[0.83,0.58],[0.81,0.56],[0.79,0.54],[0.77,0.52]],
+  // Australia
+  [[0.82,0.68],[0.85,0.66],[0.88,0.67],[0.91,0.69],[0.93,0.72],[0.93,0.76],[0.92,0.80],[0.90,0.83],[0.87,0.84],[0.85,0.83],[0.83,0.81],[0.82,0.78],[0.81,0.75],[0.81,0.72]],
+  // Japan
+  [[0.87,0.28],[0.88,0.30],[0.89,0.33],[0.90,0.36],[0.89,0.35],[0.88,0.32],[0.87,0.30]],
+];
+
+const ANGLE_STEP = (2 * Math.PI) / 5;
+const START_ANGLE = -Math.PI / 2;
+
+function getProjection(w: number, h: number) {
+  const marginX = w * 0.04;
+  const marginY = h * 0.06;
+  const usableW = w - marginX * 2;
+  const usableH = h - marginY * 2;
+  return {
+    toScreen: (nx: number, ny: number): [number, number] => [
+      marginX + nx * usableW,
+      marginY + ny * usableH,
+    ],
+  };
+}
+
+function buildShippingDots(w: number, h: number): Dot[] {
+  const dots: Dot[] = [];
+  const { toScreen } = getProjection(w, h);
+
+  const addDot = (bx: number, by: number, isPort: boolean) => {
+    dots.push({
+      baseX: bx, baseY: by, x: bx, y: by,
+      isPort,
+      isAccent: isPort || Math.random() < 0.06,
+      pulseOffset: Math.random() * Math.PI * 2,
+    });
+  };
+
+  // Port clusters
+  for (const [px, py] of PORTS) {
+    const [sx, sy] = toScreen(px, py);
+    addDot(sx, sy, true);
+    const count = 5 + Math.floor(Math.random() * 4);
+    for (let i = 0; i < count; i++) {
+      const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.6;
+      const r = 12 + Math.random() * 18;
+      addDot(sx + Math.cos(angle) * r, sy + Math.sin(angle) * r, false);
+    }
+  }
+
+  // Route dots
+  for (const [a, b] of ROUTES) {
+    const [ax, ay] = toScreen(PORTS[a][0], PORTS[a][1]);
+    const [bx, by] = toScreen(PORTS[b][0], PORTS[b][1]);
+    const dist = Math.sqrt((bx - ax) ** 2 + (by - ay) ** 2);
+    const count = Math.max(3, Math.floor(dist / 28));
+    for (let i = 1; i < count; i++) {
+      const t = i / count;
+      const perpX = -(by - ay) / dist;
+      const perpY = (bx - ax) / dist;
+      const curve = Math.sin(t * Math.PI) * (8 + Math.random() * 12);
+      const scatter = (Math.random() - 0.5) * 10;
+      addDot(
+        ax + (bx - ax) * t + perpX * curve + (Math.random() - 0.5) * scatter,
+        ay + (by - ay) * t + perpY * curve + (Math.random() - 0.5) * scatter,
+        false,
+      );
+    }
+  }
+
+  // Sparse ambient fill
+  const fillSpacing = 60;
+  const cols = Math.ceil(w / fillSpacing);
+  const rows = Math.ceil(h / fillSpacing);
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (Math.random() > 0.15) continue;
+      const fx = c * fillSpacing + (Math.random() - 0.5) * fillSpacing * 0.6;
+      const fy = r * fillSpacing + (Math.random() - 0.5) * fillSpacing * 0.6;
+      let tooClose = false;
+      for (let d = 0; d < dots.length; d++) {
+        const ddx = dots[d].baseX - fx;
+        const ddy = dots[d].baseY - fy;
+        if (ddx * ddx + ddy * ddy < 900) { tooClose = true; break; }
+      }
+      if (!tooClose) addDot(fx, fy, false);
+    }
+  }
+
+  return dots;
+}
+
+function buildSpatialGrid(dots: Dot[], w: number, h: number, cellSize: number) {
+  const cols = Math.ceil(w / cellSize);
+  const rows = Math.ceil(h / cellSize);
+  const grid: number[][] = new Array(cols * rows);
+  for (let i = 0; i < grid.length; i++) grid[i] = [];
+  for (let i = 0; i < dots.length; i++) {
+    const cx = Math.floor(dots[i].x / cellSize);
+    const cy = Math.floor(dots[i].y / cellSize);
+    if (cx >= 0 && cx < cols && cy >= 0 && cy < rows) {
+      grid[cy * cols + cx].push(i);
+    }
+  }
+  return { grid, cols, rows };
+}
+
+interface DataOceanProps {
+  className?: string;
+  /** Overall opacity multiplier (0-1) */
+  opacity?: number;
+}
+
+export default function DataOcean({ className = "", opacity = 1 }: DataOceanProps) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const mouseRef = useRef({ x: -9999, y: -9999 });
+  const dotsRef = useRef<Dot[]>([]);
+  const rafRef = useRef<number>(0);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    function resize() {
+      const rect = canvas!.getBoundingClientRect();
+      canvas!.width = rect.width * dpr;
+      canvas!.height = rect.height * dpr;
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+      dotsRef.current = buildShippingDots(rect.width, rect.height);
+    }
+
+    function onMouseMove(e: MouseEvent) {
+      const rect = canvas!.getBoundingClientRect();
+      mouseRef.current.x = e.clientX - rect.left;
+      mouseRef.current.y = e.clientY - rect.top;
+    }
+
+    function onMouseLeave() {
+      mouseRef.current.x = -9999;
+      mouseRef.current.y = -9999;
+    }
+
+    function draw(time: number) {
+      const rect = canvas!.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
+      ctx!.clearRect(0, 0, w, h);
+
+      // Continent outlines
+      const proj = getProjection(w, h);
+      ctx!.strokeStyle = "rgba(148, 163, 184, 0.07)";
+      ctx!.fillStyle = "rgba(148, 163, 184, 0.02)";
+      ctx!.lineWidth = 0.8;
+      for (const continent of CONTINENTS) {
+        ctx!.beginPath();
+        for (let i = 0; i < continent.length; i++) {
+          const [cx, cy] = proj.toScreen(continent[i][0], continent[i][1]);
+          if (i === 0) ctx!.moveTo(cx, cy);
+          else ctx!.lineTo(cx, cy);
+        }
+        ctx!.closePath();
+        ctx!.fill();
+        ctx!.stroke();
+      }
+
+      const dots = dotsRef.current;
+      const mx = mouseRef.current.x;
+      const my = mouseRef.current.y;
+      const t = time * WAVE_SPEED;
+
+      // Update positions
+      for (let i = 0; i < dots.length; i++) {
+        const d = dots[i];
+        const waveY = Math.sin(d.baseX * WAVE_FREQ_X + t) * Math.cos(d.baseY * WAVE_FREQ_Y + t * 0.7) * WAVE_AMPLITUDE;
+        const waveX = Math.cos(d.baseY * WAVE_FREQ_X * 0.8 + t * 0.5) * WAVE_AMPLITUDE * 0.3;
+
+        let pushX = 0, pushY = 0;
+        const dx = d.baseX - mx;
+        const dy = d.baseY - my;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MOUSE_RADIUS && dist > 0) {
+          const force = (1 - dist / MOUSE_RADIUS) * MOUSE_STRENGTH;
+          pushX = (dx / dist) * force;
+          pushY = (dy / dist) * force;
+        }
+        d.x = d.baseX + waveX + pushX;
+        d.y = d.baseY + waveY + pushY;
+      }
+
+      // Lines
+      const cellSize = LINE_DISTANCE;
+      const { grid, cols, rows } = buildSpatialGrid(dots, w, h, cellSize);
+      ctx!.lineWidth = 0.5;
+      for (let i = 0; i < dots.length; i++) {
+        const cx = Math.floor(dots[i].x / cellSize);
+        const cy = Math.floor(dots[i].y / cellSize);
+        for (let ny = Math.max(0, cy - 1); ny <= Math.min(rows - 1, cy + 1); ny++) {
+          for (let nx = Math.max(0, cx - 1); nx <= Math.min(cols - 1, cx + 1); nx++) {
+            const cell = grid[ny * cols + nx];
+            for (let k = 0; k < cell.length; k++) {
+              const j = cell[k];
+              if (j <= i) continue;
+              const ddx = dots[i].x - dots[j].x;
+              const ddy = dots[i].y - dots[j].y;
+              const dd = Math.sqrt(ddx * ddx + ddy * ddy);
+              if (dd < LINE_DISTANCE) {
+                const alpha = (1 - dd / LINE_DISTANCE) * 0.14;
+                ctx!.strokeStyle = `rgba(93,173,226,${alpha})`;
+                ctx!.beginPath();
+                ctx!.moveTo(dots[i].x, dots[i].y);
+                ctx!.lineTo(dots[j].x, dots[j].y);
+                ctx!.stroke();
+              }
+            }
+          }
+        }
+      }
+
+      // Dots
+      for (let i = 0; i < dots.length; i++) {
+        const d = dots[i];
+        if (d.isPort) {
+          const pulse = 0.5 + 0.15 * Math.sin(time * 0.0015 + d.pulseOffset);
+          const [cr, cg, cb] = GREEN;
+          ctx!.fillStyle = `rgba(${cr},${cg},${cb},${pulse})`;
+          ctx!.beginPath();
+          ctx!.arc(d.x, d.y, PORT_RADIUS + 0.4 * Math.sin(time * 0.002 + d.pulseOffset), 0, Math.PI * 2);
+          ctx!.fill();
+          ctx!.strokeStyle = `rgba(${cr},${cg},${cb},${pulse * 0.3})`;
+          ctx!.lineWidth = 1;
+          ctx!.beginPath();
+          ctx!.arc(d.x, d.y, PORT_RADIUS + 4, 0, Math.PI * 2);
+          ctx!.stroke();
+        } else {
+          const [cr, cg, cb] = d.isAccent ? GREEN : BLUE;
+          const alpha = d.isAccent ? 0.3 + 0.15 * Math.sin(time * 0.002 + d.pulseOffset) : 0.22;
+          ctx!.fillStyle = `rgba(${cr},${cg},${cb},${alpha})`;
+          ctx!.beginPath();
+          ctx!.arc(d.x, d.y, DOT_RADIUS, 0, Math.PI * 2);
+          ctx!.fill();
+        }
+      }
+
+      // Animated packets
+      for (let r = 0; r < ROUTES.length; r++) {
+        const [a, b] = ROUTES[r];
+        const [pax, pay] = proj.toScreen(PORTS[a][0], PORTS[a][1]);
+        const [pbx, pby] = proj.toScreen(PORTS[b][0], PORTS[b][1]);
+        const speed = 0.00018 + (r % 5) * 0.00004;
+        const progress = ((time * speed + r * 0.15) % 1);
+        const px = pax + (pbx - pax) * progress;
+        const py = pay + (pby - pay) * progress;
+        const packetAlpha = 0.6 * Math.sin(progress * Math.PI);
+        ctx!.fillStyle = `rgba(93,173,226,${packetAlpha})`;
+        ctx!.beginPath();
+        ctx!.arc(px, py, 2, 0, Math.PI * 2);
+        ctx!.fill();
+      }
+
+      rafRef.current = requestAnimationFrame(draw);
+    }
+
+    resize();
+    rafRef.current = requestAnimationFrame(draw);
+
+    const parent = canvas.parentElement;
+    document.addEventListener("mousemove", onMouseMove);
+    parent?.addEventListener("mouseleave", onMouseLeave);
+    window.addEventListener("resize", resize);
+
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      document.removeEventListener("mousemove", onMouseMove);
+      parent?.removeEventListener("mouseleave", onMouseLeave);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className={className}
+      style={{
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+        pointerEvents: "none",
+        opacity,
+      }}
+    />
+  );
+}

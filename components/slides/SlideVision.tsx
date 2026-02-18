@@ -5,6 +5,7 @@ import SlideWrapper from "@/components/SlideWrapper";
 import { useContent } from "@/lib/i18n";
 import { motion, useReducedMotion } from "framer-motion";
 import { fadeInUp, scaleIn, staggerContainer } from "@/lib/animations";
+import DataOcean from "@/components/DataOcean";
 
 /* ────────────────────────────────────────────
    Ticker — infinite-scrolling price strip
@@ -191,34 +192,8 @@ export default function SlideVision() {
 
   return (
     <SlideWrapper className="relative overflow-hidden bg-white p-0">
-      {/* ── Background atmosphere ── */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden>
-        {/* Large blue radial orb */}
-        <div
-          className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 animate-breathing"
-          style={{
-            width: 700,
-            height: 700,
-            background:
-              "radial-gradient(circle, rgba(93,173,226,0.08) 0%, transparent 70%)",
-          }}
-        />
-        {/* Green accent orb */}
-        <div
-          className="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 animate-breathing"
-          style={{
-            width: 500,
-            height: 500,
-            background:
-              "radial-gradient(circle, rgba(34,197,94,0.05) 0%, transparent 65%)",
-            animationDirection: "reverse",
-            animationDuration: "12s",
-          }}
-        />
-      </div>
-
-      {/* Floating particles */}
-      <Particles />
+      {/* ── Interactive shipping data ocean ── */}
+      <DataOcean opacity={0.85} />
 
       {/* ── Price ticker (top edge) ── */}
       <div className="relative z-10 w-full flex-shrink-0">

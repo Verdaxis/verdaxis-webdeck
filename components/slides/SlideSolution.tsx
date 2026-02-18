@@ -1,6 +1,7 @@
 "use client";
 
 import SlideWrapper from "@/components/SlideWrapper";
+import SlideBackground from "@/components/SlideBackground";
 import { useContent } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import { scaleIn, staggerContainer } from "@/lib/animations";
@@ -68,6 +69,7 @@ export default function SlideSolution() {
 
   return (
     <SlideWrapper>
+      <SlideBackground variant="mesh" tint="mixed" />
       <div className="w-full max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
