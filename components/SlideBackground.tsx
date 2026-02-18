@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
 /* ────────────────────────────────────────────
@@ -76,21 +76,23 @@ function MeshBg({ tint }: { tint: string }) {
 }
 
 /* ── Dot grid with subtle connecting lines ── */
-function GridBg() {
-  const dots = useMemo(() => {
-    const result: { x: number; y: number; delay: number }[] = [];
-    for (let row = 0; row < 12; row++) {
-      for (let col = 0; col < 16; col++) {
-        if (Math.random() > 0.4) continue; // sparse
-        result.push({
-          x: (col / 15) * 100,
-          y: (row / 11) * 100,
-          delay: Math.random() * 3,
-        });
-      }
+function generateGridDots() {
+  const result: { x: number; y: number; delay: number }[] = [];
+  for (let row = 0; row < 12; row++) {
+    for (let col = 0; col < 16; col++) {
+      if (Math.random() > 0.4) continue; // sparse
+      result.push({
+        x: (col / 15) * 100,
+        y: (row / 11) * 100,
+        delay: Math.random() * 3,
+      });
     }
-    return result;
-  }, []);
+  }
+  return result;
+}
+
+function GridBg() {
+  const [dots] = useState(generateGridDots);
 
   return (
     <>

@@ -25,8 +25,16 @@ No environment variables required. No test framework configured.
 ```
 app/[deck]/page.tsx          # Dynamic deck route (static params from lib/decks/)
 components/slides/           # 15 main slide components (SlideVision, SlideTOC, etc.)
-components/slides/branches/  # 5 branch sub-slides (BranchMarketSizing, etc.)
+components/slides/branches/  # 5 branch sub-slides:
+                             #   BranchMarketSizing, BranchComplianceEngine,
+                             #   BranchAICopilot, BranchProducerMap,
+                             #   BranchBusinessModel
 components/branching/        # Modal, Accordion, BranchTrigger, SubSlide* components
+components/AnimatedCounter.tsx   # Animated number counter (used in SlideMarket)
+components/DataOcean.tsx         # Interactive shipping-route canvas animation
+components/LanguageSelector.tsx  # Dropdown language switcher
+components/SlideNavigation.tsx   # Slide dots + prev/next arrows
+components/SlideBackground.tsx   # Atmospheric animated backgrounds (mesh/grid/waves/orbs)
 lib/decks/                   # Deck configs (vc.ts defines slide order + branches)
 lib/content/                 # i18n content files (en/zh/de/nl/fr/pt)
 lib/slideRegistry.ts         # Lazy-loaded component registry + preloader
@@ -41,7 +49,7 @@ lib/branchContext.tsx         # Branch open/close state
 Every slide follows the same pattern:
 1. `"use client"` directive
 2. `useContent()` hook for i18n text
-3. `useReducedMotion()` for accessibility
+3. Some slides use `useReducedMotion()` for accessibility (SlideVision, SlideDemo, SlideBackground). CSS `@media (prefers-reduced-motion: reduce)` handles reduced motion globally for ticker and flywheel animations.
 4. Wrapped in `<SlideWrapper>` + `<SlideBackground variant="...">`
 5. Framer Motion `<motion.div>` with variants from `lib/animations.ts`
 

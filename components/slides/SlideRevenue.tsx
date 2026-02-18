@@ -36,6 +36,7 @@ interface SlideRevenueProps {
   branches?: string[];
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function SlideRevenue({ branches }: SlideRevenueProps) {
   const t = useContent();
   const { heading, subtitle, streams, projectedLabel, growthStatement } =
@@ -75,7 +76,7 @@ export default function SlideRevenue({ branches }: SlideRevenueProps) {
           className="grid grid-cols-1 md:grid-cols-3 gap-5"
           variants={staggerContainer}
         >
-          {streams.map((stream, i) => (
+          {streams.map((stream) => (
             <motion.div
               key={stream.title}
               variants={fadeInUp}

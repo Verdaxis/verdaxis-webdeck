@@ -76,101 +76,32 @@ function PriceTicker({
 }
 
 /* ────────────────────────────────────────────
-   Floating particles (subtle background dots)
-   ──────────────────────────────────────────── */
-
-function Particles() {
-  const prefersReduced = useReducedMotion();
-  const COUNT = 20;
-
-  const dots = useMemo(
-    () =>
-      Array.from({ length: COUNT }, (_, i) => ({
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: 1.5 + Math.random() * 2,
-        duration: 20 + Math.random() * 30,
-        delay: Math.random() * 10,
-        opacity: 0.15 + Math.random() * 0.2,
-      })),
-    [],
-  );
-
-  if (prefersReduced) return null;
-
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-      {dots.map((d) => (
-        <div
-          key={d.id}
-          className="absolute rounded-full bg-verdaxis-blue"
-          style={{
-            left: `${d.x}%`,
-            top: `${d.y}%`,
-            width: d.size,
-            height: d.size,
-            opacity: d.opacity,
-            animation: `particle-drift-${d.id % 4} ${d.duration}s ease-in-out ${d.delay}s infinite alternate`,
-          }}
-        />
-      ))}
-      <style jsx>{`
-        @keyframes particle-drift-0 {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(30px, -40px); }
-        }
-        @keyframes particle-drift-1 {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(-25px, 35px); }
-        }
-        @keyframes particle-drift-2 {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(40px, 20px); }
-        }
-        @keyframes particle-drift-3 {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(-35px, -25px); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          div { animation: none !important; }
-        }
-      `}</style>
-    </div>
-  );
-}
-
-/* ────────────────────────────────────────────
    Typing animation for subtitle
    ──────────────────────────────────────────── */
 
 function TypingText({ text, className }: { text: string; className?: string }) {
   const prefersReduced = useReducedMotion();
-  const [displayed, setDisplayed] = useState("");
-  const [done, setDone] = useState(false);
+  const [charIndex, setCharIndex] = useState(() => (prefersReduced ? text.length : 0));
 
+  // Reset and animate typing when text changes
   useEffect(() => {
-    if (prefersReduced) {
-      setDisplayed(text);
-      setDone(true);
-      return;
-    }
+    if (prefersReduced) return;
 
-    let i = 0;
-    setDisplayed("");
-    setDone(false);
-
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reset on dep change is intentional
+    setCharIndex(0);
     const timer = setInterval(() => {
-      i += 1;
-      setDisplayed(text.slice(0, i));
-      if (i >= text.length) {
-        clearInterval(timer);
-        setDone(true);
-      }
+      setCharIndex((prev) => {
+        const next = prev + 1;
+        if (next >= text.length) clearInterval(timer);
+        return next;
+      });
     }, 32);
 
     return () => clearInterval(timer);
   }, [text, prefersReduced]);
+
+  const displayed = text.slice(0, charIndex);
+  const done = charIndex >= text.length;
 
   return (
     <span className={className}>
