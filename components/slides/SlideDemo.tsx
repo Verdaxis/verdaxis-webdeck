@@ -728,7 +728,7 @@ export default function SlideDemo() {
         <p className="text-xs text-text-secondary font-body max-w-lg mx-auto">{t.demo.subtitle}</p>
       </motion.div>
 
-      {/* two browser windows */}
+      {/* two browser windows — Buyer left, Seller right (per design spec) */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -737,24 +737,7 @@ export default function SlideDemo() {
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        {/* SELLER */}
-        <BrowserWindow
-          url="app.verdaxis.exchange/supplier"
-          label={`${t.demo.seller.label} — ${t.demo.seller.sublabel}`}
-          labelColor="text-green-400"
-        >
-          <AppShell mode="seller" active={sellerNav[phase]} badge={sellerBadge}>
-            <AnimatePresence mode="wait">
-              {phase === 0 && <SellerTerminal key="s0" />}
-              {phase === 1 && <SellerPhase1 key="s1" t={t} />}
-              {phase === 2 && <SellerPhase2 key="s2" t={t} />}
-              {phase === 3 && <SellerPhase3 key="s3" t={t} />}
-              {phase === 4 && <SellerPhase4 key="s4" t={t} />}
-            </AnimatePresence>
-          </AppShell>
-        </BrowserWindow>
-
-        {/* BUYER */}
+        {/* BUYER (left panel — blue-tinted) */}
         <BrowserWindow
           url="app.verdaxis.exchange/buyer"
           label={`${t.demo.buyer.label} — ${t.demo.buyer.sublabel}`}
@@ -770,10 +753,70 @@ export default function SlideDemo() {
             </AnimatePresence>
           </AppShell>
         </BrowserWindow>
+
+        {/* SELLER (right panel — green-tinted) */}
+        <BrowserWindow
+          url="app.verdaxis.exchange/supplier"
+          label={`${t.demo.seller.label} — ${t.demo.seller.sublabel}`}
+          labelColor="text-green-400"
+        >
+          <AppShell mode="seller" active={sellerNav[phase]} badge={sellerBadge}>
+            <AnimatePresence mode="wait">
+              {phase === 0 && <SellerTerminal key="s0" />}
+              {phase === 1 && <SellerPhase1 key="s1" t={t} />}
+              {phase === 2 && <SellerPhase2 key="s2" t={t} />}
+              {phase === 3 && <SellerPhase3 key="s3" t={t} />}
+              {phase === 4 && <SellerPhase4 key="s4" t={t} />}
+            </AnimatePresence>
+          </AppShell>
+        </BrowserWindow>
       </motion.div>
 
-      {/* live demo indicator */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="flex justify-center mt-2">
+      {/* progress dots + live indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="flex flex-col items-center gap-2 mt-3"
+      >
+        {/* step progress dots */}
+        <div className="flex items-center gap-2">
+          {Array.from({ length: NUM_PHASES }).map((_, i) => {
+            const stepLabels = [
+              u(t, "commandCenter", "Terminal"),
+              ...t.demo.buyer.steps,
+            ];
+            return (
+              <button
+                key={i}
+                onClick={() => setPhase(i)}
+                className="group flex items-center gap-1.5 cursor-pointer"
+                aria-label={`Step ${i + 1}: ${stepLabels[i]}`}
+              >
+                <motion.div
+                  animate={{
+                    width: phase === i ? 24 : 8,
+                    backgroundColor: phase === i ? "#5DADE2" : "#CBD5E1",
+                  }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="h-2 rounded-full"
+                />
+                {phase === i && (
+                  <motion.span
+                    initial={{ opacity: 0, x: -4 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="text-[8px] font-heading font-semibold text-verdaxis-blue uppercase tracking-wider"
+                  >
+                    {stepLabels[i]}
+                  </motion.span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* live demo toggle */}
         <button
           onClick={() => setPaused((p) => !p)}
           className="flex items-center gap-1.5 px-3 py-1 bg-slate-800/5 hover:bg-slate-800/10 rounded-full transition-colors cursor-pointer"
