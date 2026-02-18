@@ -96,7 +96,7 @@ function AppShell({
   const accentDot = seller ? "bg-green-400" : "bg-sky-400";
 
   return (
-    <div className="flex" style={{ height: 220 }}>
+    <div className="flex" style={{ height: 320 }}>
       {/* ── sidebar ── */}
       <div className="w-10 bg-[#343E50] flex flex-col items-center pt-2 pb-2 shrink-0">
         <div className="w-5 h-5 rounded bg-white/15 flex items-center justify-center text-[7px] font-bold text-white/70 mb-1">
@@ -143,8 +143,15 @@ function AppShell({
           </div>
           <div className="w-4 h-4 rounded-full bg-slate-100" />
         </div>
-        {/* content */}
-        <div className="flex-1 bg-slate-50 p-2 overflow-hidden">{children}</div>
+        {/* content — scaled down proportionally so full layout is visible */}
+        <div className="flex-1 bg-slate-50 overflow-hidden relative">
+          <div
+            className="absolute inset-0 p-2.5"
+            style={{ transform: "scale(0.82)", transformOrigin: "top left", width: "122%", height: "122%" }}
+          >
+            {children}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -574,7 +581,7 @@ export default function SlideDemo() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.15 }}
-        className="flex gap-4 max-w-5xl mx-auto w-full"
+        className="flex gap-4 max-w-6xl mx-auto w-full"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
