@@ -49,6 +49,7 @@ export interface DeckContent {
       description: string;
       iconKey: string;
       highlight?: string;
+      poweredBy?: string;
     }[];
     branchLabels: Record<string, string>;
   };
@@ -92,6 +93,7 @@ export interface DeckContent {
       role: string;
       bio: string;
       imageUrl?: string;
+      company?: string;
     }[];
   };
 

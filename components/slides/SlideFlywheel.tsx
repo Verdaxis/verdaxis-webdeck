@@ -90,8 +90,8 @@ function FlywheelDiagram({
   const cx = size / 2;
   const cy = size / 2;
   const radius = 210;
-  const nodeCardW = 140;
-  const nodeCardH = 72;
+  const nodeCardW = 160;
+  const nodeCardH = 90;
 
   const positions = useMemo(
     () => nodes.map((_, i) => nodePosition(i, radius, cx, cy)),
@@ -215,9 +215,16 @@ function FlywheelDiagram({
             >
               {node.label}
             </span>
-            <span className="text-white/40 text-[9px] sm:text-[10px] leading-tight mt-1 line-clamp-2">
+            <span className="text-white/40 text-[9px] sm:text-[10px] leading-tight mt-1">
               {node.description}
             </span>
+            {isFirst && (
+              <img
+                src="/images/logos/partners/marinachain-white.png"
+                alt="MarinaChain"
+                className="h-3.5 opacity-60 mt-1"
+              />
+            )}
           </motion.div>
         );
       })}

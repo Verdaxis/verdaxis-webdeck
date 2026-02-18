@@ -178,7 +178,7 @@ export default function SlideProduct({ branches }: SlideProductProps) {
             <motion.div
               key={feature.iconKey}
               variants={scaleIn}
-              className="group relative rounded-xl border border-white/10 bg-white/[0.04] backdrop-blur-md p-5 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06]"
+              className="group relative rounded-xl border border-white/10 bg-white/[0.04] backdrop-blur-md p-5 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] flex flex-col h-full"
             >
               {/* Highlight badge */}
               {feature.highlight && (
@@ -203,6 +203,32 @@ export default function SlideProduct({ branches }: SlideProductProps) {
               <p className="text-xs text-white/45 leading-relaxed">
                 {feature.description}
               </p>
+
+              {/* Powered by partner tag */}
+              {feature.poweredBy === "marinachain" && (
+                <div className="mt-auto pt-3">
+                  <div className="inline-flex items-center gap-1.5 bg-[#0066CC]/10 border border-[#0066CC]/20 rounded-full px-2 py-0.5">
+                    <span className="text-[9px] text-[#0066CC]/60">Powered by</span>
+                    <img
+                      src="/images/logos/partners/marinachain-white.png"
+                      alt="MarinaChain"
+                      className="h-[14px] w-auto opacity-70"
+                    />
+                  </div>
+                </div>
+              )}
+              {feature.poweredBy === "gena" && (
+                <div className="mt-auto pt-3">
+                  <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-2 py-0.5">
+                    <span className="text-[9px] text-emerald-500/60">Powered by</span>
+                    <img
+                      src="/images/logos/partners/gena-green.svg"
+                      alt="Gena"
+                      className="h-[14px] w-auto opacity-80"
+                    />
+                  </div>
+                </div>
+              )}
             </motion.div>
           ))}
         </motion.div>

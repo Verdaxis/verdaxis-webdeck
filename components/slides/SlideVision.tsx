@@ -250,6 +250,14 @@ export default function SlideVision() {
           />
         </motion.div>
 
+        {/* Company name */}
+        <motion.span
+          variants={fadeInUp}
+          className="font-heading text-xl font-semibold uppercase tracking-[0.2em] text-white md:text-2xl"
+        >
+          Verdaxis
+        </motion.span>
+
         {/* Headline */}
         <motion.h1
           variants={fadeInUp}

@@ -286,25 +286,30 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
   /* ══════════ DESKTOP: Slide-by-slide with transitions ══════════ */
   return (
     <div
-      className="relative w-screen h-screen overflow-hidden bg-gradient-to-br from-deep-dark via-[#0D1B2A] to-[#0F1D2F]"
+      className="relative w-screen h-screen overflow-hidden bg-gradient-to-br from-[#0B1120] via-[#0E1726] to-[#0B1120]"
       style={{ height: "100dvh" }}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Constant ambient background effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div
-          className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full opacity-[0.07]"
+          className="absolute top-[-10%] right-[10%] w-[400px] h-[400px] rounded-full opacity-[0.04]"
           style={{
             background: "radial-gradient(circle, #5DADE2 0%, transparent 70%)",
-            animation: "spin 50s linear infinite",
           }}
         />
         <div
-          className="absolute bottom-[-20%] left-[-10%] w-[700px] h-[700px] rounded-full opacity-[0.05]"
+          className="absolute bottom-[-8%] left-[5%] w-[350px] h-[350px] rounded-full opacity-[0.03]"
           style={{
-            background: "radial-gradient(circle, #D4A853 0%, transparent 60%)",
-            animation: "spin 70s linear infinite reverse",
+            background: "radial-gradient(circle, #10B981 0%, transparent 65%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")",
+            backgroundRepeat: "repeat",
+            backgroundSize: "150px 150px",
           }}
         />
       </div>
@@ -312,14 +317,14 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
       {/* Persistent logo — fades in/out based on slide */}
       <motion.div
         className="absolute top-5 right-6 md:top-6 md:right-8 z-30"
-        animate={{ opacity: showLogo ? 0.7 : 0 }}
+        animate={{ opacity: showLogo ? 0.5 : 0 }}
         transition={{ duration: 0.3 }}
       >
         <Image
           src="/images/logos/verdaxis-icon.png"
           alt="Verdaxis"
-          width={120}
-          height={30}
+          width={80}
+          height={20}
           priority
           style={{ height: "auto" }}
         />

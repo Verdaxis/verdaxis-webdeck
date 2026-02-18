@@ -132,7 +132,7 @@ export const en: DeckContent = {
       label: "Serviceable Obtainable Market",
       description: "Spot market volume through Singapore + key global hubs \u2014 our beachhead",
     },
-    branchLabel: "Market Sizing Detail \u2192",
+    branchLabel: "Market Sizing Detail",
   },
 
   product: {
@@ -150,23 +150,26 @@ export const en: DeckContent = {
         description: "Track EU ETS, FuelEU Maritime, and IMO obligations in one view. Fleet-level compliance scoring. Automated penalty forecasting.",
         iconKey: "compliance",
         highlight: "6 Frameworks",
-      },
-      {
-        name: "AI Copilot",
-        description: "Gemini-powered market intelligence. Natural language queries for pricing, compliance, and market analysis. Tool-calling architecture for real-time data.",
-        iconKey: "ai",
-        highlight: "Gemini AI",
+        poweredBy: "marinachain",
       },
       {
         name: "Fleet Tracking",
         description: "Monitor vessel positions, CII ratings, and compliance status. Route-based fuel optimization. Voyage compliance forecasting.",
         iconKey: "fleet",
+        poweredBy: "marinachain",
+      },
+      {
+        name: "AI Copilot",
+        description: "AI-powered market intelligence. Natural language queries for pricing, compliance, and market analysis. Tool-calling architecture for real-time data.",
+        iconKey: "ai",
+        highlight: "AI-Powered",
       },
       {
         name: "Producer Map",
         description: "Interactive map of 150+ global alternative fuel production projects. Filter by fuel type, region, capacity, and certification status.",
         iconKey: "map",
         highlight: "150+ Projects",
+        poweredBy: "gena",
       },
       {
         name: "Energy Calculator",
@@ -175,9 +178,9 @@ export const en: DeckContent = {
       },
     ],
     branchLabels: {
-      "compliance-engine": "Compliance Deep Dive \u2192",
-      "ai-copilot": "AI Copilot Demo \u2192",
-      "producer-map": "Producer Map \u2192",
+      "compliance-engine": "Compliance Deep Dive",
+      "ai-copilot": "AI Copilot Demo",
+      "producer-map": "Producer Map",
     },
   },
 
@@ -306,21 +309,29 @@ export const en: DeckContent = {
         name: "Dan Ha",
         role: "CEO & Co-Founder",
         bio: "Serial entrepreneur with deep maritime tech experience. Previously founded MarinaChain, building AI-powered solutions for the shipping industry. Combines technical vision with commercial execution.",
+        imageUrl: "/images/team/dan-ha.png",
+        company: "marinachain",
       },
       {
         name: "Jon J",
         role: "COO & Co-Founder",
         bio: "Operations and product leader with experience scaling technology platforms. Drives product development, partnerships, and go-to-market strategy for Verdaxis.",
+        imageUrl: "/images/team/jon-j.png",
+        company: "marinachain",
       },
       {
         name: "Chris Chatterton",
         role: "Managing Director",
         bio: "30+ years in maritime and energy. Former Deputy Secretary-General of the International Bunker Industry Association (IBIA). Deep regulatory expertise and industry network.",
+        imageUrl: "/images/team/chris-chatterton.jpg",
+        company: "greenm",
       },
       {
         name: "Gavin McGrath",
         role: "Executive Chair",
         bio: "Seasoned executive and board director. Extensive experience in energy trading and maritime services. Strategic advisor on market development and corporate governance.",
+        imageUrl: "/images/team/gavin-mcgrath.jpg",
+        company: "greenm",
       },
     ],
   },
@@ -433,7 +444,7 @@ export const en: DeckContent = {
       ],
     },
     aiCopilot: {
-      title: "AI Copilot \u2014 Gemini-Powered Intelligence",
+      title: "AI Copilot \u2014 Intelligent Assistant",
       capabilities: [
         { name: "Market Queries", description: "\"What's the cheapest bio-methanol available in Singapore this week?\" \u2014 real-time pricing from orderbook" },
         { name: "Compliance Analysis", description: "\"What's my FuelEU Maritime compliance gap for Q3?\" \u2014 calculates deficit and recommends fuel switches" },

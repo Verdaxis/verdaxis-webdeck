@@ -163,7 +163,7 @@ export default function SlideRevenue({ branches }: SlideRevenueProps) {
         {/* ── Branch trigger ── */}
         <motion.div variants={fadeInUp} className="pt-1">
           <BranchTrigger
-            label={t.branches.businessModel.title + " \u2192"}
+            label={t.branches.businessModel.title}
             onClick={() => setShowBranch(true)}
           />
         </motion.div>
