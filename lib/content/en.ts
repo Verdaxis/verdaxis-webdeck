@@ -264,13 +264,13 @@ export const en: DeckContent = {
 
   flywheel: {
     heading: "Ecosystem Flywheel",
-    subtitle: "Day 1 network advantage through MarinaChain\u2019s 400+ vessel base",
+    subtitle: "Day 1 advantage from MarinaChain\u2019s 400+ vessel network and Green Marine\u2019s trading ecosystem",
     nodes: [
-      { label: "MarinaChain Network", description: "400+ vessels already on platform \u2014 instant distribution channel" },
-      { label: "Founding Members", description: "Early adopters get preferential pricing and feature input" },
-      { label: "Market Liquidity", description: "More participants = tighter spreads = better prices for all" },
-      { label: "Data Intelligence", description: "Transaction data powers market insights and AI capabilities" },
-      { label: "More Users", description: "Better data and liquidity attract more producers and buyers" },
+      { label: "MarinaChain Network", description: "400+ vessels already on platform \u2014 instant distribution and compliance data" },
+      { label: "Green Marine Ecosystem", description: "Fuel brokerage, carbon accounting, and regulatory consulting built-in" },
+      { label: "Market Liquidity", description: "Combined networks drive tighter spreads and better prices for all" },
+      { label: "Data Intelligence", description: "Transaction + compliance data powers market insights and AI" },
+      { label: "Network Growth", description: "Better data, liquidity, and services attract more producers and buyers" },
     ],
     centerLabel: "Verdaxis Ecosystem",
   },

@@ -264,13 +264,13 @@ export const zh: DeckContent = {
 
   flywheel: {
     heading: "生态飞轮",
-    subtitle: "依托 MarinaChain 400多艘船舶基础，从第一天起即拥有网络优势",
+    subtitle: "依托 MarinaChain 400多艘船舶网络与 Green Marine 贸易生态，从第一天起即拥有优势",
     nodes: [
-      { label: "MarinaChain 网络", description: "400多艘船舶已在平台上——即时分发渠道" },
-      { label: "创始会员", description: "早期用户享有优惠定价和功能建议权" },
-      { label: "市场流动性", description: "更多参与者 = 更窄价差 = 所有人享有更优价格" },
-      { label: "数据智能", description: "交易数据驱动市场洞察和 AI 能力" },
-      { label: "更多用户", description: "更优的数据和流动性吸引更多生产商和买家" },
+      { label: "MarinaChain 网络", description: "400多艘船舶已在平台上——即时分发和合规数据" },
+      { label: "Green Marine 生态", description: "燃料经纪、碳核算和法规咨询一体化" },
+      { label: "市场流动性", description: "双重网络驱动更窄价差，所有人享有更优价格" },
+      { label: "数据智能", description: "交易与合规数据驱动市场洞察和 AI 能力" },
+      { label: "网络增长", description: "更优的数据、流动性和服务吸引更多生产商和买家" },
     ],
     centerLabel: "Verdaxis 生态系统",
   },

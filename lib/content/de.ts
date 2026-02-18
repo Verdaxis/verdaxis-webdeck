@@ -264,13 +264,13 @@ export const de: DeckContent = {
 
   flywheel: {
     heading: "Ökosystem-Schwungrad",
-    subtitle: "Tag-1-Netzwerkvorteil durch MarinaChains Basis von über 400 Schiffen",
+    subtitle: "Tag-1-Vorteil durch MarinaChains 400+ Schiffsnetzwerk und Green Marines Handelsökosystem",
     nodes: [
-      { label: "MarinaChain-Netzwerk", description: "Über 400 Schiffe bereits auf der Plattform — sofortiger Vertriebskanal" },
-      { label: "Gründungsmitglieder", description: "Frühe Nutzer erhalten Vorzugspreise und Mitspracherecht bei Funktionen" },
-      { label: "Marktliquidität", description: "Mehr Teilnehmer = engere Spreads = bessere Preise für alle" },
-      { label: "Datenintelligenz", description: "Transaktionsdaten treiben Markteinblicke und KI-Fähigkeiten voran" },
-      { label: "Mehr Nutzer", description: "Bessere Daten und Liquidität ziehen mehr Produzenten und Käufer an" },
+      { label: "MarinaChain-Netzwerk", description: "Über 400 Schiffe bereits auf der Plattform — sofortige Distribution und Compliance-Daten" },
+      { label: "Green Marine-Ökosystem", description: "Kraftstoffvermittlung, CO₂-Bilanzierung und regulatorische Beratung integriert" },
+      { label: "Marktliquidität", description: "Kombinierte Netzwerke treiben engere Spreads und bessere Preise für alle" },
+      { label: "Datenintelligenz", description: "Transaktions- und Compliance-Daten treiben Markteinblicke und KI voran" },
+      { label: "Netzwerkwachstum", description: "Bessere Daten, Liquidität und Services ziehen mehr Produzenten und Käufer an" },
     ],
     centerLabel: "Verdaxis-Ökosystem",
   },

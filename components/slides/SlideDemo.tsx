@@ -212,135 +212,155 @@ function ActionBtn({
 }
 
 /* ═══════════════════════════════════════════════════════════
-   PHASE 0 — MARKET TERMINAL (DASHBOARD)
+   PHASE 0 — MARKET TERMINAL (ORDERBOOK + CHART)
    ═══════════════════════════════════════════════════════════ */
 
-function KpiCard({ icon, label, value, accent }: { icon: string; label: string; value: string; accent: string }) {
+const terminalRows = [
+  { period: "SPOT", bid: 538.5, bidQty: 250, ask: 541.75, askQty: 200, last: 540.12, chg: +1.25 },
+  { period: "Q1 26", bid: 540.75, bidQty: 300, ask: 544.0, askQty: 250, last: 542.38, chg: -0.8 },
+  { period: "Q2 26", bid: 543.0, bidQty: 350, ask: 546.25, askQty: 300, last: 544.63, chg: +0.5 },
+  { period: "Q3 26", bid: 545.25, bidQty: 400, ask: 548.5, askQty: 350, last: 546.88, chg: -0.3 },
+  { period: "CAL 27", bid: 549.75, bidQty: 500, ask: 553.0, askQty: 450, last: 551.38, chg: +0.25 },
+];
+
+const trades = [
+  { time: "14:25", side: "BUY" as const, qty: 450, price: 541.25, period: "Q2" },
+  { time: "14:22", side: "SELL" as const, qty: 300, price: 540.88, period: "SPOT" },
+  { time: "14:18", side: "BUY" as const, qty: 200, price: 542.5, period: "CAL" },
+];
+
+/** SVG polyline points for the forward curve */
+const chartPoints = terminalRows.map((r, i) => {
+  const x = 8 + i * ((100 - 16) / (terminalRows.length - 1));
+  const minP = 536, maxP = 554;
+  const y = 95 - ((r.last - minP) / (maxP - minP)) * 80;
+  return `${x},${y}`;
+}).join(" ");
+
+function MiniChart() {
   return (
-    <div className="flex-1 p-1.5 bg-white rounded-lg border border-slate-200 text-center">
-      <div className="text-[9px]">{icon}</div>
-      <div className={`text-[12px] font-heading font-bold ${accent}`}>{value}</div>
-      <div className="text-[6px] text-slate-400 font-heading uppercase tracking-wider leading-tight">{label}</div>
-    </div>
+    <svg viewBox="0 0 100 100" className="w-full h-full" preserveAspectRatio="none">
+      {/* grid lines */}
+      {[20, 40, 60, 80].map((y) => (
+        <line key={y} x1="0" y1={y} x2="100" y2={y} stroke="#e2e8f0" strokeWidth="0.5" strokeDasharray="2 2" />
+      ))}
+      {/* area fill */}
+      <polygon
+        points={`8,95 ${chartPoints} 92,95`}
+        fill="url(#chartGrad)"
+        opacity="0.3"
+      />
+      <defs>
+        <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#10b981" />
+          <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      {/* line */}
+      <polyline points={chartPoints} fill="none" stroke="#10b981" strokeWidth="1.5" strokeLinejoin="round" />
+      {/* dots */}
+      {chartPoints.split(" ").map((pt, i) => {
+        const [cx, cy] = pt.split(",");
+        return <circle key={i} cx={cx} cy={cy} r="1.5" fill="#10b981" stroke="white" strokeWidth="0.5" />;
+      })}
+    </svg>
+  );
+}
+
+function MarketTerminal({ t, highlight }: { t: DeckContent; highlight: "bid" | "ask" }) {
+  return (
+    <motion.div variants={fade} initial="hidden" animate="show" exit="exit" className="h-full flex flex-col">
+      {/* Header: fuel selector + best price */}
+      <div className="flex items-center justify-between mb-1">
+        <div>
+          <div className="text-[6px] text-slate-400 font-heading uppercase tracking-widest">Market Terminal</div>
+          <div className="text-[11px] font-heading font-bold text-slate-800 -mt-0.5">METHANOL</div>
+        </div>
+        <div className="text-right">
+          <div className="text-[6px] text-slate-400 font-heading uppercase">Best Offer</div>
+          <div className="text-[11px] font-heading font-bold text-emerald-600 -mt-0.5">$540.12</div>
+        </div>
+      </div>
+
+      {/* Mini forward curve chart */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="h-12 bg-white rounded border border-slate-100 mb-1 p-0.5"
+      >
+        <MiniChart />
+      </motion.div>
+
+      {/* Orderbook grid */}
+      <div className="flex-1 overflow-hidden">
+        {/* header row */}
+        <div className="flex text-[5px] font-heading font-bold text-slate-400 uppercase tracking-wider px-1 py-0.5 bg-slate-100/80 rounded-t">
+          <span className="w-[18%]">Period</span>
+          <span className="w-[16%] text-right">Bid</span>
+          <span className="w-[16%] text-right">Ask</span>
+          <span className="w-[16%] text-right">Last</span>
+          <span className="w-[16%] text-right">Chg</span>
+          <span className="w-[18%] text-right">#</span>
+        </div>
+        {/* data rows */}
+        <motion.div variants={stagger} initial="hidden" animate="show">
+          {terminalRows.map((row, i) => (
+            <motion.div
+              key={row.period}
+              variants={staggerChild}
+              className="flex text-[7px] font-mono px-1 py-[3px] border-b border-slate-50 items-center"
+            >
+              <span className="w-[18%] font-heading font-bold text-slate-700 flex items-center gap-0.5">
+                {i === 0 && <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />}
+                {row.period}
+              </span>
+              <span className={`w-[16%] text-right font-bold ${highlight === "bid" ? "text-emerald-600" : "text-emerald-500/70"}`}>
+                {row.bid.toFixed(1)}
+              </span>
+              <span className={`w-[16%] text-right font-bold ${highlight === "ask" ? "text-rose-600" : "text-rose-500/70"}`}>
+                {row.ask.toFixed(1)}
+              </span>
+              <span className="w-[16%] text-right text-slate-600 font-bold">{row.last.toFixed(1)}</span>
+              <span className={`w-[16%] text-right font-bold ${row.chg >= 0 ? "text-emerald-500" : "text-rose-500"}`}>
+                {row.chg >= 0 ? "↑" : "↓"}{Math.abs(row.chg).toFixed(1)}
+              </span>
+              <span className="w-[18%] text-right">
+                <span className="inline-block px-1 py-0 bg-emerald-500/10 text-emerald-600 text-[5px] font-bold rounded">
+                  {row.bidQty + row.askQty}
+                </span>
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Trade activity feed */}
+      <div className="mt-auto pt-0.5 border-t border-slate-100">
+        <div className="flex items-center gap-1 mb-0.5">
+          <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-[5px] font-heading font-bold text-slate-400 uppercase tracking-wider">Trade Activity</span>
+        </div>
+        {trades.map((tr, i) => (
+          <div key={i} className="flex text-[6px] font-mono text-slate-400 leading-tight">
+            <span className="w-[20%]">{tr.time}</span>
+            <span className={`w-[16%] font-bold ${tr.side === "BUY" ? "text-emerald-600" : "text-rose-500"}`}>{tr.side}</span>
+            <span className="w-[24%] text-slate-600 font-bold">{tr.qty} MT</span>
+            <span className="w-[24%] text-slate-700 font-bold">@ ${tr.price.toFixed(2)}</span>
+            <span className="w-[16%] text-right">{tr.period}</span>
+          </div>
+        ))}
+      </div>
+    </motion.div>
   );
 }
 
 function SellerTerminal({ t }: { t: DeckContent }) {
-  const orders = [
-    { fuel: "Bio-LNG", qty: "500 MT", status: "confirmed", price: "$1,240" },
-    { fuel: "HVO", qty: "300 MT", status: "delivered", price: "$1,150" },
-    { fuel: "FAME", qty: "200 MT", status: "pending", price: "$980" },
-  ];
-  const statusColor: Record<string, string> = {
-    confirmed: "bg-green-100 text-green-700",
-    delivered: "bg-sky-100 text-sky-700",
-    pending: "bg-amber-100 text-amber-700",
-  };
-
-  return (
-    <motion.div variants={fade} initial="hidden" animate="show" exit="exit" className="h-full flex flex-col gap-2">
-      <PageTitle>{u(t, "commandCenter", "Command Center")}</PageTitle>
-
-      {/* KPI row */}
-      <motion.div variants={stagger} initial="hidden" animate="show" className="flex gap-1.5">
-        <motion.div variants={staggerChild} className="flex-1">
-          <KpiCard icon="⚡" label={u(t, "pendingActions", "Pending")} value="2" accent="text-red-500" />
-        </motion.div>
-        <motion.div variants={staggerChild} className="flex-1">
-          <KpiCard icon="📦" label={u(t, "volumeSold", "Vol. Sold")} value="1.2k MT" accent="text-emerald-600" />
-        </motion.div>
-        <motion.div variants={staggerChild} className="flex-1">
-          <KpiCard icon="💰" label={u(t, "activeOrders", "Active")} value="$1.8M" accent="text-sky-600" />
-        </motion.div>
-      </motion.div>
-
-      {/* Recent orders mini-table */}
-      <div className="flex-1 space-y-1">
-        <span className="text-[7px] font-heading font-bold text-slate-400 uppercase tracking-wider">
-          {u(t, "recentOrders", "Recent Orders")}
-        </span>
-        {orders.map((o, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: -8 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 + i * 0.12 }}
-            className="flex items-center justify-between py-1 px-1.5 bg-white rounded border border-slate-100"
-          >
-            <div className="flex items-center gap-1.5">
-              <span className="text-[8px] font-heading font-semibold text-slate-700">{o.fuel}</span>
-              <span className="text-[7px] text-slate-400">{o.qty}</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span className="text-[8px] font-heading font-bold text-slate-600">{o.price}</span>
-              <span className={`text-[6px] px-1 py-0.5 rounded font-heading font-bold uppercase ${statusColor[o.status]}`}>
-                {u(t, o.status, o.status)}
-              </span>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      <div className="flex items-center gap-1.5">
-        <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-        <span className="text-[7px] text-slate-400 font-heading">3 {u(t, "activeOrders", "active orders")} · Rotterdam Hub</span>
-      </div>
-    </motion.div>
-  );
+  return <MarketTerminal t={t} highlight="ask" />;
 }
 
 function BuyerTerminal({ t }: { t: DeckContent }) {
-  const prices = [
-    { fuel: "Bio-LNG", price: "$1,240", change: "+2.3%", up: true },
-    { fuel: "HVO", price: "$1,150", change: "-1.1%", up: false },
-    { fuel: "FAME", price: "$980", change: "+0.5%", up: true },
-    { fuel: "E-Methanol", price: "$1,680", change: "+1.8%", up: true },
-  ];
-
-  return (
-    <motion.div variants={fade} initial="hidden" animate="show" exit="exit" className="h-full flex flex-col gap-2">
-      <PageTitle>{u(t, "procurementDashboard", "Procurement Dashboard")}</PageTitle>
-
-      {/* KPI row */}
-      <motion.div variants={stagger} initial="hidden" animate="show" className="flex gap-1.5">
-        <motion.div variants={staggerChild} className="flex-1">
-          <KpiCard icon="📋" label={u(t, "openOrders", "Open")} value="5" accent="text-sky-600" />
-        </motion.div>
-        <motion.div variants={staggerChild} className="flex-1">
-          <KpiCard icon="💵" label={u(t, "spendYtd", "YTD Spend")} value="$4.2M" accent="text-slate-700" />
-        </motion.div>
-        <motion.div variants={staggerChild} className="flex-1">
-          <KpiCard icon="🛡" label={u(t, "complianceRate", "Compliance")} value="98%" accent="text-emerald-600" />
-        </motion.div>
-      </motion.div>
-
-      {/* Market watch */}
-      <div className="flex-1 space-y-1">
-        <span className="text-[7px] font-heading font-bold text-slate-400 uppercase tracking-wider">
-          {u(t, "fuelPrices", "Market Watch")}
-        </span>
-        {prices.map((p, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: 8 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 + i * 0.1 }}
-            className="flex items-center justify-between py-1 px-1.5 bg-white rounded border border-slate-100"
-          >
-            <span className="text-[8px] font-heading font-semibold text-slate-700">{p.fuel}</span>
-            <div className="flex items-center gap-1.5">
-              <span className="text-[8px] font-heading font-bold text-slate-600">{p.price}/MT</span>
-              <span className={`text-[7px] font-heading font-bold ${p.up ? "text-emerald-500" : "text-red-400"}`}>
-                {p.up ? "↑" : "↓"} {p.change}
-              </span>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      <ActionBtn color="blue">{u(t, "browseMarketplace", "Browse Marketplace")} →</ActionBtn>
-    </motion.div>
-  );
+  return <MarketTerminal t={t} highlight="bid" />;
 }
 
 /* ═══════════════════════════════════════════════════════════

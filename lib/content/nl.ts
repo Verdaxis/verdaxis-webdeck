@@ -264,13 +264,13 @@ export const nl: DeckContent = {
 
   flywheel: {
     heading: "Ecosysteem-vliegwiel",
-    subtitle: "Dag 1 netwerkvoordeel via het netwerk van 400+ schepen van MarinaChain",
+    subtitle: "Dag 1 voordeel dankzij MarinaChains 400+ schepennetwerk en Green Marines handelsecosysteem",
     nodes: [
-      { label: "MarinaChain Netwerk", description: "400+ schepen reeds op het platform \u2014 direct distributiekanaal" },
-      { label: "Oprichtersleden", description: "Vroege gebruikers krijgen voordeelprijzen en invloed op functionaliteit" },
-      { label: "Marktliquiditeit", description: "Meer deelnemers = kleinere spreads = betere prijzen voor iedereen" },
-      { label: "Data-intelligentie", description: "Transactiedata voedt marktinzichten en AI-mogelijkheden" },
-      { label: "Meer Gebruikers", description: "Betere data en liquiditeit trekken meer producenten en kopers aan" },
+      { label: "MarinaChain Netwerk", description: "400+ schepen reeds op het platform \u2014 directe distributie en compliance-data" },
+      { label: "Green Marine Ecosysteem", description: "Brandstofbemiddeling, CO₂-boekhouding en regelgevend advies ingebouwd" },
+      { label: "Marktliquiditeit", description: "Gecombineerde netwerken zorgen voor kleinere spreads en betere prijzen" },
+      { label: "Data-intelligentie", description: "Transactie- en compliance-data voedt marktinzichten en AI" },
+      { label: "Netwerkgroei", description: "Betere data, liquiditeit en diensten trekken meer producenten en kopers aan" },
     ],
     centerLabel: "Verdaxis Ecosysteem",
   },

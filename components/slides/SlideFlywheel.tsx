@@ -179,7 +179,9 @@ function FlywheelDiagram({
       {/* Node cards — positioned absolutely over SVG */}
       {nodes.map((node, i) => {
         const pos = positions[i];
-        const isFirst = i === 0; // MarinaChain — accent
+        const isMarinaChain = i === 0;
+        const isGreenMarine = i === 1;
+        const isPartner = isMarinaChain || isGreenMarine;
 
         return (
           <motion.div
@@ -202,7 +204,7 @@ function FlywheelDiagram({
             <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-xl bg-gradient-to-r from-verdaxis-blue to-brand-green" />
             <span
               className={`font-heading font-semibold text-[11px] sm:text-xs leading-tight ${
-                isFirst ? "text-brand-green" : "text-slate-900"
+                isPartner ? "text-brand-green" : "text-slate-900"
               }`}
             >
               {node.label}
@@ -210,11 +212,18 @@ function FlywheelDiagram({
             <span className="text-slate-500 text-[9px] sm:text-[10px] leading-tight mt-1">
               {node.description}
             </span>
-            {isFirst && (
+            {isMarinaChain && (
               <img
                 src="/images/logos/partners/marinachain-color.png"
                 alt="MarinaChain"
                 className="h-3.5 opacity-80 mt-1"
+              />
+            )}
+            {isGreenMarine && (
+              <img
+                src="/images/logos/partners/greenmarine-full.png"
+                alt="Green Marine"
+                className="h-3.5 opacity-70 mt-1"
               />
             )}
           </motion.div>

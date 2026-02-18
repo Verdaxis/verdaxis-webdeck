@@ -264,13 +264,13 @@ export const pt: DeckContent = {
 
   flywheel: {
     heading: "Flywheel do Ecossistema",
-    subtitle: "Vantagem de rede desde o dia 1 com a base de mais de 400 embarcações da MarinaChain",
+    subtitle: "Vantagem desde o dia 1 com a rede de 400+ embarcações da MarinaChain e o ecossistema de trading da Green Marine",
     nodes: [
-      { label: "Rede MarinaChain", description: "Mais de 400 embarcações já na plataforma — canal de distribuição instantâneo" },
-      { label: "Membros Fundadores", description: "Primeiros adotantes recebem precificação preferencial e influência no produto" },
-      { label: "Liquidez de Mercado", description: "Mais participantes = spreads menores = melhores preços para todos" },
-      { label: "Inteligência de Dados", description: "Dados de transações alimentam insights de mercado e recursos de IA" },
-      { label: "Mais Usuários", description: "Melhores dados e liquidez atraem mais produtores e compradores" },
+      { label: "Rede MarinaChain", description: "Mais de 400 embarcações já na plataforma — distribuição instantânea e dados de conformidade" },
+      { label: "Ecossistema Green Marine", description: "Corretagem de combustível, contabilidade de carbono e consultoria regulatória integradas" },
+      { label: "Liquidez de Mercado", description: "Redes combinadas geram spreads menores e melhores preços para todos" },
+      { label: "Inteligência de Dados", description: "Dados de transação e conformidade alimentam insights de mercado e IA" },
+      { label: "Crescimento da Rede", description: "Melhores dados, liquidez e serviços atraem mais produtores e compradores" },
     ],
     centerLabel: "Ecossistema Verdaxis",
   },

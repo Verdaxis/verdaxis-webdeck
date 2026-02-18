@@ -264,13 +264,13 @@ export const fr: DeckContent = {
 
   flywheel: {
     heading: "Volant d\u2019Inertie de l\u2019\u00c9cosyst\u00e8me",
-    subtitle: "Avantage r\u00e9seau d\u00e8s le premier jour gr\u00e2ce aux 400+ navires de MarinaChain",
+    subtitle: "Avantage d\u00e8s le premier jour gr\u00e2ce au r\u00e9seau de 400+ navires de MarinaChain et \u00e0 l\u2019\u00e9cosyst\u00e8me de trading de Green Marine",
     nodes: [
-      { label: "R\u00e9seau MarinaChain", description: "Plus de 400 navires d\u00e9j\u00e0 sur la plateforme \u2014 canal de distribution imm\u00e9diat" },
-      { label: "Membres Fondateurs", description: "Les premiers adoptants b\u00e9n\u00e9ficient de tarifs pr\u00e9f\u00e9rentiels et participent au d\u00e9veloppement des fonctionnalit\u00e9s" },
-      { label: "Liquidit\u00e9 du March\u00e9", description: "Plus de participants = spreads plus serr\u00e9s = de meilleurs prix pour tous" },
-      { label: "Intelligence des Donn\u00e9es", description: "Les donn\u00e9es transactionnelles alimentent les analyses de march\u00e9 et les capacit\u00e9s IA" },
-      { label: "Plus d\u2019Utilisateurs", description: "De meilleures donn\u00e9es et une meilleure liquidit\u00e9 attirent davantage de producteurs et d\u2019acheteurs" },
+      { label: "R\u00e9seau MarinaChain", description: "Plus de 400 navires d\u00e9j\u00e0 sur la plateforme \u2014 distribution et donn\u00e9es de conformit\u00e9 instantan\u00e9es" },
+      { label: "\u00c9cosyst\u00e8me Green Marine", description: "Courtage de carburant, comptabilit\u00e9 carbone et conseil r\u00e9glementaire int\u00e9gr\u00e9s" },
+      { label: "Liquidit\u00e9 du March\u00e9", description: "Les r\u00e9seaux combin\u00e9s g\u00e9n\u00e8rent des spreads plus serr\u00e9s et de meilleurs prix" },
+      { label: "Intelligence des Donn\u00e9es", description: "Les donn\u00e9es transactionnelles et de conformit\u00e9 alimentent les analyses et l\u2019IA" },
+      { label: "Croissance du R\u00e9seau", description: "De meilleures donn\u00e9es, liquidit\u00e9 et services attirent davantage de producteurs et d\u2019acheteurs" },
     ],
     centerLabel: "\u00c9cosyst\u00e8me Verdaxis",
   },
