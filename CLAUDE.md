@@ -20,7 +20,14 @@ No environment variables required. No test framework configured.
 - All UI text must come from content files (`lib/content/`), never hardcoded.
 
 ## Adding a New Slide
-1. Create `components/slides/SlideXxx.tsx` following the slide pattern in ARCHITECTURE.md
+1. **Read the recipe first:** `.claude/recipes/new-slide.md` has the full checklist and component skeleton
+2. For specific slide types, also read the matching pattern in `.claude/recipes/patterns/` (title-hero, data-cards, feature-grid)
+3. Create component, content type, and content values following the recipe
+4. Register with: `./scripts/register-slide.sh <key> <Component> [vc]`
+5. For branches, read `.claude/recipes/new-branch.md`
+
+Manual steps (if not using the script):
+1. Create `components/slides/SlideXxx.tsx` following the pattern above
 2. Add content type to `lib/content/types.ts` (DeckContent interface)
 3. Add content to ALL 6 language files in `lib/content/` (en, zh, de, nl, fr, pt)
 4. Register in `lib/slideRegistry.ts` (both `slideImporters` and `slideRegistry`)
