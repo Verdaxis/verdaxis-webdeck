@@ -51,3 +51,14 @@ Manual steps (if not using the script):
 - **All languages must stay in sync:** Adding content to `types.ts` will cause build failures until ALL 6 language files are updated.
 - **Tailwind v4:** Uses `@theme inline` directive in `globals.css` and `@import "tailwindcss"` instead of v3's `@tailwind` directives. Config is in `tailwind.config.ts` but theme tokens also defined in CSS.
 - **Desktop-first:** Mobile shows a "best viewed on desktop" gate. Slides are 100dvh viewport-locked.
+<!-- codesight-local:start -->
+## Codesight Bootstrap
+
+Before exploring the tree, read:
+1. `.codesight/CODESIGHT.md`
+2. `.codesight/libs.md` if present
+3. `.codesight/graph.md` if the task touches service flow or module relationships
+4. `.codesight/components.md` if the task touches UI components
+
+Only open full source files after checking the generated context.
+<!-- codesight-local:end -->

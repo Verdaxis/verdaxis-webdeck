@@ -2,6 +2,7 @@
 
 import SlideWrapper from "@/components/SlideWrapper";
 import SlideBackground from "@/components/SlideBackground";
+import Image from "next/image";
 import { useContent } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import { fadeInUp, scaleIn, staggerContainer } from "@/lib/animations";
@@ -186,7 +187,7 @@ export default function SlideProduct({ branches }: SlideProductProps) {
               {/* Highlight badge */}
               {feature.highlight && (
                 <div className="absolute top-3 right-3">
-                  <span className="inline-block px-2 py-0.5 rounded-full bg-verdaxis-blue/8 border border-verdaxis-blue/15 text-[10px] font-heading font-semibold text-verdaxis-blue uppercase tracking-wider">
+                  <span className="inline-block px-2 py-0.5 rounded-full bg-verdaxis-blue/8 border border-verdaxis-blue/15 text-[11px] font-heading font-semibold text-verdaxis-blue uppercase tracking-wider">
                     {feature.highlight}
                   </span>
                 </div>
@@ -211,10 +212,12 @@ export default function SlideProduct({ branches }: SlideProductProps) {
               {feature.poweredBy === "marinachain" && (
                 <div className="mt-auto pt-3">
                   <div className="inline-flex items-center gap-1.5 bg-[#0066CC]/10 border border-[#0066CC]/20 rounded-full px-2 py-0.5">
-                    <span className="text-[9px] text-[#0066CC]/60">Powered by</span>
-                    <img
+                    <span className="text-[11px] text-[#0066CC]/60">Powered by</span>
+                    <Image
                       src="/images/logos/partners/marinachain-color.png"
                       alt="MarinaChain"
+                      width={501}
+                      height={101}
                       className="h-[14px] w-auto opacity-80"
                     />
                   </div>
@@ -223,10 +226,12 @@ export default function SlideProduct({ branches }: SlideProductProps) {
               {feature.poweredBy === "gena" && (
                 <div className="mt-auto pt-3">
                   <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-2 py-0.5">
-                    <span className="text-[9px] text-emerald-500/60">Powered by</span>
-                    <img
+                    <span className="text-[11px] text-emerald-500/60">Powered by</span>
+                    <Image
                       src="/images/logos/partners/gena-green.svg"
                       alt="Gena"
+                      width={56}
+                      height={24}
                       className="h-[14px] w-auto opacity-80"
                     />
                   </div>

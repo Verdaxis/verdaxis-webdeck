@@ -109,7 +109,7 @@ export default function UserSlideIntelligence() {
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="font-heading text-sm font-semibold text-slate-900">{f.title}</h3>
-                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold border ${f.tierColor}`}>
+                    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold border ${f.tierColor}`}>
                       {f.tier}
                     </span>
                   </div>
@@ -125,12 +125,12 @@ export default function UserSlideIntelligence() {
             <div className="rounded-xl bg-white border border-slate-200 shadow-card p-5">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="font-heading text-sm font-semibold text-slate-900">Bio-Methanol Reference Price</h3>
-                  <span className="text-[10px] text-slate-400">NW Europe · Daily VWAP</span>
+                  <h3 className="font-heading text-sm font-semibold text-slate-900">Bio Methanol Reference Price</h3>
+                  <span className="text-[11px] text-slate-400">NW Europe · Daily VWAP</span>
                 </div>
                 <div className="text-right">
                   <span className="block font-mono text-xl font-bold text-slate-900">$680</span>
-                  <span className="text-[10px] text-brand-green font-semibold">+2.3% today</span>
+                  <span className="text-[11px] text-brand-green font-semibold">+2.3% today</span>
                 </div>
               </div>
 
@@ -169,7 +169,7 @@ export default function UserSlideIntelligence() {
                 </svg>
               </div>
 
-              <div className="flex items-center justify-between mt-3 text-[10px] text-slate-400">
+              <div className="flex items-center justify-between mt-3 text-[11px] text-slate-400">
                 <span>30 days ago</span>
                 <span>Today</span>
               </div>

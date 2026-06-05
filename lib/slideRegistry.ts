@@ -27,15 +27,14 @@ const slideImporters = {
   "ai-copilot": () => import("@/components/slides/branches/BranchAICopilot"),
   "producer-map": () => import("@/components/slides/branches/BranchProducerMap"),
   "business-model": () => import("@/components/slides/branches/BranchBusinessModel"),
-  // User onboarding deck
-  "user-hero": () => import("@/components/slides/user/UserSlideHero"),
-  "user-problem": () => import("@/components/slides/user/UserSlideProblem"),
-  "user-solution": () => import("@/components/slides/user/UserSlideSolution"),
-  "user-marketplace": () => import("@/components/slides/user/UserSlideMarketplace"),
-  "user-compliance": () => import("@/components/slides/user/UserSlideCompliance"),
-  "user-intelligence": () => import("@/components/slides/user/UserSlideIntelligence"),
-  "user-how-it-works": () => import("@/components/slides/user/UserSlideHowItWorks"),
-  "user-get-started": () => import("@/components/slides/user/UserSlideGetStarted"),
+  // Market-facing deck family
+  "market-hero": () => import("@/components/slides/market/MarketSlideHero"),
+  "market-problem": () => import("@/components/slides/market/MarketSlideProblem"),
+  "market-solution": () => import("@/components/slides/market/MarketSlideSolution"),
+  "market-marketplace": () => import("@/components/slides/market/MarketSlideMarketplace"),
+  "market-intelligence": () => import("@/components/slides/market/MarketSlideIntelligence"),
+  "market-how-it-works": () => import("@/components/slides/market/MarketSlideHowItWorks"),
+  "market-get-started": () => import("@/components/slides/market/MarketSlideGetStarted"),
 } as const;
 
 export const slideRegistry: Record<string, SlideRegistryEntry> = {
@@ -62,15 +61,14 @@ export const slideRegistry: Record<string, SlideRegistryEntry> = {
   "ai-copilot": { component: lazy(slideImporters["ai-copilot"]) },
   "producer-map": { component: lazy(slideImporters["producer-map"]) },
   "business-model": { component: lazy(slideImporters["business-model"]) },
-  // User onboarding deck
-  "user-hero": { component: lazy(slideImporters["user-hero"]) },
-  "user-problem": { component: lazy(slideImporters["user-problem"]) },
-  "user-solution": { component: lazy(slideImporters["user-solution"]) },
-  "user-marketplace": { component: lazy(slideImporters["user-marketplace"]) },
-  "user-compliance": { component: lazy(slideImporters["user-compliance"]) },
-  "user-intelligence": { component: lazy(slideImporters["user-intelligence"]) },
-  "user-how-it-works": { component: lazy(slideImporters["user-how-it-works"]) },
-  "user-get-started": { component: lazy(slideImporters["user-get-started"]) },
+  // Market-facing deck family
+  "market-hero": { component: lazy(slideImporters["market-hero"]) },
+  "market-problem": { component: lazy(slideImporters["market-problem"]) },
+  "market-solution": { component: lazy(slideImporters["market-solution"]) },
+  "market-marketplace": { component: lazy(slideImporters["market-marketplace"]) },
+  "market-intelligence": { component: lazy(slideImporters["market-intelligence"]) },
+  "market-how-it-works": { component: lazy(slideImporters["market-how-it-works"]) },
+  "market-get-started": { component: lazy(slideImporters["market-get-started"]) },
 };
 
 export function preloadSlideById(id: string) {

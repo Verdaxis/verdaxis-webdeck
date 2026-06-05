@@ -31,7 +31,7 @@ const frameworks = [
 
 const scenarioData = {
   from: "VLSFO",
-  to: "Bio-Methanol",
+  to: "Bio Methanol",
   ciReduction: "−62%",
   fueleuSaving: "€420K",
   etsSaving: "€180K",
@@ -73,7 +73,7 @@ export default function UserSlideCompliance() {
               >
                 <div className="flex items-start justify-between mb-2">
                   <h3 className="font-heading text-sm font-semibold text-slate-900">{fw.name}</h3>
-                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold border ${fw.statusColor}`}>
+                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold border ${fw.statusColor}`}>
                     {fw.status}
                   </span>
                 </div>
@@ -90,7 +90,7 @@ export default function UserSlideCompliance() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
                 </svg>
                 <h3 className="font-heading text-sm font-semibold text-slate-800">What-If Scenario</h3>
-                <span className="ml-auto text-[10px] font-semibold text-verdaxis-blue bg-verdaxis-blue/10 px-2 py-0.5 rounded-full border border-verdaxis-blue/20">
+                <span className="ml-auto text-[11px] font-semibold text-verdaxis-blue bg-verdaxis-blue/10 px-2 py-0.5 rounded-full border border-verdaxis-blue/20">
                   Example
                 </span>
               </div>
@@ -98,14 +98,14 @@ export default function UserSlideCompliance() {
               {/* Fuel switch arrow */}
               <div className="flex items-center gap-3 mb-5">
                 <div className="flex-1 rounded-lg bg-slate-100 border border-slate-200 px-4 py-2.5 text-center">
-                  <span className="block text-[10px] text-slate-400 mb-0.5">From</span>
+                  <span className="block text-[11px] text-slate-400 mb-0.5">From</span>
                   <span className="font-heading text-sm font-bold text-slate-700">{scenarioData.from}</span>
                 </div>
                 <svg className="w-6 h-6 text-verdaxis-blue flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
                 <div className="flex-1 rounded-lg bg-brand-green/10 border border-brand-green/20 px-4 py-2.5 text-center">
-                  <span className="block text-[10px] text-brand-green/70 mb-0.5">To</span>
+                  <span className="block text-[11px] text-brand-green/70 mb-0.5">To</span>
                   <span className="font-heading text-sm font-bold text-brand-green">{scenarioData.to}</span>
                 </div>
               </div>
@@ -125,7 +125,7 @@ export default function UserSlideCompliance() {
                     <span className={`block font-heading text-xl font-bold ${metric.color}`}>
                       {metric.value}
                     </span>
-                    <span className="text-[10px] text-slate-400">{metric.label}</span>
+                    <span className="text-[11px] text-slate-400">{metric.label}</span>
                   </div>
                 ))}
               </div>

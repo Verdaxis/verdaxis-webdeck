@@ -1,0 +1,49 @@
+# Components
+
+- **DeckLayout** — props: params — `app/[deck]/layout.tsx`
+- **DeckPage** — props: params — `app/[deck]/page.tsx`
+- **RootLayout** — `app/layout.tsx`
+- **DeckPicker** — `app/page.tsx`
+- **AnimatedCounter** [client] — props: target, suffix, prefix, duration, className — `components/AnimatedCounter.tsx`
+- **DataOcean** [client] — props: className, opacity — `components/DataOcean.tsx`
+- **LanguageSelector** [client] — `components/LanguageSelector.tsx`
+- **SlideBackground** [client] — props: variant, tint — `components/SlideBackground.tsx`
+- **SlideContainer** [client] — props: deck, slideMetadata — `components/SlideContainer.tsx`
+- **SlideNavigation** [client] — props: currentSlide, totalSlides, onPrev, onNext, onGoTo — `components/SlideNavigation.tsx`
+- **SlideWrapper** [client] — props: className — `components/SlideWrapper.tsx`
+- **UserSlideContainer** [client] — props: deck, slideMetadata — `components/UserSlideContainer.tsx`
+- **BranchTrigger** [client] — props: label, onClick, variant, icon, className — `components/branching/BranchTrigger.tsx`
+- **Modal** [client] — props: isOpen, onClose, title — `components/branching/Modal.tsx`
+- **SubSlideContainer** [client] — props: isOpen, onClose, slides, title — `components/branching/SubSlideContainer.tsx`
+- **SubSlideNavigation** [client] — props: current, total, onPrev, onNext, onBack — `components/branching/SubSlideNavigation.tsx`
+- **SubSlideWrapper** [client] — props: className — `components/branching/SubSlideWrapper.tsx`
+- **SlideCompetitive** [client] — `components/slides/SlideCompetitive.tsx`
+- **SlideDemo** [client] — `components/slides/SlideDemo.tsx`
+- **SlideFinancials** [client] — `components/slides/SlideFinancials.tsx`
+- **SlideFlywheel** [client] — `components/slides/SlideFlywheel.tsx`
+- **SlideMarket** [client] — props: branches — `components/slides/SlideMarket.tsx`
+- **SlideProblem** [client] — `components/slides/SlideProblem.tsx`
+- **SlideProduct** [client] — props: branches — `components/slides/SlideProduct.tsx`
+- **SlideRevenue** [client] — props: branches — `components/slides/SlideRevenue.tsx`
+- **SlideRoadmap** [client] — `components/slides/SlideRoadmap.tsx`
+- **SlideSolution** [client] — `components/slides/SlideSolution.tsx`
+- **SlideTOC** [client] — props: onGoTo, deck — `components/slides/SlideTOC.tsx`
+- **SlideTeam** [client] — `components/slides/SlideTeam.tsx`
+- **SlideTraction** [client] — `components/slides/SlideTraction.tsx`
+- **SlideVision** [client] — `components/slides/SlideVision.tsx`
+- **SlideWhyNow** [client] — `components/slides/SlideWhyNow.tsx`
+- **BranchAICopilot** [client] — `components/slides/branches/BranchAICopilot.tsx`
+- **BranchBusinessModel** [client] — `components/slides/branches/BranchBusinessModel.tsx`
+- **BranchComplianceEngine** [client] — `components/slides/branches/BranchComplianceEngine.tsx`
+- **BranchMarketSizing** [client] — `components/slides/branches/BranchMarketSizing.tsx`
+- **BranchProducerMap** [client] — `components/slides/branches/BranchProducerMap.tsx`
+- **UserSlideCompliance** [client] — `components/slides/user/UserSlideCompliance.tsx`
+- **UserSlideGetStarted** [client] — `components/slides/user/UserSlideGetStarted.tsx`
+- **UserSlideHero** [client] — `components/slides/user/UserSlideHero.tsx`
+- **UserSlideHowItWorks** [client] — `components/slides/user/UserSlideHowItWorks.tsx`
+- **UserSlideIntelligence** [client] — `components/slides/user/UserSlideIntelligence.tsx`
+- **UserSlideMarketplace** [client] — `components/slides/user/UserSlideMarketplace.tsx`
+- **UserSlideProblem** [client] — `components/slides/user/UserSlideProblem.tsx`
+- **UserSlideSolution** [client] — `components/slides/user/UserSlideSolution.tsx`
+- **BranchProvider** [client] — `lib/branchContext.tsx`
+- **I18nProvider** [client] — `lib/i18n.tsx`

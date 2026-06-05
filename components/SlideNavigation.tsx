@@ -10,6 +10,12 @@ interface SlideNavigationProps {
   onPrev: () => void;
   onNext: () => void;
   onGoTo: (index: number) => void;
+  labels?: {
+    goToFirst?: string;
+    previousSlide?: string;
+    nextSlide?: string;
+  };
+  showLanguageSelector?: boolean;
 }
 
 export default function SlideNavigation({
@@ -18,9 +24,16 @@ export default function SlideNavigation({
   onPrev,
   onNext,
   onGoTo,
+  labels,
+  showLanguageSelector = true,
 }: SlideNavigationProps) {
   const t = useContent();
   const trackRef = useRef<HTMLDivElement>(null);
+  const navLabels = {
+    goToFirst: labels?.goToFirst ?? t.nav.goToFirst,
+    previousSlide: labels?.previousSlide ?? t.nav.previousSlide,
+    nextSlide: labels?.nextSlide ?? t.nav.nextSlide,
+  };
 
   const handleTrackClick = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
@@ -42,7 +55,7 @@ export default function SlideNavigation({
       <button
         onClick={() => onGoTo(0)}
         className="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-400 hover:text-verdaxis-blue hover:border-verdaxis-blue/40 hover:bg-verdaxis-blue/5 transition-all"
-        aria-label={t.nav.goToFirst}
+        aria-label={navLabels.goToFirst}
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path
@@ -80,13 +93,13 @@ export default function SlideNavigation({
       </span>
 
       {/* Language selector + arrows (right side) */}
-      <LanguageSelector />
+      {showLanguageSelector ? <LanguageSelector /> : null}
       <div className="flex-shrink-0 flex items-center gap-1">
         <button
           onClick={onPrev}
           disabled={currentSlide === 0}
           className="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-400 hover:text-slate-700 hover:border-slate-300 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
-          aria-label={t.nav.previousSlide}
+          aria-label={navLabels.previousSlide}
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
@@ -102,7 +115,7 @@ export default function SlideNavigation({
           onClick={onNext}
           disabled={currentSlide === totalSlides - 1}
           className="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-400 hover:text-slate-700 hover:border-slate-300 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
-          aria-label={t.nav.nextSlide}
+          aria-label={navLabels.nextSlide}
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path

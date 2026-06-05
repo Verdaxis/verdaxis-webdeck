@@ -17,9 +17,9 @@
   --color-dark-card: #FFFFFF;
   --color-gold-accent: #4CAF50;
   --color-gold-light: #66BB6A;
-  --font-display: "DM Serif Display", serif;
-  --font-heading: "Montserrat", system-ui, sans-serif;
-  --font-body: "Lato", system-ui, sans-serif;
+  --font-display: var(--font-dm-serif), serif;
+  --font-heading: var(--font-montserrat), system-ui, sans-serif;
+  --font-body: var(--font-lato), system-ui, sans-serif;
   --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
   --shadow-card-hover: 0 10px 25px rgba(0,0,0,0.06), 0 4px 10px rgba(0,0,0,0.04);
   --shadow-card-lg: 0 4px 12px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.04);
@@ -34,7 +34,7 @@ html {
 body {
   background: #F8FAFC;
   color: #334155;
-  font-family: "Lato", system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   overflow: hidden;
   height: 100dvh;
   height: 100vh;
@@ -419,16 +419,4 @@ body {
   border-radius: 50%;
   background: #5DADE2;
   animation: pulse-dot 2.5s ease-in-out infinite;
-}
-
-/* ── prefers-reduced-motion ── */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }

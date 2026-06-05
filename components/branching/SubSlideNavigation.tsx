@@ -21,7 +21,7 @@ export default function SubSlideNavigation({
     <div className="flex items-center justify-between px-4 py-3 border-t border-slate-100 bg-white/90 backdrop-blur-sm">
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 transition-colors"
+        className="flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verdaxis-blue rounded"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -36,9 +36,10 @@ export default function SubSlideNavigation({
         </span>
         <div className="w-24 h-1 bg-slate-200 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-verdaxis-blue rounded-full"
-            animate={{ width: `${((current + 1) / total) * 100}%` }}
+            className="h-full bg-verdaxis-blue rounded-full origin-left"
+            animate={{ scaleX: (current + 1) / total }}
             transition={{ duration: 0.3 }}
+            style={{ width: "100%" }}
           />
         </div>
       </div>
@@ -47,7 +48,7 @@ export default function SubSlideNavigation({
         <button
           onClick={onPrev}
           disabled={current === 0}
-          className="p-2 rounded-lg hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          className="p-2 rounded-lg hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verdaxis-blue"
         >
           <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -56,7 +57,7 @@ export default function SubSlideNavigation({
         <button
           onClick={onNext}
           disabled={current === total - 1}
-          className="p-2 rounded-lg hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          className="p-2 rounded-lg hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verdaxis-blue"
         >
           <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />

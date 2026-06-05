@@ -52,7 +52,7 @@ export default function BranchComplianceEngine() {
                 {fw.name}
               </h4>
               <span
-                className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${badgeBg}`}
+                className={`text-[11px] font-medium px-2 py-0.5 rounded-full ${badgeBg}`}
               >
                 {fw.status}
               </span>

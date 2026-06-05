@@ -1,11 +1,11 @@
-import { decks } from "@/lib/decks";
+import { resolveDeckConfig } from "@/lib/decks";
 import type { Metadata } from "next";
 
 type Props = { params: Promise<{ deck: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { deck: slug } = await params;
-  const config = decks[slug];
+  const config = resolveDeckConfig(slug);
   if (!config) return { title: "Verdaxis Deck" };
   return {
     title: config.title,

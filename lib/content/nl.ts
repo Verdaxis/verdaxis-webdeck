@@ -24,12 +24,12 @@ export const nl: DeckContent = {
     subtitle: "Compliance-gerichte marktplaats voor geverifieerde duurzame scheepvaartbrandstoffen",
     tagline: "Dubbeltelling-preventie | IMO & EU afgestemd | Physical-First Logica",
     tickerItems: [
-      { fuel: "Bio-Methanol", region: "NW Europa", price: "$680", change: "+2,3%", ci: "32 gCO\u2082/MJ" },
-      { fuel: "E-Methanol", region: "Wereldwijd", price: "$1.250", change: "+1,1%", ci: "8 gCO\u2082/MJ" },
-      { fuel: "FAME B100", region: "Singapore", price: "$1.420", change: "-0,5%", ci: "22 gCO\u2082/MJ" },
-      { fuel: "Bio-LNG", region: "Rotterdam", price: "$890", change: "+3,7%", ci: "28 gCO\u2082/MJ" },
-      { fuel: "Groene Waterstof", region: "Midden-Oosten", price: "$4.200", change: "+0,8%", ci: "4 gCO\u2082/MJ" },
-      { fuel: "HVO", region: "ARA", price: "$1.680", change: "-1,2%", ci: "18 gCO\u2082/MJ" },
+      { fuel: "Bio Ethanol", region: "Busan", price: "$680", change: "+2,3%", ci: "32 gCO\u2082/MJ" },
+      { fuel: "Bio Methanol", region: "Houston", price: "$1.250", change: "+1,1%", ci: "8 gCO\u2082/MJ" },
+      { fuel: "e-Methanol", region: "Dalian", price: "$1.420", change: "-0,5%", ci: "22 gCO\u2082/MJ" },
+      { fuel: "Synthetic Ethanol", region: "Rotterdam", price: "$890", change: "+3,7%", ci: "28 gCO\u2082/MJ" },
+      { fuel: "Bio Methanol", region: "Shanghai", price: "$4.200", change: "+0,8%", ci: "4 gCO\u2082/MJ" },
+      { fuel: "e-Methanol", region: "Singapore", price: "$1.680", change: "-1,2%", ci: "18 gCO\u2082/MJ" },
     ],
   },
 
@@ -49,7 +49,7 @@ export const nl: DeckContent = {
       },
       {
         title: "Aanbodexplosie",
-        description: "Chinese methanolproductiecapaciteit stijgt sterk \u2014 100M+ ton tegen 2026. Bio-methanolprojecten schalen op in Europa en Azi\u00eb. E-methanolpilots starten in Scandinavi\u00eb en het Midden-Oosten.",
+        description: "Chinese methanolproductiecapaciteit stijgt sterk \u2014 100M+ ton tegen 2026. Bio Methanol-projecten schalen op in Europa en Azi\u00eb. e-Methanolpilots starten in Scandinavi\u00eb en het Midden-Oosten.",
         iconKey: "supply",
       },
       {
@@ -203,11 +203,11 @@ export const nl: DeckContent = {
       "CORSIA",
     ],
     milestones: [
-      { title: "Platform MVP Lancering", date: "Q1 2026" },
-      { title: "Compliance Engine v1", date: "Q1 2026" },
-      { title: "AI Copilot B\u00e8ta", date: "Q2 2026" },
-      { title: "Eerste Omzet", date: "Q2 2026" },
-      { title: "Oprichtersleden-programma", date: "Q2 2026" },
+      { title: "Platform MVP Lancering", date: "Q2 2026" },
+      { title: "Compliance Engine v1", date: "Q2 2026" },
+      { title: "AI Copilot B\u00e8ta", date: "Q3 2026" },
+      { title: "Eerste Omzet", date: "Q3 2026" },
+      { title: "Oprichtersleden-programma", date: "Q3 2026" },
     ],
   },
 
@@ -373,7 +373,7 @@ export const nl: DeckContent = {
         year: "2026",
         title: "Lancering \u2014 Bruggenhoofd Singapore",
         items: [
-          "Methanol- & biobrandstofhandel live",
+          "Methanol & Ethanol",
           "Oprichtersleden-programma",
           "Compliance engine (FuelEU, EU ETS)",
           "AI Copilot b\u00e8ta",
@@ -385,7 +385,7 @@ export const nl: DeckContent = {
         title: "Uitbreiden \u2014 Multi-Hub",
         items: [
           "Lancering Rotterdam-hub",
-          "Nieuwe brandstoftypen (Ethanol, Bio-LNG)",
+          "Nieuwe brandstoftypen (Bio Ethanol, Bio Methanol, e-Methanol, Synthetic Ethanol)",
           "Live Biedingen Exchange",
           "Lancering trainingsmodule",
           "Voorbereiding Series A",
@@ -508,7 +508,7 @@ export const nl: DeckContent = {
     aiCopilot: {
       title: "AI Copilot \u2014 Intelligente Assistent",
       capabilities: [
-        { name: "Marktvragen", description: "\"Wat is de goedkoopste bio-methanol beschikbaar in Singapore deze week?\" \u2014 realtime prijzen uit het orderboek" },
+        { name: "Marktvragen", description: "\"Wat is de goedkoopste Bio Methanol beschikbaar in Singapore deze week?\" \u2014 realtime prijzen uit het orderboek" },
         { name: "Compliance-analyse", description: "\"Wat is mijn FuelEU Maritime compliance-tekort voor Q3?\" \u2014 berekent het tekort en adviseert brandstofwissels" },
         { name: "Route-optimalisatie", description: "\"Optimaliseer brandstofplan voor Singapore naar Rotterdam\" \u2014 houdt rekening met beschikbaarheid in havens, CI-scores en kosten" },
         { name: "Regelgevende Updates", description: "\"Wat is er afgelopen maand veranderd in RED III?\" \u2014 monitort regelgevende ontwikkelingen over alle frameworks" },

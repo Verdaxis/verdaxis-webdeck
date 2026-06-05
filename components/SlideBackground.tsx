@@ -196,14 +196,14 @@ export default function SlideBackground({
   if (prefersReduced) {
     // Just show static subtle orbs for reduced motion
     return (
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
         <OrbsBg tint={tint} />
       </div>
     );
   }
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
       {variant === "mesh" && <MeshBg tint={tint} />}
       {variant === "grid" && <GridBg />}
       {variant === "waves" && <WavesBg tint={tint} />}

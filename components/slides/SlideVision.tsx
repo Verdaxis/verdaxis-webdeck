@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import Image from "next/image";
 import SlideWrapper from "@/components/SlideWrapper";
 import { useContent } from "@/lib/i18n";
 import { motion, useReducedMotion } from "framer-motion";
@@ -43,7 +44,7 @@ function PriceTicker({
               >
                 {item.change}
               </span>
-              <span className="text-verdaxis-blue/60 font-mono text-[10px]">
+              <span className="text-verdaxis-blue/60 font-mono text-[11px]">
                 {item.ci}
               </span>
               <span className="text-white/10">|</span>
@@ -147,12 +148,14 @@ export default function SlideVision() {
               background:
                 "radial-gradient(circle, rgba(93,173,226,0.25) 0%, transparent 70%)",
             }}
-            aria-hidden
+            aria-hidden="true"
           />
-          <img
-            src="/images/logos/verdaxis-icon.png"
+          <Image
+            src="/images/logos/verdaxis-logo-words-bottom.png"
             alt="Verdaxis"
-            className="relative h-16 w-16 object-contain md:h-20 md:w-20"
+            width={180}
+            height={180}
+            className="relative h-28 w-28 object-contain md:h-36 md:w-36"
           />
         </motion.div>
 

@@ -2,6 +2,7 @@ import type { DeckConfig } from "./types";
 
 const vc: DeckConfig = {
   slug: "vc",
+  kind: "vc",
   title: "Verdaxis \u2014 Investor Deck",
   description: "The trusted exchange for low-carbon fuels. Compliance-first marketplace for verified sustainable marine fuels.",
   slides: [

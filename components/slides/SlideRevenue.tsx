@@ -90,7 +90,7 @@ export default function SlideRevenue({ branches }: SlideRevenueProps) {
               {/* Tag pill */}
               {stream.tag && (
                 <span
-                  className={`self-start mb-4 inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-heading font-semibold uppercase tracking-wider ${tagColors(stream.tag)}`}
+                  className={`self-start mb-4 inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-heading font-semibold uppercase tracking-wider ${tagColors(stream.tag)}`}
                 >
                   {stream.tag}
                 </span>
@@ -128,7 +128,7 @@ export default function SlideRevenue({ branches }: SlideRevenueProps) {
               background:
                 "radial-gradient(ellipse at center, rgba(76,175,80,0.08) 0%, transparent 70%)",
             }}
-            aria-hidden
+            aria-hidden="true"
           />
 
           {/* Upward arrow/chart icon */}

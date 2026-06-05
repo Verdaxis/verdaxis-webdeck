@@ -104,7 +104,7 @@ export default function SlideFinancials() {
               </span>
 
               {/* Trigger badge */}
-              <span className="self-start mb-3 inline-flex items-center gap-1.5 rounded-full border border-verdaxis-blue/25 bg-verdaxis-blue/10 px-3 py-1 text-[10px] font-heading font-semibold uppercase tracking-wider text-verdaxis-blue">
+              <span className="self-start mb-3 inline-flex items-center gap-1.5 rounded-full border border-verdaxis-blue/25 bg-verdaxis-blue/10 px-3 py-1 text-[11px] font-heading font-semibold uppercase tracking-wider text-verdaxis-blue">
                 <svg
                   className="w-3 h-3"
                   viewBox="0 0 24 24"
@@ -140,14 +140,15 @@ export default function SlideFinancials() {
               return (
                 <motion.div
                   key={alloc.label}
-                  className={`h-full ${colors.bg}`}
-                  initial={{ width: 0 }}
-                  animate={{ width: `${pct}%` }}
+                  className={`h-full ${colors.bg} origin-left`}
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
                   transition={{
                     duration: 0.8,
                     delay: 0.4 + i * 0.15,
                     ease: "easeOut",
                   }}
+                  style={{ width: `${pct}%` }}
                 />
               );
             })}

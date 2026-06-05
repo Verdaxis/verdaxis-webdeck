@@ -66,7 +66,7 @@ function MilestoneTimeline({
         {/* Connecting line */}
         <div
           className="absolute top-[11px] left-[20px] right-[20px] h-[2px] bg-slate-200"
-          aria-hidden
+          aria-hidden="true"
         />
 
         {milestones.map((ms, i) => (
@@ -88,7 +88,7 @@ function MilestoneTimeline({
             </span>
 
             {/* Date */}
-            <span className="mt-1 text-[10px] sm:text-xs text-brand-green font-heading font-semibold">
+            <span className="mt-1 text-[11px] sm:text-xs text-brand-green font-heading font-semibold">
               {ms.date}
             </span>
           </motion.div>

@@ -88,7 +88,7 @@ export default function SlideMarket({ branches }: SlideMarketProps) {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
               >
-                <span className="text-[10px] uppercase tracking-widest text-slate-400 block mb-0.5">
+                <span className="text-[11px] uppercase tracking-widest text-slate-400 block mb-0.5">
                   {tam.label}
                 </span>
               </motion.div>
@@ -103,7 +103,7 @@ export default function SlideMarket({ branches }: SlideMarketProps) {
                 viewport={{ once: true }}
                 transition={{ delay: 0.6 }}
               >
-                <span className="text-[10px] uppercase tracking-widest text-verdaxis-blue/50 block mb-0.5">
+                <span className="text-[11px] uppercase tracking-widest text-verdaxis-blue/50 block mb-0.5">
                   {sam.label}
                 </span>
               </motion.div>
@@ -118,7 +118,7 @@ export default function SlideMarket({ branches }: SlideMarketProps) {
                   suffix={somParsed.suffix}
                   className="text-2xl sm:text-3xl font-heading font-bold text-emerald"
                 />
-                <span className="block text-[9px] uppercase tracking-wider text-emerald/60 mt-0.5">
+                <span className="block text-[11px] uppercase tracking-wider text-emerald/60 mt-0.5">
                   {som.label}
                 </span>
               </div>

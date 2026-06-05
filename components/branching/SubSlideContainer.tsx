@@ -27,9 +27,14 @@ export default function SubSlideContainer({
 
   useEffect(() => {
     setBranchOpen(isOpen);
-    if (!isOpen) setCurrent(0);
     return () => setBranchOpen(false);
   }, [isOpen, setBranchOpen]);
+
+  useEffect(() => {
+    if (isOpen) return;
+    const reset = window.setTimeout(() => setCurrent(0), 0);
+    return () => window.clearTimeout(reset);
+  }, [isOpen]);
 
   const goNext = useCallback(() => {
     if (current < slides.length - 1) {

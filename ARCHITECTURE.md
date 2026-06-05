@@ -19,6 +19,9 @@ app/
 
 components/
   SlideContainer.tsx           # Core orchestrator: slide state, keyboard/touch nav, AnimatePresence
+  UserSlideContainer.tsx       # User-facing deck orchestrator with same desktop-only mobile gate
+  MarketSlideContainer.tsx     # Market/buyer/supplier deck orchestrator with same desktop-only mobile gate
+  MobileGate.tsx               # Shared mobile "best viewed on desktop" gate for deck variants
   SlideWrapper.tsx             # Viewport-locked layout shell for each slide
   SlideBackground.tsx          # Animated bg variants: mesh, grid, waves, orbs
   SlideNavigation.tsx          # Bottom bar: progress track, arrows, home button
@@ -89,6 +92,8 @@ app/[deck]/page.tsx
 **i18n:** English is statically imported; other locales (`zh`, `de`, `nl`, `fr`, `pt`) are dynamically imported. `?lang=xx` URL param overrides browser detection. All content satisfies the `DeckContent` interface.
 
 **Navigation:** Keyboard arrows/space, touch swipe, digit+Enter jump, URL hash deep linking. Animation lock prevents rapid-fire transitions.
+
+**Desktop-only decks:** Slide containers use a shared mobile gate below 768px. This keeps all deck families presentation-first and avoids squeezed mobile layouts.
 
 **Static export:** `output: "export"` in `next.config.ts`. No API routes, no SSR. `generateStaticParams` pre-renders each deck slug. Images use `unoptimized: true`.
 

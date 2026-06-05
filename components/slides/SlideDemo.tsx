@@ -67,11 +67,11 @@ function BrowserWindow({
           <div className="w-2 h-2 rounded-full bg-green-400/80" />
         </div>
         <div className="flex-1 flex justify-center">
-          <span className="px-3 py-0.5 bg-slate-700/50 rounded text-[8px] text-slate-400 font-mono truncate">
+          <span className="px-3 py-0.5 bg-slate-700/50 rounded text-[11px] text-slate-400 font-mono truncate">
             {url}
           </span>
         </div>
-        <span className={`text-[7px] font-heading font-bold uppercase tracking-wider ${labelColor}`}>
+        <span className={`text-[11px] font-heading font-bold uppercase tracking-wider ${labelColor}`}>
           {label}
         </span>
       </div>
@@ -99,7 +99,7 @@ function AppShell({
     <div className="flex" style={{ height: 320 }}>
       {/* ── sidebar ── */}
       <div className="w-10 bg-[#343E50] flex flex-col items-center pt-2 pb-2 shrink-0">
-        <div className="w-5 h-5 rounded bg-white/15 flex items-center justify-center text-[7px] font-bold text-white/70 mb-1">
+        <div className="w-5 h-5 rounded bg-white/15 flex items-center justify-center text-[11px] font-bold text-white/70 mb-1">
           V
         </div>
         <div className="flex items-center gap-1 mb-2">
@@ -127,10 +127,10 @@ function AppShell({
         {/* header */}
         <div className="h-7 bg-white border-b border-slate-100 flex items-center px-2 gap-1.5 shrink-0">
           <div className="flex-1 h-4 bg-slate-50 border border-slate-100 rounded px-1.5 flex items-center">
-            <span className="text-[7px] text-slate-300 font-heading">Search…</span>
+            <span className="text-[11px] text-slate-300 font-heading">Search…</span>
           </div>
           <div className="relative">
-            <span className="text-[9px] text-slate-300">🔔</span>
+            <svg className="w-3 h-3 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
             {badge != null && badge > 0 && (
               <motion.span
                 initial={{ scale: 0 }}
@@ -162,8 +162,8 @@ function AppShell({
 function FieldRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between py-1.5 px-2 bg-white rounded border border-slate-200">
-      <span className="text-[9px] text-slate-400 font-heading">{label}</span>
-      <span className="text-[9px] font-heading font-semibold text-slate-700">{value}</span>
+      <span className="text-[11px] text-slate-400 font-heading">{label}</span>
+      <span className="text-[11px] font-heading font-semibold text-slate-700">{value}</span>
     </div>
   );
 }
@@ -175,7 +175,7 @@ function SmallBadge({ children, color = "emerald" }: { children: React.ReactNode
     amber: "bg-amber-50 border-amber-200 text-amber-700",
   };
   return (
-    <span className={`inline-flex px-1.5 py-0.5 rounded border text-[7px] font-heading font-semibold ${map[color] ?? map.emerald}`}>
+    <span className={`inline-flex px-1.5 py-0.5 rounded border text-[11px] font-heading font-semibold ${map[color] ?? map.emerald}`}>
       {children}
     </span>
   );
@@ -204,7 +204,7 @@ function ActionBtn({
     <motion.div
       animate={pulse ? { scale: [1, 1.04, 1] } : undefined}
       transition={pulse ? { duration: 0.7, delay: 2.2, ease: "easeInOut" as const } : undefined}
-      className={`w-full text-center py-1.5 rounded-lg text-[9px] font-heading font-bold ${base} cursor-default select-none`}
+      className={`w-full text-center py-1.5 rounded-lg text-[11px] font-heading font-bold ${base} cursor-default select-none`}
     >
       {children}
     </motion.div>
@@ -309,7 +309,7 @@ function MarketTerminal({ highlight }: { highlight: "bid" | "ask" }) {
             <motion.div
               key={row.period}
               variants={staggerChild}
-              className="flex text-[7px] font-mono px-1 py-[3px] border-b border-slate-50 items-center"
+              className="flex text-[11px] font-mono px-1 py-[3px] border-b border-slate-50 items-center"
             >
               <span className="w-[18%] font-heading font-bold text-slate-700 flex items-center gap-0.5">
                 {i === 0 && <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />}
@@ -374,11 +374,11 @@ function SellerPhase1({ t }: { t: DeckContent }) {
       <motion.div variants={stagger} initial="hidden" animate="show" className="space-y-1.5 flex-1">
         {(
           [
-            [u(t, "fuelType", "Fuel Type"), "Bio-LNG"],
+            [u(t, "fuelType", "Fuel Type"), "Bio Methanol"],
             [u(t, "quantity", "Quantity"), "500 MT"],
             [u(t, "price", "Price"), "$1,240/MT"],
             [u(t, "port", "Port"), "Rotterdam"],
-            [u(t, "ciScore", "CI Score"), "28.3 gCO\u2082/MJ"],
+            [u(t, "ciScore", "CI Score"), "30.5 gCO\u2082/MJ"],
           ] as const
         ).map(([label, value]) => (
           <motion.div key={label} variants={staggerChild}>
@@ -403,10 +403,10 @@ function SellerPhase2({ t }: { t: DeckContent }) {
 
       <div className="p-2 bg-white rounded-lg border border-slate-200 space-y-1">
         <div className="flex justify-between">
-          <span className="text-[9px] font-heading font-bold text-slate-700">Bio-LNG</span>
-          <span className="text-[9px] font-heading font-bold text-emerald-600">$1,240/MT</span>
+          <span className="text-[11px] font-heading font-bold text-slate-700">Bio Methanol</span>
+          <span className="text-[11px] font-heading font-bold text-emerald-600">$1,240/MT</span>
         </div>
-        <div className="text-[8px] text-slate-400">500 MT · Rotterdam · CI 28.3</div>
+        <div className="text-[11px] text-slate-400">500 MT · Rotterdam · CI 30.5</div>
         <div className="flex gap-1 mt-0.5">
           <SmallBadge>FuelEU ✓</SmallBadge>
           <SmallBadge>EU ETS ✓</SmallBadge>
@@ -414,21 +414,25 @@ function SellerPhase2({ t }: { t: DeckContent }) {
       </div>
 
       <div className="p-2 bg-slate-100/80 rounded-lg space-y-1.5">
-        <span className="text-[8px] font-heading font-bold text-slate-500 uppercase tracking-wider">
+        <span className="text-[11px] font-heading font-bold text-slate-500 uppercase tracking-wider">
           {u(t, "liveStats", "Live Stats")}
         </span>
         <div className="grid grid-cols-3 gap-1">
           {(
             [
-              ["👁", u(t, "views", "Views"), "12"],
-              ["⭐", u(t, "watchlist", "Watchlist"), "3"],
-              ["📩", u(t, "inquiries", "Inquiries"), "0"],
+              ["eye", u(t, "views", "Views"), "12"],
+              ["star", u(t, "watchlist", "Watchlist"), "3"],
+              ["inbox", u(t, "inquiries", "Inquiries"), "0"],
             ] as const
           ).map(([icon, label, val]) => (
             <div key={label} className="text-center">
-              <div className="text-[8px]">{icon}</div>
-              <div className="text-[9px] font-heading font-bold text-slate-700">{val}</div>
-              <div className="text-[7px] text-slate-400">{label}</div>
+              <div className="flex justify-center text-slate-400">
+                {icon === "eye" && <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>}
+                {icon === "star" && <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>}
+                {icon === "inbox" && <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" /></svg>}
+              </div>
+              <div className="text-[11px] font-heading font-bold text-slate-700">{val}</div>
+              <div className="text-[11px] text-slate-400">{label}</div>
             </div>
           ))}
         </div>
@@ -436,7 +440,7 @@ function SellerPhase2({ t }: { t: DeckContent }) {
 
       <div className="flex items-center gap-1.5">
         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-        <span className="text-[8px] font-heading font-semibold text-emerald-600">{u(t, "active", "Active")}</span>
+        <span className="text-[11px] font-heading font-semibold text-emerald-600">{u(t, "active", "Active")}</span>
       </div>
     </motion.div>
   );
@@ -446,7 +450,7 @@ function SellerPhase3({ t }: { t: DeckContent }) {
   return (
     <motion.div variants={fade} initial="hidden" animate="show" exit="exit" className="h-full flex flex-col gap-2">
       <motion.div variants={popIn} initial="hidden" animate="show" className="flex items-center gap-1.5 text-amber-600">
-        <span className="text-sm">🔔</span>
+        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
         <span className="text-[11px] font-heading font-bold">{u(t, "newBuyerInquiry", "New Buyer Inquiry!")}</span>
       </motion.div>
 
@@ -456,23 +460,23 @@ function SellerPhase3({ t }: { t: DeckContent }) {
         animate="show"
         className="p-2 bg-sky-50/60 rounded-lg border border-sky-200/60 space-y-1.5"
       >
-        <span className="text-[8px] font-heading font-bold text-sky-600 uppercase tracking-wider">
+        <span className="text-[11px] font-heading font-bold text-sky-600 uppercase tracking-wider">
           {u(t, "buyerProfile", "Buyer Profile")}
         </span>
-        <div className="text-[10px] font-heading font-bold text-slate-700">Nordic Shipping AS</div>
-        <div className="flex gap-2 text-[8px] text-slate-500">
-          <span>🚢 45 {u(t, "fleet", "vessel fleet")}</span>
-          <span>⭐ {u(t, "verifiedBuyer", "Verified")}</span>
+        <div className="text-[11px] font-heading font-bold text-slate-700">Nordic Shipping AS</div>
+        <div className="flex gap-2 text-[11px] text-slate-500">
+          <span className="flex items-center gap-0.5"><svg className="w-3 h-3 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg> 45 {u(t, "fleet", "vessel fleet")}</span>
+          <span className="flex items-center gap-0.5"><svg className="w-3 h-3 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg> {u(t, "verifiedBuyer", "Verified")}</span>
         </div>
-        <div className="text-[8px] text-slate-500">{u(t, "wants", "Wants")}: 500 MT Bio-LNG</div>
+        <div className="text-[11px] text-slate-500">{u(t, "wants", "Wants")}: 500 MT Bio Methanol</div>
       </motion.div>
 
       <div className="flex justify-between px-2 py-1.5 bg-white rounded border border-slate-200">
-        <div className="text-[8px]">
+        <div className="text-[11px]">
           <div className="text-slate-400">{u(t, "yourPrice", "Your Price")}</div>
           <div className="font-heading font-bold text-slate-700">$1,240/MT</div>
         </div>
-        <div className="text-[8px] text-right">
+        <div className="text-[11px] text-right">
           <div className="text-slate-400">{u(t, "buyerBid", "Buyer Bid")}</div>
           <div className="font-heading font-bold text-emerald-600">$1,240/MT ✓</div>
         </div>
@@ -501,14 +505,14 @@ function SellerPhase4({ t }: { t: DeckContent }) {
       </motion.div>
 
       <motion.div variants={stagger} initial="hidden" animate="show" className="p-2.5 bg-emerald-50/80 rounded-lg border border-emerald-200/60 space-y-1.5">
-        <span className="text-[8px] font-heading font-bold text-emerald-700 uppercase tracking-wider">
+        <span className="text-[11px] font-heading font-bold text-emerald-700 uppercase tracking-wider">
           {u(t, "settlement", "Settlement")}
         </span>
         {(
           [
-            ["💰", u(t, "paymentLabel", "Payment"), u(t, "secured", "Secured")],
-            ["📄", u(t, "certificatesLabel", "Certificates"), u(t, "issued", "Issued")],
-            ["✅", u(t, "complianceLabel", "Compliance"), u(t, "verified", "Verified")],
+            ["payment", u(t, "paymentLabel", "Payment"), u(t, "secured", "Secured")],
+            ["doc", u(t, "certificatesLabel", "Certificates"), u(t, "issued", "Issued")],
+            ["check", u(t, "complianceLabel", "Compliance"), u(t, "verified", "Verified")],
           ] as const
         ).map(([icon, label, status]) => (
           <motion.div
@@ -516,16 +520,19 @@ function SellerPhase4({ t }: { t: DeckContent }) {
             variants={staggerChild}
             className="flex items-center justify-between py-1 border-b border-emerald-100 last:border-0"
           >
-            <span className="text-[9px] text-emerald-700">
-              {icon} {label}
+            <span className="text-[11px] text-emerald-700 flex items-center gap-1">
+              {icon === "payment" && <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
+              {icon === "doc" && <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>}
+              {icon === "check" && <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
+              {label}
             </span>
-            <span className="text-[8px] font-heading font-bold text-emerald-600">{status}</span>
+            <span className="text-[11px] font-heading font-bold text-emerald-600">{status}</span>
           </motion.div>
         ))}
       </motion.div>
 
       <div className="p-2 bg-white rounded-lg border border-slate-200 flex items-center justify-between">
-        <span className="text-[9px] text-slate-500">💰 {u(t, "revenue", "Revenue")}</span>
+        <span className="text-[11px] text-slate-500 flex items-center gap-1"><svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> {u(t, "revenue", "Revenue")}</span>
         <span className="text-[13px] font-heading font-bold text-emerald-600">$620,000</span>
       </div>
     </motion.div>
@@ -538,8 +545,8 @@ function SellerPhase4({ t }: { t: DeckContent }) {
 
 function BuyerPhase1({ t }: { t: DeckContent }) {
   const listings = [
-    { company: "EcoMarine GmbH", fuel: "FAME", port: "Hamburg", qty: "200 MT", price: "$980/MT" },
-    { company: "Nordic Bio AS", fuel: "HVO", port: "Antwerp", qty: "300 MT", price: "$1,150/MT" },
+    { company: "EcoMarine GmbH", fuel: "e-Methanol", port: "Busan", qty: "200 MT", price: "$980/MT" },
+    { company: "Nordic Bio AS", fuel: "Synthetic Ethanol", port: "Houston", qty: "300 MT", price: "$1,150/MT" },
   ];
 
   return (
@@ -547,20 +554,20 @@ function BuyerPhase1({ t }: { t: DeckContent }) {
       <PageTitle>{u(t, "marketplace", "Marketplace")}</PageTitle>
       <div className="flex gap-1.5">
         <div className="flex-1 h-5 bg-white border border-slate-200 rounded px-1.5 flex items-center">
-          <span className="text-[7px] text-slate-300 font-heading">{u(t, "allFuels", "All Fuels")}</span>
+          <span className="text-[11px] text-slate-300 font-heading">{u(t, "allFuels", "All Fuels")}</span>
         </div>
         <div className="flex-1 h-5 bg-white border border-slate-200 rounded px-1.5 flex items-center">
-          <span className="text-[7px] text-slate-300 font-heading">{u(t, "allPorts", "All Ports")}</span>
+          <span className="text-[11px] text-slate-300 font-heading">{u(t, "allPorts", "All Ports")}</span>
         </div>
       </div>
       <motion.div variants={stagger} initial="hidden" animate="show" className="space-y-1.5 flex-1">
         {listings.map((l, i) => (
           <motion.div key={i} variants={staggerChild} className="p-2 bg-white rounded-lg border border-slate-200">
             <div className="flex justify-between items-center">
-              <span className="text-[9px] font-heading font-bold text-slate-700">{l.company}</span>
-              <span className="text-[9px] font-heading font-bold text-emerald-600">{l.price}</span>
+              <span className="text-[11px] font-heading font-bold text-slate-700">{l.company}</span>
+              <span className="text-[11px] font-heading font-bold text-emerald-600">{l.price}</span>
             </div>
-            <div className="text-[7px] text-slate-400 mt-0.5">
+            <div className="text-[11px] text-slate-400 mt-0.5">
               {l.fuel} · {l.port} · {l.qty}
             </div>
           </motion.div>
@@ -585,11 +592,11 @@ function BuyerPhase2({ t }: { t: DeckContent }) {
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-1.5">
             <SmallBadge color="blue">{u(t, "newListing", "NEW")}</SmallBadge>
-            <span className="text-[9px] font-heading font-bold text-slate-700">GreenFuels B.V.</span>
+            <span className="text-[11px] font-heading font-bold text-slate-700">GreenFuels B.V.</span>
           </div>
-          <span className="text-[9px] font-heading font-bold text-emerald-600">$1,240/MT</span>
+          <span className="text-[11px] font-heading font-bold text-emerald-600">$1,240/MT</span>
         </div>
-        <div className="text-[7px] text-slate-400 mt-0.5">Bio-LNG · Rotterdam · 500 MT · CI 28.3</div>
+        <div className="text-[11px] text-slate-400 mt-0.5">Bio Methanol · Rotterdam · 500 MT · CI 30.5</div>
         <div className="flex gap-1 mt-1">
           <SmallBadge>FuelEU ✓</SmallBadge>
           <SmallBadge>EU ETS ✓</SmallBadge>
@@ -598,15 +605,15 @@ function BuyerPhase2({ t }: { t: DeckContent }) {
 
       {/* Existing listings pushed down, dimmed */}
       {[
-        { company: "EcoMarine GmbH", fuel: "FAME", port: "Hamburg", qty: "200 MT", price: "$980/MT" },
-        { company: "Nordic Bio AS", fuel: "HVO", port: "Antwerp", qty: "300 MT", price: "$1,150/MT" },
+        { company: "EcoMarine GmbH", fuel: "e-Methanol", port: "Busan", qty: "200 MT", price: "$980/MT" },
+        { company: "Nordic Bio AS", fuel: "Synthetic Ethanol", port: "Houston", qty: "300 MT", price: "$1,150/MT" },
       ].map((l, i) => (
         <div key={i} className="p-2 bg-white rounded-lg border border-slate-200 opacity-50">
           <div className="flex justify-between items-center">
-            <span className="text-[9px] font-heading font-bold text-slate-700">{l.company}</span>
-            <span className="text-[9px] font-heading font-bold text-emerald-600">{l.price}</span>
+            <span className="text-[11px] font-heading font-bold text-slate-700">{l.company}</span>
+            <span className="text-[11px] font-heading font-bold text-emerald-600">{l.price}</span>
           </div>
-          <div className="text-[7px] text-slate-400 mt-0.5">
+          <div className="text-[11px] text-slate-400 mt-0.5">
             {l.fuel} · {l.port} · {l.qty}
           </div>
         </div>
@@ -619,29 +626,30 @@ function BuyerPhase3({ t }: { t: DeckContent }) {
   return (
     <motion.div variants={fade} initial="hidden" animate="show" exit="exit" className="h-full flex flex-col gap-2">
       <div className="flex justify-between items-center">
-        <span className="text-[10px] font-heading font-bold text-slate-700">GreenFuels B.V.</span>
-        <span className="text-[10px] font-heading font-bold text-emerald-600">$1,240/MT</span>
+        <span className="text-[11px] font-heading font-bold text-slate-700">GreenFuels B.V.</span>
+        <span className="text-[11px] font-heading font-bold text-emerald-600">$1,240/MT</span>
       </div>
 
       {/* Compliance card */}
       <motion.div variants={popIn} initial="hidden" animate="show" className="p-2 bg-emerald-50/60 rounded-lg border border-emerald-200/60 space-y-1">
-        <span className="text-[8px] font-heading font-bold text-emerald-700">
-          🛡 {u(t, "complianceCheck", "Compliance Check")}
+        <span className="text-[11px] font-heading font-bold text-emerald-700 flex items-center gap-1">
+          <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+          {u(t, "complianceCheck", "Compliance Check")}
         </span>
         {["FuelEU Maritime", "EU ETS", "RED III"].map((fw) => (
-          <div key={fw} className="flex items-center gap-1 text-[8px] text-emerald-700">
-            <span>✅</span> {fw}
+          <div key={fw} className="flex items-center gap-1 text-[11px] text-emerald-700">
+            <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg> {fw}
           </div>
         ))}
-        <div className="text-[7px] text-slate-500 mt-0.5">
+        <div className="text-[11px] text-slate-500 mt-0.5">
           CI: 28.3 gCO₂/MJ · {u(t, "certified", "Certified")}
         </div>
       </motion.div>
 
       {/* Total */}
       <div className="px-2 py-1.5 bg-white rounded border border-slate-200 flex justify-between items-center">
-        <span className="text-[8px] text-slate-400">500 MT × $1,240/MT</span>
-        <span className="text-[10px] font-heading font-bold text-slate-800">
+        <span className="text-[11px] text-slate-400">500 MT × $1,240/MT</span>
+        <span className="text-[11px] font-heading font-bold text-slate-800">
           {u(t, "total", "Total")}: $620,000
         </span>
       </div>
@@ -664,29 +672,31 @@ function BuyerPhase4({ t }: { t: DeckContent }) {
       </motion.div>
 
       <div className="p-2 bg-white rounded-lg border border-slate-200 space-y-1">
-        <div className="text-[9px] font-heading font-semibold text-slate-700">GreenFuels B.V. → You</div>
-        <div className="text-[7px] text-slate-400">Bio-LNG · 500 MT · $1,240/MT</div>
-        <div className="text-[7px] text-slate-400">Rotterdam · Q2 2026</div>
+        <div className="text-[11px] font-heading font-semibold text-slate-700">GreenFuels B.V. → You</div>
+        <div className="text-[11px] text-slate-400">Bio Methanol · 500 MT · $1,240/MT</div>
+        <div className="text-[11px] text-slate-400">Rotterdam · Q2 2026</div>
       </div>
 
       <div className="p-2 bg-slate-100/80 rounded-lg space-y-1">
-        <span className="text-[8px] font-heading font-bold text-slate-500">
-          📄 {u(t, "certificates", "Certificates")}
+        <span className="text-[11px] font-heading font-bold text-slate-500 flex items-center gap-1">
+          <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+          {u(t, "certificates", "Certificates")}
         </span>
         {[
           u(t, "certificateOfOrigin", "Certificate of Origin"),
           u(t, "fueleuCompliance", "FuelEU Compliance"),
           u(t, "euEtsAllowances", "EU ETS Allowances"),
         ].map((cert) => (
-          <div key={cert} className="text-[8px] text-slate-600 flex items-center gap-1">
+          <div key={cert} className="text-[11px] text-slate-600 flex items-center gap-1">
             <span className="text-emerald-500">✓</span> {cert}
           </div>
         ))}
       </div>
 
       <div className="p-2 bg-emerald-50/80 rounded border border-emerald-200/60 text-center">
-        <span className="text-[9px] text-emerald-700 font-heading font-semibold">
-          💰 {u(t, "paymentSecured", "Payment secured via escrow")}
+        <span className="text-[11px] text-emerald-700 font-heading font-semibold flex items-center justify-center gap-1">
+          <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          {u(t, "paymentSecured", "Payment secured via escrow")}
         </span>
       </div>
     </motion.div>
@@ -779,7 +789,7 @@ export default function SlideDemo() {
           className="flex items-center gap-1.5 px-3 py-1 bg-slate-800/5 hover:bg-slate-800/10 rounded-full transition-colors cursor-pointer"
         >
           <div className={`w-1.5 h-1.5 rounded-full ${paused ? "bg-slate-400" : "bg-red-500 animate-pulse"}`} />
-          <span className="text-[9px] font-heading font-semibold text-slate-400 uppercase tracking-wider">
+          <span className="text-[11px] font-heading font-semibold text-slate-400 uppercase tracking-wider">
             {paused ? "Paused" : "Live Demo"}
           </span>
         </button>

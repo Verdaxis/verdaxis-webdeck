@@ -6,14 +6,27 @@ import Image from "next/image";
 import { slideTransition } from "@/lib/animations";
 import { useContent } from "@/lib/i18n";
 import SlideNavigation from "./SlideNavigation";
+import MobileGate from "./MobileGate";
 import { BranchProvider } from "@/lib/branchContext";
 import { preloadSlideById, slideRegistry } from "@/lib/slideRegistry";
 import type { DeckConfig } from "@/lib/decks/types";
 
 /**
- * UserSlideContainer — like SlideContainer but without the mobile gate.
- * Used exclusively for the user-facing onboarding deck, which is responsive.
+ * UserSlideContainer — user-facing deck variant.
  */
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches
+  );
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return isMobile;
+}
 
 function UserSlideContainerInner({
   deck,
@@ -23,9 +36,7 @@ function UserSlideContainerInner({
   slideMetadata?: Record<string, { title: string; section: string }>;
 }) {
   const t = useContent();
-  const slides = useMemo(
-    () =>
-      deck.slides.map((entry, index) => ({
+  const slides = deck.slides.map((entry, index) => ({
         index,
         id: entry.id,
         title:
@@ -36,9 +47,7 @@ function UserSlideContainerInner({
           slideMetadata?.[entry.id]?.section ??
           t.slides[entry.id as keyof typeof t.slides]?.section ??
           "",
-      })),
-    [deck.slides, t, slideMetadata]
-  );
+      }));
   const totalSlides = deck.slides.length;
   const [currentSlide, setCurrentSlide] = useState(() => {
     if (typeof window === "undefined") return 0;
@@ -56,6 +65,7 @@ function UserSlideContainerInner({
   const pendingDigits = useRef("");
   const digitTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
   const transitionLockMs = prefersReducedMotion ? 120 : 450;
   const contentTransition = useMemo(
     () =>
@@ -177,6 +187,10 @@ function UserSlideContainerInner({
 
   const showLogo = currentSlide > 0;
 
+  if (isMobile) {
+    return <MobileGate />;
+  }
+
   return (
     <div
       className="relative w-screen h-screen overflow-hidden bg-[#F8FAFC]"
@@ -204,10 +218,10 @@ function UserSlideContainerInner({
         aria-hidden={!showLogo}
       >
         <Image
-          src="/images/logos/verdaxis-icon.png"
+          src="/images/logos/verdaxis-logo-words-right.png"
           alt="Verdaxis"
-          width={80}
-          height={20}
+          width={120}
+          height={36}
           priority
           style={{ height: "auto" }}
         />

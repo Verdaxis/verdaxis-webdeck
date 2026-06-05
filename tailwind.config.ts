@@ -27,9 +27,9 @@ const config: Config = {
         "gold-light": "#66BB6A",
       },
       fontFamily: {
-        display: ['"DM Serif Display"', "serif"],
-        heading: ["Montserrat", "system-ui", "sans-serif"],
-        body: ["Lato", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "serif"],
+        heading: ["var(--font-heading)", "system-ui", "sans-serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
       },
       boxShadow: {
         card: "0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06)",

@@ -93,10 +93,11 @@ export default function SlideRoadmap() {
               {/* Horizontal line behind nodes */}
               <div className="absolute top-[18px] left-0 right-0 h-[2px] overflow-hidden">
                 <motion.div
-                  className="h-full bg-slate-200"
-                  initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
+                  className="h-full bg-slate-200 origin-left"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
                   transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+                  style={{ width: "100%" }}
                 />
               </div>
 
@@ -179,10 +180,11 @@ export default function SlideRoadmap() {
               {/* Vertical line */}
               <div className="absolute left-[14px] top-0 bottom-0 w-[2px] overflow-hidden">
                 <motion.div
-                  className="w-full bg-slate-200"
-                  initial={{ height: 0 }}
-                  animate={{ height: "100%" }}
+                  className="w-full bg-slate-200 origin-top"
+                  initial={{ scaleY: 0 }}
+                  animate={{ scaleY: 1 }}
                   transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+                  style={{ height: "100%" }}
                 />
               </div>
 

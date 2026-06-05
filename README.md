@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Verdaxis Webdeck
+
+Interactive investor pitch deck for **Verdaxis** -- the compliance-first marketplace for verified sustainable marine fuels.
+
+## Tech Stack
+
+Next.js 16 (App Router, static export) | React 19 | TypeScript 5 (strict) | Tailwind CSS v4 | Framer Motion 12
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev       # Dev server on localhost:3000
+npm run build     # Static export to /out/
+npm run lint      # ESLint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+No environment variables required.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Entry Points
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Path | Purpose |
+|------|---------|
+| `/` | Deck picker (lists all decks) |
+| `/vc` | VC investor deck (15 slides + 5 branches) |
+| `/vc#slide-id` | Deep link to specific slide |
+| `?lang=xx` | Force locale (en/zh/de/nl/fr/pt) |
 
-## Learn More
+## Key Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Slide-by-slide navigation** with keyboard arrows, touch swipe, and digit+Enter jump
+- **Branch overlays** -- modal deep-dives accessible from certain slides
+- **6-language i18n** -- English, Chinese, German, Dutch, French, Portuguese
+- **Framer Motion animations** with `prefers-reduced-motion` support
+- **Desktop-first** with a mobile "best viewed on desktop" gate
+- **Static export** for deployment anywhere (no server required)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for full technical details and [CLAUDE.md](./CLAUDE.md) for development conventions.

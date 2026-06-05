@@ -4,6 +4,7 @@ import SlideWrapper from "@/components/SlideWrapper";
 import { useContent } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import Image from "next/image";
 
 /* ────────────────────────────────────────────
    Avatar — photo with company-colored border,
@@ -26,9 +27,11 @@ function Avatar({
 
   if (imageUrl) {
     return (
-      <img
+      <Image
         src={imageUrl}
         alt={name}
+        width={80}
+        height={80}
         className={`w-20 h-20 rounded-full object-cover border-2 ${borderColor}`}
       />
     );
@@ -151,17 +154,21 @@ export default function SlideTeam() {
                 {member.company && (
                   <div className="flex items-center gap-1.5 mt-1 mb-3">
                     {member.company === "marinachain" && (
-                    <img
+                      <Image
                         src="/images/logos/partners/marinachain-color.png"
                         alt="MarinaChain"
-                        className="h-4 opacity-80"
+                        width={501}
+                        height={101}
+                        className="h-4 w-auto object-contain opacity-80"
                       />
                     )}
                     {member.company === "greenm" && (
-                      <img
+                      <Image
                         src="/images/logos/partners/greenmarine-full.png"
                         alt="Green Marine"
-                        className="h-4 opacity-70"
+                        width={400}
+                        height={132}
+                        className="h-4 w-auto object-contain opacity-70"
                       />
                     )}
                   </div>

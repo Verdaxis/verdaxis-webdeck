@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import Image from "next/image";
 import SlideWrapper from "@/components/SlideWrapper";
 import { useContent } from "@/lib/i18n";
 import { motion } from "framer-motion";
@@ -95,7 +96,7 @@ function FlywheelDiagram({
 
   const positions = useMemo(
     () => nodes.map((_, i) => nodePosition(i, radius, cx, cy)),
-    [nodes.length],
+    [nodes, radius, cx, cy],
   );
 
   return (
@@ -103,7 +104,7 @@ function FlywheelDiagram({
       {/* Subtle slow rotation container */}
       <div
         className="absolute inset-0 flywheel-rotate"
-        aria-hidden
+        aria-hidden="true"
       >
         {/* Very faint orbit ring */}
         <svg
@@ -209,21 +210,25 @@ function FlywheelDiagram({
             >
               {node.label}
             </span>
-            <span className="text-slate-500 text-[9px] sm:text-[10px] leading-tight mt-1">
+            <span className="text-slate-500 text-[11px] leading-tight mt-1">
               {node.description}
             </span>
             {isMarinaChain && (
-              <img
+              <Image
                 src="/images/logos/partners/marinachain-color.png"
                 alt="MarinaChain"
-                className="h-3.5 opacity-80 mt-1"
+                width={501}
+                height={101}
+                className="h-3.5 w-auto object-contain opacity-80 mt-1"
               />
             )}
             {isGreenMarine && (
-              <img
+              <Image
                 src="/images/logos/partners/greenmarine-full.png"
                 alt="Green Marine"
-                className="h-3.5 opacity-70 mt-1"
+                width={400}
+                height={132}
+                className="h-3.5 w-auto object-contain opacity-70 mt-1"
               />
             )}
           </motion.div>

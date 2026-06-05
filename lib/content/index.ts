@@ -20,7 +20,3 @@ export async function loadContent(locale: string): Promise<DeckContent> {
       return en;
   }
 }
-
-export function getContentSync(): DeckContent {
-  return en;
-}

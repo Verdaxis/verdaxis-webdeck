@@ -2,7 +2,7 @@ import Link from "next/link";
 import { decks } from "@/lib/decks";
 
 export default function DeckPicker() {
-  const deckList = Object.values(decks);
+  const deckList = Object.values(decks).filter((deck) => !deck.hidden);
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-8">

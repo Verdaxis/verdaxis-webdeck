@@ -24,12 +24,12 @@ export const de: DeckContent = {
     subtitle: "Compliance-orientierter Marktplatz für verifizierte nachhaltige Schiffskraftstoffe",
     tagline: "Doppelzählungsprävention | IMO- & EU-konform | Physical-First-Logik",
     tickerItems: [
-      { fuel: "Bio-Methanol", region: "NW-Europa", price: "$680", change: "+2,3%", ci: "32 gCO₂/MJ" },
-      { fuel: "E-Methanol", region: "Global", price: "$1.250", change: "+1,1%", ci: "8 gCO₂/MJ" },
-      { fuel: "FAME B100", region: "Singapur", price: "$1.420", change: "-0,5%", ci: "22 gCO₂/MJ" },
-      { fuel: "Bio-LNG", region: "Rotterdam", price: "$890", change: "+3,7%", ci: "28 gCO₂/MJ" },
-      { fuel: "Grüner Wasserstoff", region: "Naher Osten", price: "$4.200", change: "+0,8%", ci: "4 gCO₂/MJ" },
-      { fuel: "HVO", region: "ARA", price: "$1.680", change: "-1,2%", ci: "18 gCO₂/MJ" },
+      { fuel: "Bio Ethanol", region: "Busan", price: "$680", change: "+2,3%", ci: "32 gCO₂/MJ" },
+      { fuel: "Bio Methanol", region: "Houston", price: "$1.250", change: "+1,1%", ci: "8 gCO₂/MJ" },
+      { fuel: "e-Methanol", region: "Dalian", price: "$1.420", change: "-0,5%", ci: "22 gCO₂/MJ" },
+      { fuel: "Synthetic Ethanol", region: "Rotterdam", price: "$890", change: "+3,7%", ci: "28 gCO₂/MJ" },
+      { fuel: "Bio Methanol", region: "Shanghai", price: "$4.200", change: "+0,8%", ci: "4 gCO₂/MJ" },
+      { fuel: "e-Methanol", region: "Singapore", price: "$1.680", change: "-1,2%", ci: "18 gCO₂/MJ" },
     ],
   },
 
@@ -49,7 +49,7 @@ export const de: DeckContent = {
       },
       {
         title: "Angebotsexplosion",
-        description: "Chinesische Methanolproduktionskapazitäten steigen rapide — über 100 Mio. Tonnen bis 2026. Bio-Methanol-Projekte werden in Europa und Asien skaliert. E-Methanol-Pilotprojekte starten in Skandinavien und im Nahen Osten.",
+        description: "Chinesische Methanolproduktionskapazitäten steigen rapide — über 100 Mio. Tonnen bis 2026. Bio Methanol-Projekte werden in Europa und Asien skaliert. e-Methanol-Pilotprojekte starten in Skandinavien und im Nahen Osten.",
         iconKey: "supply",
       },
       {
@@ -203,11 +203,11 @@ export const de: DeckContent = {
       "CORSIA",
     ],
     milestones: [
-      { title: "Plattform-MVP-Launch", date: "Q1 2026" },
-      { title: "Compliance-Engine v1", date: "Q1 2026" },
-      { title: "KI-Copilot Beta", date: "Q2 2026" },
-      { title: "Erste Umsätze", date: "Q2 2026" },
-      { title: "Gründungsmitglieder-Programm", date: "Q2 2026" },
+      { title: "Plattform-MVP-Launch", date: "Q2 2026" },
+      { title: "Compliance-Engine v1", date: "Q2 2026" },
+      { title: "KI-Copilot Beta", date: "Q3 2026" },
+      { title: "Erste Umsätze", date: "Q3 2026" },
+      { title: "Gründungsmitglieder-Programm", date: "Q3 2026" },
     ],
   },
 
@@ -373,7 +373,7 @@ export const de: DeckContent = {
         year: "2026",
         title: "Launch — Brückenkopf Singapur",
         items: [
-          "Methanol- und Biokraftstoffhandel live",
+          "Methanol & Ethanol",
           "Gründungsmitglieder-Programm",
           "Compliance-Engine (FuelEU, EU ETS)",
           "KI-Copilot Beta",
@@ -385,7 +385,7 @@ export const de: DeckContent = {
         title: "Expansion — Multi-Hub",
         items: [
           "Rotterdam-Hub-Launch",
-          "Neue Kraftstofftypen (Ethanol, Bio-LNG)",
+          "Neue Kraftstofftypen (Bio Ethanol, Bio Methanol, e-Methanol, Synthetic Ethanol)",
           "Live-Bietungs-Börse",
           "Launch des Schulungsmoduls",
           "Vorbereitung Series A",
@@ -485,7 +485,7 @@ export const de: DeckContent = {
         label: "Adressierbarer Zielmarkt",
         value: "$50 Mrd.",
         source: "DNV, McKinsey Maritime Energy Transition",
-        description: "Alternative und kohlenstoffarme Schiffskraftstoffe bis 2030. Umfasst Methanol, Biokraftstoffe, Bio-LNG, E-Fuels und Wasserstoff. Am schnellsten wachsendes Segment mit über 25 % CAGR.",
+        description: "Alternative und kohlenstoffarme Schiffskraftstoffe bis 2030. Umfasst Bio Ethanol, Bio Methanol, e-Methanol und Synthetic Ethanol. Am schnellsten wachsendes Segment mit über 25 % CAGR.",
       },
       som: {
         label: "Erreichbarer Zielmarkt",
@@ -508,7 +508,7 @@ export const de: DeckContent = {
     aiCopilot: {
       title: "KI-Copilot — Intelligenter Assistent",
       capabilities: [
-        { name: "Marktabfragen", description: "\"Was ist das günstigste Bio-Methanol in Singapur diese Woche?\" — Echtzeitpreise aus dem Orderbuch" },
+        { name: "Marktabfragen", description: "\"Was ist das günstigste Bio Methanol in Singapur diese Woche?\" — Echtzeitpreise aus dem Orderbuch" },
         { name: "Compliance-Analyse", description: "\"Wie groß ist meine FuelEU Maritime-Compliance-Lücke für Q3?\" — Berechnet das Defizit und empfiehlt Kraftstoffwechsel" },
         { name: "Routenoptimierung", description: "\"Optimiere den Kraftstoffplan für Singapur nach Rotterdam\" — Berücksichtigt Hafenverfügbarkeit, CI-Werte und Kosten" },
         { name: "Regulatorische Updates", description: "\"Was hat sich letzten Monat bei RED III geändert?\" — Überwacht regulatorische Entwicklungen über alle Rahmenwerke" },

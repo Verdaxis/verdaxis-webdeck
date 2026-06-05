@@ -6,14 +6,22 @@ import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 const fuelTypes = [
-  { name: "Bio-Methanol", ci: "32 gCO₂/MJ", badge: "bg-brand-green/10 text-brand-green border-brand-green/20" },
-  { name: "Bio-LNG", ci: "28 gCO₂/MJ", badge: "bg-verdaxis-blue/10 text-verdaxis-blue border-verdaxis-blue/20" },
-  { name: "Green Ammonia", ci: "4 gCO₂/MJ", badge: "bg-emerald/10 text-emerald border-emerald/20" },
-  { name: "FAME B100", ci: "22 gCO₂/MJ", badge: "bg-brand-green/10 text-brand-green border-brand-green/20" },
-  { name: "HVO", ci: "18 gCO₂/MJ", badge: "bg-verdaxis-blue/10 text-verdaxis-blue border-verdaxis-blue/20" },
+  { name: "Bio Ethanol", ci: "Supported", badge: "bg-brand-green/10 text-brand-green border-brand-green/20" },
+  { name: "Bio Methanol", ci: "Supported", badge: "bg-verdaxis-blue/10 text-verdaxis-blue border-verdaxis-blue/20" },
+  { name: "e-Methanol", ci: "Supported", badge: "bg-emerald/10 text-emerald border-emerald/20" },
+  { name: "Synthetic Ethanol", ci: "Supported", badge: "bg-brand-green/10 text-brand-green border-brand-green/20" },
 ];
 
-const ports = ["Singapore", "Rotterdam", "Houston", "Fujairah", "Shanghai"];
+const ports = [
+  "Dalian",
+  "Busan",
+  "Shanghai",
+  "Singapore",
+  "Rotterdam",
+  "Houston",
+  "Los Angeles",
+  "Santos",
+];
 
 const features = [
   {
@@ -106,7 +114,7 @@ export default function UserSlideMarketplace() {
                     className={`inline-flex flex-col items-start px-3 py-2 rounded-lg border text-xs font-medium ${fuel.badge}`}
                   >
                     <span className="font-semibold">{fuel.name}</span>
-                    <span className="font-mono opacity-70 text-[10px] mt-0.5">{fuel.ci}</span>
+                    <span className="font-mono opacity-70 text-[11px] mt-0.5">{fuel.ci}</span>
                   </div>
                 ))}
               </div>

@@ -26,15 +26,12 @@ function useIsMobile() {
 function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideMetadata?: Record<string, { title: string; section: string }> }) {
   const t = useContent();
   const { isBranchOpen } = useBranch();
-  const slides = useMemo(
-    () => deck.slides.map((entry, index) => ({
+  const slides = deck.slides.map((entry, index) => ({
       index,
       id: entry.id,
       title: slideMetadata?.[entry.id]?.title ?? t.slides[entry.id as keyof typeof t.slides]?.title ?? entry.id,
       section: slideMetadata?.[entry.id]?.section ?? t.slides[entry.id as keyof typeof t.slides]?.section ?? "",
-    })),
-    [deck.slides, t, slideMetadata]
-  );
+    }));
   const totalSlides = deck.slides.length;
   const [currentSlide, setCurrentSlide] = useState(() => {
     if (typeof window === "undefined") return 0;
@@ -87,7 +84,7 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
         isAnimating.current = false;
       }, transitionLockMs);
     },
-    [currentSlide, slides, isMobile, transitionLockMs]
+    [currentSlide, slides, isMobile, transitionLockMs, totalSlides]
   );
 
   const nextSlide = useCallback(() => {
@@ -127,7 +124,7 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [nextSlide, prevSlide, goToSlide, isMobile]);
+  }, [nextSlide, prevSlide, goToSlide, isMobile, totalSlides, isBranchOpen]);
 
   useEffect(() => {
     if (isMobile) return;
@@ -152,17 +149,14 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
     touchStartX.current = e.touches[0].clientX;
   }, []);
 
-  const handleTouchEnd = useCallback(
-    (e: React.TouchEvent) => {
-      if (isBranchOpen.current || isMobile) return;
-      const delta = touchStartX.current - e.changedTouches[0].clientX;
-      if (Math.abs(delta) > 50) {
-        if (delta > 0) nextSlide();
-        else prevSlide();
-      }
-    },
-    [nextSlide, prevSlide, isMobile]
-  );
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (isBranchOpen.current || isMobile) return;
+    const delta = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 50) {
+      if (delta > 0) nextSlide();
+      else prevSlide();
+    }
+  };
 
   const renderSlide = (index: number) => {
     const entry = deck.slides[index];
@@ -225,10 +219,10 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
         {/* Content */}
         <div className="mobile-gate-content">
           <Image
-            src="/images/logos/verdaxis-icon.png"
+            src="/images/logos/verdaxis-logo-words-right.png"
             alt="Verdaxis"
-            width={140}
-            height={35}
+            width={180}
+            height={54}
             priority
             style={{ height: "auto", opacity: 0.85 }}
           />
@@ -312,10 +306,10 @@ function SlideContainerInner({ deck, slideMetadata }: { deck: DeckConfig; slideM
         transition={{ duration: 0.3 }}
       >
         <Image
-          src="/images/logos/verdaxis-icon.png"
+          src="/images/logos/verdaxis-logo-words-right.png"
           alt="Verdaxis"
-          width={80}
-          height={20}
+          width={120}
+          height={36}
           priority
           style={{ height: "auto" }}
         />
